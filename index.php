@@ -16,7 +16,7 @@ if (isset($_POST['titulek'],$_POST['aktualita'])) {
 	header("Location: {$_SERVER['PHP_SELF']}");
 }
 
-$content .= $novinkovac->ziskejNovinky(3);
+$content .= $novinkovac->ziskejNovinky(5);
 $content .= "<hr><h2>Přidání novinky</h2>";
 $content .= $novinkovac->ziskejVkladaciFormular();
 
