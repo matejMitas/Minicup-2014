@@ -1,35 +1,33 @@
 <?php
     class zapasovac {
         
-        private $tymy;
+        private static $zapasy;
         
         public function nacteniZapasu($pocet){
             require('dbWrapper.class.php');
-            $vysledek = dbWrapper::dotaz(<<<SQL
+            dbWrapper::pripoj();
+            $sql = dbWrapper::dotaz(<<<SQL
                     SELECT `ID_domaci`, `ID_hoste`
-                    FROM `2014_aktuality`
+                    FROM `2014_zapasy_mladsi`
                     WHERE `odehrano` = 0
                     ORDER BY `cas_odehrani`
-                    LIMIT ?
+                    LIMIT $pocet
 SQL
-        ,Array($pocet));
-            $tymy = $vysledek->FetchAll();
+        ,Array());
+            self::$zapasy = $sql->FetchAll();
         }
         
         
         public function tym($zapas, $tym){
-            $team = $tymy[$index][$team];
-            
-            $vysledek = dbWrapper::dotaz(<<<SQL
+            $parametr = self::$zapasy[$zapas][$tym];
+            $sql = dbWrapper::dotaz(<<<SQL
                     SELECT jmeno
-                    FROM `2014_aktuality`
+                    FROM `2014_tymy_mladsi`
                     WHERE id_teamu = ?
 SQL
-        ,Array($team));
-            $vysledek = $vysledek->FetchAll();
-            
+        ,Array($parametr));
+            $vysledek = $sql->FetchAll();
             $team = $vysledek[0]['jmeno'];
-            
             return $team;
         }
             
