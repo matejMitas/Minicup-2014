@@ -32,26 +32,56 @@ SQL
     }
 
 
-    public function zjiskejOverovaciFormular($pole){
+    public function ziskejFormular(){
+        $formular = <<<FORMULAR
+            <form action="test.php" method="post">
+                <table>
+FORMULAR;
+        for ($zapas=0; $zapas < 4; $zapas++) { 
+            $domaci = $this->tym($zapas,0);
+            $hoste = $this->tym($zapas,1);
+            $formular .= <<<FORMULAR
+                <tr>
+                    <td><p>$domaci</p></td>
+                    <td><p>$hoste</p></td>
+                </tr>
+                <tr>
+                    <td><input type="text" style="font-size: 30px;" size="2" name="score[$zapas][0]"></td>
+                    <td><input type="text" style="font-size: 30px;" size="2" name="score[$zapas][1]"></td>
+                </tr>
+FORMULAR;
+        }
+        $formular .= <<<FORMULAR
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Odeslat!" name="odeslat"></td>
+                </tr>
+            </table>
+        </form>
+FORMULAR;
+        return $formular;
+    }
+
+
+    public function ziskejOverovaciFormular($pole){
         $formular = <<<FORMULAR
             <table>
 FORMULAR;
         for ($zapas=0; $zapas < 4; $zapas++) {
-            echo $zapas;
             if (preg_match('/^[0-9]+$/', $_POST['score'][$zapas][0])){
                 if (preg_match('/^[0-9]+$/', $_POST['score'][$zapas][1])){
                     $domaci = $this->tym($zapas,0);
                     $hoste = $this->tym($zapas,1);
-                    $skoreDomaci = $_POST['score'][$zapas][0];
-                    $skoreHoste = $_POST['score'][$zapas][1];
+                    $scoreDomaci = $_POST['score'][$zapas][0];
+                    $scoreHoste = $_POST['score'][$zapas][1];
                     $formular .= <<<FORMULAR
                         <tr>
                             <td><p>$domaci</p></td>
                             <td><p>$hoste</p></td>
                         </tr>        
                         <tr>
-                            <td><p>$skoreDomaci</p></td>
-                            <td><p>$skoreHoste</p></td>
+                            <td><p>$scoreDomaci</p></td>
+                            <td><p>$scoreHoste</p></td>
                         </tr>
 FORMULAR;
                 }
