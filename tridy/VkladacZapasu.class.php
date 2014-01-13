@@ -1,5 +1,5 @@
 <?php
-    class zapasovac {
+    class VkladacZapasu {
         
     private $zapasy;
         
