@@ -5,27 +5,29 @@
 		private $poleZapasu;
 
 
-		public function ziskejFormular($post){
+		public function ziskejFormular($kategorie, $pocetZapasu, $post){
 			print_r($post);
 			echo "<br>";
 			if (isset($post['action'])){
             	if ($post['action'] == "Zkontrolovat!"){
+            		$this -> ziskejZapasy($kategorie, $pocetZapasu);
             		if ($this -> byloUzZapsano($post['id'])) {
             			$return = $this -> overovaciFormular($post['score']);
             		}else{
             			$return = "<p>CHYBA</p>";
             		}         		
             	}elseif ($post['action'] == "Zapsat!") {
-                	$return = "";
+                	
             	}
         	}else{
+            	$this -> ziskejZapasy($kategorie, $pocetZapasu);
             	$return = $this -> vkladaciFormular();
 			}
         	return $return;
 		}
 
 
-		public function __construct($kategorie, $pocetZapasu){
+		public function ziskejZapasy($kategorie, $pocetZapasu){
 			require('dbWrapper.class.php'); #Může se smazat
         	dbWrapper::pripoj(); #také smazat
         	$zapasyKategorie = "2014_zapasy_" . $kategorie;
