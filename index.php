@@ -47,8 +47,3 @@ $vystup = <<<SABLONA
 </html>
 SABLONA;
 echo($vystup);
-
-#vkládání výsledků zápasů
-$kategorie = 'mladsi'; #pro starší bude 'starší', ale chtělo by to nějaké ošetření jde to přímo do DB
-$zapasy = new VkladacZapasu($kategorie, 4);
-echo $zapasy -> ziskejFormular($_POST);
