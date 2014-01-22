@@ -3,27 +3,7 @@
 	class VkladacZapasu{
 
 		private $poleZapasu;
-
-
-		public function ziskejFormular($post){
-			print_r($post);
-			echo "<br>";
-			if (isset($post['action'])){
-            	if ($post['action'] == "Zkontrolovat!"){
-            		if ($this -> byloUzZapsano($post['id'])) {
-            			$return = $this -> overovaciFormular($post['score']);
-            		}else{
-            			$return = "<p>CHYBA</p>";
-            		}         		
-            	}elseif ($post['action'] == "Zapsat!") {
-                	$return = "";
-            	}
-        	}else{
-            	$return = $this -> vkladaciFormular();
-			}
-        	return $return;
-		}
-
+		private $pocetZapasu;
 
 		public function __construct($kategorie, $pocetZapasu){
 			require('dbWrapper.class.php'); #Může se smazat
@@ -47,38 +27,71 @@ SQL
 		}
 
 
+		public function ziskejFormular($post){
+			print_r($post);
+			echo "<br>";
+			if (isset($post['action'])){
+				session_start();
+				if ($post['action'] == "Zapsat!"){ 
+					$idZapasu = $_SESSION['ID']['id'];
+				}else{ 
+					$idZapasu = $post['id'];
+				}
+				if ($this -> byloZapsano($idZapasu)){
+					switch($post['action']){
+						case "Zkontrolovat!":
+            				$return = $this -> overovaciFormular($post);
+            				break;
+						case "Zapsat!":
+							$return = "Zapisovani";
+							break;
+					}
+				}else{
+    	       		$return = "<p>CHYBA</p>";
+    	       	}
+			}else{
+            	$return = $this -> vkladaciFormular();
+			}
+			return $return;
+		}
+
+
 		public function vkladaciFormular(){
 			$formular = '<form method="post">';
 			for ($zapas=0; $zapas < $this -> pocetZapasu ; $zapas++) {
 				$idTeamu = $this -> poleZapasu[$zapas][2];
 				$formular .= <<<HTML
-					<p>{$this -> poleZapasu[$zapas][0]} : {$this -> poleZapasu[$zapas][1]}</p>
+					<p>{$this -> poleZapasu[$zapas][0]}:{$this -> poleZapasu[$zapas][1]}</p>
 					<p>
-						<input type="text" name="score[$zapas][0]"> : <input type="text" name="score[$zapas][1]">
+						<input type="text" name="score[$zapas][0]">:<input type="text" name="score[$zapas][1]">
 						<input type="hidden" name="id[$zapas]" value="$idTeamu">
 					</p>
 HTML;
 			}
 			$formular .= '<p><input type="submit" value="Zkontrolovat!" name="action"><p>';
+			$formular .= '</form>';
 			return $formular;
 		}
 
 
-		public function overovaciFormular($score){
+		public function overovaciFormular($post){
+			$_SESSION['ID'] = $post;
+			$score = $post['score'];
 			$formular = "";
 			for ($zapas=0; $zapas < $this -> pocetZapasu; $zapas++) { 
-				if (is_numeric($score[$zapas][0]) and is_numeric($score[$zapas][1])){
+				if (is_numeric($score[$zapas][0]) && is_numeric($score[$zapas][1])){
 					$formular .= <<<HTML
-					<p>{$this -> poleZapasu[$zapas][0]} : {$this -> poleZapasu[$zapas][1]}</p>
-					<p>{$score[$zapas][0]} : {$score[$zapas][1]}</p>
+					<p>{$this -> poleZapasu[$zapas][0]}:{$this -> poleZapasu[$zapas][1]}</p>
+					<p>{$score[$zapas][0]}:{$score[$zapas][1]}</p>
 HTML;
 				}
 			}
+			$formular .= '<p><form method="post"><input type="submit" value="Zapsat!" name="action"></form><p>';
 			return $formular;
 		}
 
 
-		public function byloUzZapsano($idZapasu){
+		public function byloZapsano($idZapasu){
 			$nezapsano = True;
 			for ($zapas=0; $zapas < $this -> pocetZapasu; $zapas++) {
 				if ($idZapasu[$zapas] != $this -> poleZapasu[$zapas][2]) {
