@@ -6,8 +6,6 @@
 		private $pocetZapasu;
 
 		public function __construct($kategorie, $pocetZapasu){
-			require('dbWrapper.class.php'); #Může se smazat
-        	dbWrapper::pripoj(); #také smazat
         	$zapasyKategorie = "2014_zapasy_" . $kategorie;
         	$tymyKategorie = "2014_tymy_" . $kategorie;
         	$sql = dbWrapper::dotaz(<<<SQL
@@ -23,13 +21,11 @@ SQL
 			, Array());
 			$this -> pocetZapasu = $pocetZapasu;
 			$this -> poleZapasu = $sql->FetchAll(PDO::FETCH_NUM);
-			print_r($this -> poleZapasu);
 		}
 
 
 		public function ziskejFormular($post){
-			print_r($post);
-			echo "<br>";
+			$return = "<br>";
 			if (isset($post['action'])){
 				session_start();
 				if ($post['action'] == "Zapsat!"){ 
@@ -40,17 +36,17 @@ SQL
 				if ($this -> byloZapsano($idZapasu)){
 					switch($post['action']){
 						case "Zkontrolovat!":
-            				$return = $this -> overovaciFormular($post);
+            				$return .= $this -> overovaciFormular($post);
             				break;
 						case "Zapsat!":
-							$return = "Zapisovani";
+							$return .= "Zapisovani";
 							break;
 					}
 				}else{
-    	       		$return = "<p>CHYBA</p>";
+    	       		$return .= "<p>CHYBA</p>";
     	       	}
 			}else{
-            	$return = $this -> vkladaciFormular();
+            	$return .= $this -> vkladaciFormular();
 			}
 			return $return;
 		}
