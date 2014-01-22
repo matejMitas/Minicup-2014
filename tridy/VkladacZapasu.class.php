@@ -4,8 +4,12 @@
 
 		private $poleZapasu;
 		private $pocetZapasu;
+		private $kategorie;
+
 
 		public function __construct($kategorie, $pocetZapasu){
+			require('dbWrapper.class.php'); #Může se smazat
+        	dbWrapper::pripoj(); #také smazat
         	$zapasyKategorie = "2014_zapasy_" . $kategorie;
         	$tymyKategorie = "2014_tymy_" . $kategorie;
         	$sql = dbWrapper::dotaz(<<<SQL
@@ -19,16 +23,16 @@
 				LIMIT $pocetZapasu
 SQL
 			, Array());
+			$this -> kategorie = $kategorie;
 			$this -> pocetZapasu = $pocetZapasu;
 			$this -> poleZapasu = $sql->FetchAll(PDO::FETCH_NUM);
 		}
 
 
 		public function ziskejFormular($post){
-			$return = "<br>";
 			if (isset($post['action'])){
 				session_start();
-				if ($post['action'] == "Zapsat!"){ 
+				if ($post['action'] == "Zapsat!"){
 					$idZapasu = $_SESSION['ID']['id'];
 				}else{ 
 					$idZapasu = $post['id'];
@@ -36,17 +40,19 @@ SQL
 				if ($this -> byloZapsano($idZapasu)){
 					switch($post['action']){
 						case "Zkontrolovat!":
-            				$return .= $this -> overovaciFormular($post);
+            				$return = $this -> overovaciFormular($post);
             				break;
 						case "Zapsat!":
-							$return .= "Zapisovani";
+							$this -> zapisDB($_SESSION['ID']);
+							unset($_SESSION['ID']);
+							$return = "Zapisovani";
 							break;
 					}
 				}else{
-    	       		$return .= "<p>CHYBA</p>";
+    	       		$return = "<p>CHYBA</p>";
     	       	}
 			}else{
-            	$return .= $this -> vkladaciFormular();
+            	$return = $this -> vkladaciFormular();
 			}
 			return $return;
 		}
@@ -84,6 +90,20 @@ HTML;
 			}
 			$formular .= '<p><form method="post"><input type="submit" value="Zapsat!" name="action"></form><p>';
 			return $formular;
+		}
+
+
+		public function zapisDB($post){
+			for ($zapas=0; $zapas < $this -> pocetZapasu; $zapas++) {
+				if (is_numeric($post['score'][$zapas][0]) && is_numeric($post['score'][$zapas][1])){
+					$sql = dbWrapper::dotaz(<<<SQL
+						UPDATE `2014_zapasy_mladsi` 
+						SET `SCR_domaci`=?,`SCR_hoste`=?,`cas_vlozeni`='2014-05-23 11:07:27',`odehrano`='1'
+						WHERE `ID_zapasu`=?
+SQL
+					, Array($post['score'][$zapas][0], $post['score'][$zapas][1], $post['id'][$zapas]));
+				}
+			}
 		}
 
 
