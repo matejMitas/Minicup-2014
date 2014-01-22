@@ -1,7 +1,8 @@
 <?php
- function __autoload($trida)
-{
-        require("tridy/$trida.class.php");
+$time_start=microtime(True);
+
+function __autoload($trida){
+    require("tridy/$trida.class.php");
 }
 spl_autoload_register("__autoload");
 dbWrapper::pripoj();
@@ -15,12 +16,16 @@ if (isset($_POST['titulek'],$_POST['aktualita'])) {
 	header("Location: {$_SERVER['PHP_SELF']}");
 }
 $VystupZapasu = new VystupZapasu();
+$VkladacZapasu = new VkladacZapasu('mladsi', 4);
+
 
 $content .= $novinkovac->ziskejNovinky(5);
 $content .= "<hr><h2>Přidání novinky</h2>";
 $content .= $novinkovac->ziskejVkladaciFormular();
 $content .= "<hr><h2>Odehráné zápasy</h2>";
 $content .= $VystupZapasu->ziskejOdehraneZapasy("23-05-14");
+$content .= "<hr><h2>Přidání zápasů</h2>";
+$content .= $VkladacZapasu -> ziskejFormular($_POST);
 
 
 
@@ -47,8 +52,6 @@ $vystup = <<<SABLONA
 </html>
 SABLONA;
 echo($vystup);
+echo("<i>Vygenerováno za ". number_format((microtime(True)-$time_start)*1000,2)."ms.</i>");
 
-#vkládání výsledků zápasů
-$kategorie = 'mladsi'; #pro starší bude 'starší', ale chtělo by to nějaké ošetření jde to přímo do DB
-$zapasy = new VkladacZapasu($kategorie, 4);
-echo $zapasy -> ziskejFormular($_POST);
+
