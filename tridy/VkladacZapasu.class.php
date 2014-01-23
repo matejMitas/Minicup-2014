@@ -89,6 +89,7 @@ HTML;
 				}
 			}
 			$formular .= '<p><form method="post"><input type="submit" value="Zapsat!" name="action"></form><p>';
+			#sem přijde tlačítko z5
 			return $formular;
 		}
 
@@ -98,7 +99,7 @@ HTML;
 				if (is_numeric($post['score'][$zapas][0]) && is_numeric($post['score'][$zapas][1])){
 					$sql = dbWrapper::dotaz(<<<SQL
 						UPDATE `2014_zapasy_mladsi` 
-						SET `SCR_domaci`=?,`SCR_hoste`=?,`cas_vlozeni`='2014-05-23 11:07:27',`odehrano`='1'
+						SET `SCR_domaci`=?,`SCR_hoste`=?,`cas_vlozeni`=NOW(),`odehrano`='1'
 						WHERE `ID_zapasu`=?
 SQL
 					, Array($post['score'][$zapas][0], $post['score'][$zapas][1], $post['id'][$zapas]));
