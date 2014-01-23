@@ -88,8 +88,12 @@ HTML;
 HTML;
 				}
 			}
-			$formular .= '<p><form method="post"><input type="submit" value="Zapsat!" name="action"></form><p>';
-			#sem přijde tlačítko z5
+			$formular .= "
+			<p>
+				<form method='post'><input type='submit' value='Zapsat!' name='action'></form>
+				<input onclick='javascript:self.history.back(); type=button value='Zpět k zadání výsledků'>
+			<p>";
+			
 			return $formular;
 		}
 
