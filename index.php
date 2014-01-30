@@ -7,14 +7,25 @@ function __autoload($trida){
 spl_autoload_register("__autoload");
 dbWrapper::pripoj();
 
+$zprava="";
+if (isset($_SESSION["zprava"])){
+    $zprava=<<<JAVASCRIPT
+    <script type="text/javascript">
+        alert("Nějaká zpráva: {$_SESSION["zprava"]}");
+    </script>
+JAVASCRIPT;
+    unset($_SESSION["zprava"]);
+}
 
 
 $novinkovac = new Novinkovac();
 $content = "";
 if (isset($_POST['titulek'],$_POST['aktualita'])) {
-	$novinkovac->vlozNovinku($_POST['titulek'],$_POST['aktualita']);
-	header("Location: {$_SERVER['PHP_SELF']}");
+    $novinkovac->vlozNovinku($_POST['titulek'],$_POST['aktualita']);
+    $_SESSION["zprava"]="Novinka úspěšně vložena!";
+    header("Location: {$_SERVER['PHP_SELF']}");
 }
+
 $VystupZapasu = new VystupZapasu();
 $VkladacZapasu = new VkladacZapasu('mladsi', 4);
 
