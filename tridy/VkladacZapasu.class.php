@@ -14,8 +14,12 @@
 
 		# Vytáhne z databáze pole se jménem týmů a s ID zápasu
 		public function __construct($kategorie, $pocetZapasu){
-			require('dbWrapper.class.php'); #Může se smazat
-        	dbWrapper::pripoj(); #také smazat
+			define("MRAZKUV_PODELANY_PC",false);
+			if (MRAZKUV_PODELANY_PC == true || $_SERVER["REMOTE_ADDR"] == "127.0.0.1") {
+				require('dbWrapper.class.php'); #Může se smazat
+        		dbWrapper::pripoj(); #také smazat
+			}
+			
         	define("BODY_VYHRA", 2);
         	define("BODY_REMIZA", 1);
         	define("BODY_PROHRA", 0);
