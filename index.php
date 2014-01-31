@@ -28,13 +28,13 @@ if (isset($_POST['titulek'],$_POST['aktualita'])) {
 
 $VystupZapasu = new VystupZapasu();
 $VkladacZapasu = new VkladacZapasu('mladsi', 4);
-
+$DetailTymu = new DetailTymu('mladsi',1);
 
 $content .= $novinkovac->ziskejNovinky(5);
 $content .= "<hr><h2>Přidání novinky</h2>";
 $content .= $novinkovac->ziskejVkladaciFormular();
-$content .= "<hr><h2>Odehráné zápasy</h2>";
-$content .= $VystupZapasu->ziskejOdehraneZapasy("23-05-14");
+$content .= "<hr><h2>Detail týmu</h2>";
+$content .= $DetailTymu->ziskejOdehraneZapasy();
 $content .= "<hr><h2>Přidání zápasů</h2>";
 $content .= $VkladacZapasu -> ziskejFormular($_POST);
 
