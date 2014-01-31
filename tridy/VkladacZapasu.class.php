@@ -10,9 +10,9 @@
 
 		private $poleZapasu;  # [integer] -> [jmeno_domacich][jmeno_hostu][ID_zapasu]
 		private $pocetZapasu; # integer
-		private $kategorie; # mladsi OR starsi
+		private $kategorie;   # mladsi OR starsi
 
-
+		# Vytáhne z databáze pole se jménem týmů a s ID zápasu
 		public function __construct($kategorie, $pocetZapasu){
 			require('dbWrapper.class.php'); #Může se smazat
         	dbWrapper::pripoj(); #také smazat
@@ -61,7 +61,8 @@ SQL
 							break;
 					}
 				}else{
-    	       		$return = $this -> zjistiChybu($score); # nějaká funkce co zjistí co je přesně za problém
+    	       		$this -> zjistiChybu($score); # nějaká funkce co zjistí co je přesně za problém
+    	       		$return = "";
     	       	}
 			}else{
             	$return = $this -> vkladaciFormular();
@@ -117,7 +118,6 @@ HTML;
 			$zapasyKategorie = "2014_zapasy_" . $this -> kategorie;
         	$tymyKategorie = "2014_tymy_" . $this -> kategorie;
         	$score = $post['score'];
-        	$idTeamu = array("ID_domaci", "ID_hoste"); # Jako konstantu??????
 			for ($zapas=0; $zapas < $this -> pocetZapasu; $zapas++){
 				if (isset($this -> poleZapasu[$zapas][2])){
 					if (is_numeric($score[$zapas][0]) && is_numeric($score[$zapas][1])){
@@ -128,18 +128,6 @@ HTML;
 							WHERE `ID_zapasu`=?
 SQL
 						, Array($score[$zapas][0], $bodyTym[0], $score[$zapas][1], $bodyTym[1], $post['id'][$zapas]));
-						for ($tym=0; $tym < 2; $tym++){ 
-							if ($bodyTym[$tym] != 0){
-								$sql = dbWrapper::dotaz(<<<SQL
-									UPDATE `2014_tymy_mladsi` a
-									INNER JOIN `2014_zapasy_mladsi` b ON
-										a.`id_teamu` = b.{$idTeamu[$tym]}
-									SET `body`=`body`+ ?
-									WHERE b.`ID_zapasu` = ?
-SQL
-								, array($bodyTym[$tym], $post['id'][$zapas]));
-							}
-						}
 					}
 				}
 			}
@@ -222,7 +210,7 @@ SQL
 			}else{				
 				$chyba = "<p>Nevím jak chceš zapsat záporné skóre, ale takhle to teda nepůjde. Vrať se na předchozí stránku a zkus to znovu.</p>";
 			}
-			return $chyba;
+			$_SESSION['chyba'] = $chyba;
 		}
 
 
