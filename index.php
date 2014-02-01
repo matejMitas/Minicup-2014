@@ -2,10 +2,14 @@
 $time_start=microtime(True);
 
 function __autoload($trida){
-    require("tridy/$trida.class.php");
+    require_once("tridy/$trida.class.php");
 }
 spl_autoload_register("__autoload");
+
+require 'tridy/dbWrapper.class.php';
 dbWrapper::pripoj();
+
+
 
 $zprava="";
 if (isset($_SESSION["zprava"])){
@@ -33,7 +37,7 @@ $DetailTymu = new DetailTymu('mladsi',1);
 $content .= $novinkovac->ziskejNovinky(5);
 $content .= "<hr><h2>Přidání novinky</h2>";
 $content .= $novinkovac->ziskejVkladaciFormular();
-$content .= "<hr><h2>Detail týmu</h2>";
+$content .= "<hr><h2>Detail týmu {$DetailTymu->ziskejNazevTymu()}</h2>";
 $content .= $DetailTymu->ziskejOdehraneZapasy();
 $content .= "<hr><h2>Přidání zápasů</h2>";
 $content .= $VkladacZapasu -> ziskejFormular($_POST);

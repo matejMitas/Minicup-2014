@@ -36,7 +36,7 @@ class DetailTymu {
 			WHERE `id_teamu`=? 
 SQL;
 		$result = dbWrapper::dotaz($SQL,Array($idTymu))->fetchAll();
-		$this->nazevTymu = $result[0];	
+		$this->nazevTymu = $result[0][0];	
 	}
 
 
@@ -63,20 +63,32 @@ SQL;
 			if ($zapas[5] == 1) {
 				$stav = "Odehráno $den v $cas";
 				$oddelovac =":";
+				if ($zapas[1]>$zapas[2]) {
+					$zapas[0] = "<b>{$zapas[0]}</b>";
+				} elseif($zapas[1]<$zapas[2]) {
+					$zapas[3] = "<b>{$zapas[3]}</b>";
+				}
 			} else {
 				$stav = "Odehraje se $den v $cas";
 				$oddelovac = "";
 			}
 			
+			
 			$return .= <<<HTML
 \n			<tr>
 				<td>{$zapas[0]}</td>
-				<td>{$zapas[1]}{$oddelovac}{$zapas[2]}</td>
+				<td>{$zapas[1]}$oddelovac{$zapas[2]}</td>
 				<td>{$zapas[3]}</td>
 				<td>$stav</td>
 			</tr>
 HTML;
 		}
 		return "<table>\n$return\n</table>";
+	}
+
+
+
+	public function ziskejNazevTymu() {
+		return $this->nazevTymu;
 	}
 }
