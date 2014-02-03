@@ -8,18 +8,31 @@
 			$_SESSION[ID] = [score] -> [integer] -> [score_domaci][score_hoste] // [id] -> [integer] // [action]
 		*/
 
-		private $poleZapasu;  # [integer] -> [jmeno_domacich][jmeno_hostu][ID_zapasu]
-		private $pocetZapasu; # integer
-		private $kategorie;   # mladsi OR starsi
+		/**
+		 * pole s jménem obou týmů a ID zápasu
+		 * @var [array[jmeno_domacich, jmeno_hostu, ID_zapasu]]
+		 */
+		public $poleZapasu;
 
-		# Vytáhne z databáze pole se jménem týmů a s ID zápasu
+		/**
+		 * počet zápasů, co má být zapsáno
+		 * @var [integer]
+		 */
+		private $pocetZapasu;
+
+		/**
+		 * mladsi OR starsi
+		 * @var [string]
+		 */
+		private $kategorie;
+
+
+		/**
+		 * Vytáhne z databáze pole se jménem týmů a s ID zápasu
+		 * @param [string] $kategorie   [mladsi, starsi]
+		 * @param [integer] $pocetZapasu [počet zápaů, co bude vypsáno]
+		 */
 		public function __construct($kategorie, $pocetZapasu){
-			define("MRAZKUV_PODELANY_PC",false);
-			if (MRAZKUV_PODELANY_PC == true || $_SERVER["REMOTE_ADDR"] == "127.0.0.1") {
-				require('dbWrapper.class.php'); #Může se smazat
-        		dbWrapper::pripoj(); #také smazat
-			}
-			
         	define("BODY_VYHRA", 2);
         	define("BODY_REMIZA", 1);
         	define("BODY_PROHRA", 0);
@@ -41,7 +54,11 @@ SQL
 			$this -> poleZapasu = $sql->FetchAll(PDO::FETCH_NUM);
 		}
 
-		# Podle předchozích akcích zjistí jaký formulář má generovat (vkládací, ověřovací, zápis do DB)
+		/**
+		 * Podle předchozích akcích zjistí jaký formulář má generovat (vkládací, ověřovací, zápis do DB)
+		 * @param  [array[score, id, action]] $post [pole s počtem střelených branek, ID zápasu, a akcí formuláře]
+		 * @return [string] [html formulář]
+		 */
 		public function ziskejFormular($post){
 			if (isset($post['action'])){
 				session_start();
@@ -74,7 +91,10 @@ SQL
 			return $return;
 		}
 
-		# Vytvoří vkládací formulář pro zadávání zápasů
+		/**
+		 * Vytvoří vkládací formulář pro zadávání zápasů
+		 * @return [string] [HTML vkládací formulář]
+		 */
 		private function vkladaciFormular(){
 			$formular = '<form method="post">';
 			for ($zapas=0; $zapas < $this -> pocetZapasu ; $zapas++){
@@ -95,7 +115,11 @@ HTML;
 			return $formular;
 		}
 
-		# Vypíše co uživatel zadal, pak se může rozhodnout zda zápas vloží do DB, nebo ho ještě upraví
+		/**
+		 * Vypíše co uživatel zadal, pak se může rozhodnout zda zápas vloží do DB, nebo ho upraví
+		 * @param  [array[score, id, action]] $post [pole s počtem střelených branek, ID zápasu, a akcí formuláře]
+		 * @return [string] [HTML ověřovací formulář]
+		 */
 		private function overovaciFormular($post){
 			$_SESSION['ID'] = $post;
 			$score = $post['score'];
@@ -117,7 +141,11 @@ HTML;
 			return $formular;
 		}
 
-		# Do DB se zapíše odehraný zápas + se týmu, který vyhrál nebo remízoval, přičtou body
+		/**
+		 * Do DB se zapíše odehraný zápas + se týmu, který vyhrál nebo remízoval, přičtou body
+		 * @param  [array[score, id, action]] $post [pole s počtem střelených branek, ID zápasu, a akcí formuláře]
+		 * @return [NULL] [NULL]
+		 */
 		private function zapisDB($post){
 			$zapasyKategorie = "2014_zapasy_" . $this -> kategorie;
         	$tymyKategorie = "2014_tymy_" . $this -> kategorie;
@@ -138,7 +166,12 @@ SQL
 			# Něco by to mělo vracet ale nenapadá mě co :D
 		}
 
-		# Zjistí kdo vyhrál, vrací pole /$body[0 => 'BODY_DOMACI'  1 => 'BODY_HOSTE']/
+		/**
+		 * Zjistí kdo vyhrál
+		 * @param  [integer] $scoreDomaci [počet branek, co dali domácí]
+		 * @param  [integer] $scoreHoste  [počet branek, co dali hosté]
+		 * @return [array] [0 => 'BODY_DOMACI'  1 => 'BODY_HOSTE']
+		 */
 		private function ziskaneBody($scoreDomaci, $scoreHoste){
 			if ($scoreDomaci > $scoreHoste){
 				$body = array(BODY_VYHRA, BODY_PROHRA);
@@ -150,7 +183,13 @@ SQL
 			return $body;
 		}
 
-		# Zjistí kdo vyhrál a toho zvýrazní, při remíze oba týmy bez zvýraznění
+		/**
+		 * Zjistí kdo vyhrál a toho zvýrazní, při remíze oba týmy bez zvýraznění
+		 * @param  [integer] $idZapasu    [ID zápasu]
+		 * @param  [integer] $scoreDomaci [počet branek, co daly domaci]
+		 * @param  [integer] $scoreHoste  [počet branek, co daly hoste]
+		 * @return [string] [HTML formulář, kde je zvýrazněn tým, co vyhrál]
+		 */
 		private function zvyrazniTymVyhercu($idZapasu, $scoreDomaci, $scoreHoste){
 			if ($scoreDomaci > $scoreHoste){
 				$formular = "<p><b>{$this -> poleZapasu[$idZapasu][0]}</b>:{$this -> poleZapasu[$idZapasu][1]}</p>";
@@ -164,7 +203,11 @@ SQL
 			return $formular;
 		}
 
-		# Zjistí jestli zápasy, které chce uživatel zapsat nejsou už náhodou zapsané
+		/**
+		 * Zjistí jestli zápasy, které chce uživatel zapsat nejsou už náhodou zapsané
+		 * @param  [integer] $idZapasu [ID zápasu]
+		 * @return [boolean] [True -> Nezapsáno]
+		 */
 		private function byloZapsano($idZapasu){
 			$nezapsano = True;
 			for ($zapas=0; $zapas < $this -> pocetZapasu; $zapas++){
@@ -178,7 +221,11 @@ SQL
 			return $nezapsano;
 		}
 
-		# Zjistí zda jsou výsledky kladné
+		/**
+		 * Zjistí zda jsou výsledky kladné
+		 * @param  [array[idZapasu, scoreTymu]] $score [počet daných branek, určitého týmu]
+		 * @return [boolean] [True -> Čísla jsou kladné]
+		 */
 		private function jsouKladne($score){
 			$jsouKladna = True;
 			foreach ($score as $klic => $values){
@@ -191,7 +238,11 @@ SQL
         	return $jsouKladna;
 		}
 
-		# Upraví uživatelský vstup tak že projdou jen validně zadané scóre, ostatní se nulují
+		/**
+		 * Upraví uživatelský vstup tak že projdou jen validně zadané scóre, ostatní se nulují
+		 * @param  [array[idZapasu, scoreTymu]] $score [počet daných branek, určitého týmu]
+		 * @return [array[idZapasu, scoreTymu]] [pole, které je validní(nevalidní čísla byla přepsána na NULL)]
+		 */
 		private function upravaUzivalelVstup($score){
 			for ($zapas=0; $zapas < $this -> pocetZapasu; $zapas++){
 				if (isset($this -> poleZapasu[$zapas][2])){
@@ -207,12 +258,16 @@ SQL
 			return $score;
 		}
 
-		# Zjistí v vrátí UserFriendly chybové hlášení
+		/**
+		 * Zjistí v vrátí UserFriendly chybové hlášení
+		 * @param  [array[idZapasu, scoreTymu]] $score [počet daných branek, určitého týmu]
+		 * @return [NULL] [NULL]
+		 */
 		private function zjistiChybu($score){
 			if ($this -> jsouKladne($score)){
-				$chyba = "<p>Nechci ti říkat že jsi pomalý ale ten pán co tu byl před chvilkou byl rychlejší než ty a to znamená že se buď vrátíš na předchozí stránku a nebo na kontrolu zápasů. Pro příště doporučuji být rychlejší a nenastanou potíže.</p>";
+				$chyba = "<p>???</p>";
 			}else{				
-				$chyba = "<p>Nevím jak chceš zapsat záporné skóre, ale takhle to teda nepůjde. Vrať se na předchozí stránku a zkus to znovu.</p>";
+				$chyba = "<p>???</p>";
 			}
 			$_SESSION['chyba'] = $chyba;
 		}
