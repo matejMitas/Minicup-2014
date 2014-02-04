@@ -1,4 +1,5 @@
 <?php
+
 $time_start=microtime(True);
 
 function __autoload($trida){
@@ -33,14 +34,23 @@ if (isset($_POST['titulek'],$_POST['aktualita'])) {
 $VystupZapasu = new VystupZapasu();
 $VkladacZapasu = new VkladacZapasu('mladsi', 4);
 $DetailTymu = new DetailTymu('mladsi',1);
+$Prepocet = new Prepocet("mladsi");
+$Prepocet->aktualizujBody();
 
 $content .= $novinkovac->ziskejNovinky(5);
 $content .= "<hr><h2>Přidání novinky</h2>";
 $content .= $novinkovac->ziskejVkladaciFormular();
 $content .= "<hr><h2>Detail týmu {$DetailTymu->ziskejNazevTymu()}</h2>";
 $content .= $DetailTymu->ziskejOdehraneZapasy();
+$content .= $DetailTymu->ziskejPoradiSkore();
 $content .= "<hr><h2>Přidání zápasů</h2>";
 $content .= $VkladacZapasu -> ziskejFormular($_POST);
+
+
+
+$sablona = new FileTemplate('template.latte'); // soubor se šablonou
+$sablona->name = 'John';
+$sablona->render(); // vykreslí šablonu
 
 
 
@@ -68,5 +78,6 @@ $vystup = <<<SABLONA
 SABLONA;
 echo($vystup);
 echo("<i>Vygenerováno za ". number_format((microtime(True)-$time_start)*1000,2)."ms.</i>");
+
 
 
