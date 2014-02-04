@@ -9,7 +9,7 @@
 
     public static function pripoj() {
     	include_once './settings.php';
-            self::$spojeni = new PDO("mysql:host=$host;dbname=$databaze",$uzivatel,$heslo,self::$nastaveni);
+        self::$spojeni = new PDO("mysql:host=$host;dbname=$databaze",$uzivatel,$heslo,self::$nastaveni);
     }
 
     public static function dotaz($sql_string, $parametry = Array()) {
