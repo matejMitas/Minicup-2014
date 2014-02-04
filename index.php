@@ -48,10 +48,6 @@ $content .= $VkladacZapasu -> ziskejFormular($_POST);
 
 
 
-$sablona = new FileTemplate('template.latte'); // soubor se šablonou
-$sablona->name = 'John';
-$sablona->render(); // vykreslí šablonu
-
 
 
 
