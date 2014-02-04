@@ -97,22 +97,26 @@ HTML;
 
 	public function ziskejPoradiSkore() {
 		$SQL = <<<SQL
-		SELECT poradi,jmeno,body,ifnull(sum(D),0) dane, ifnull(sum(H),0) dostane, id_teamu
+		SELECT poradi,body,ifnull(sum(D),0) dane, ifnull(sum(H),0) dostane, id_teamu
 			FROM (
 				SELECT sum(SCR_domaci) D, sum(SCR_hoste) H, ID_domaci Team
-				FROM 2014_zapasy_mladsi
-				GROUP BY Team
+					FROM 2014_zapasy_mladsi
+					GROUP BY Team
 				UNION
 				SELECT sum(SCR_hoste) D, sum(SCR_domaci) H, ID_hoste Team
-				FROM 2014_zapasy_mladsi
-				GROUP BY Team
+					FROM 2014_zapasy_mladsi
+					GROUP BY Team
 			) CLK
 			RIGHT JOIN 2014_tymy_mladsi TM ON CLK.Team = TM.id_teamu
+			WHERE id_teamu = :id
 			GROUP BY id_teamu
 			ORDER BY poradi ASC
-			WHERE TM.id_teamu = 2
 SQL;
 		$result = dbWrapper::dotaz($SQL,Array("id" => $this->idTymu))->fetch();
+		$return = <<<HTML
+{$result["poradi"]}. místo, {$result["body"]} bodů, skóre {$result["dane"]}:{$result["dostane"]}
+HTML;
+		return $return;
 
 
 
