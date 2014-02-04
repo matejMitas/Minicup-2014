@@ -1,7 +1,7 @@
 <?php
 /**
-* 
-*/
+ * Třída k získání kompletního detailu o jednom týmu
+ */
 class DetailTymu {
 	/**
 	 * kategorie daneho tymu
@@ -86,9 +86,35 @@ HTML;
 		return "<table>\n$return\n</table>";
 	}
 
-
-
+	/**
+	 * vrátí název týmu
+	 * @return string název týmu tohoto detailu
+	 */
 	public function ziskejNazevTymu() {
 		return $this->nazevTymu;
+	}
+
+
+	public function ziskejPoradiSkore() {
+		$SQL = <<<SQL
+		SELECT poradi,jmeno,body,ifnull(sum(D),0) dane, ifnull(sum(H),0) dostane, id_teamu
+			FROM (
+				SELECT sum(SCR_domaci) D, sum(SCR_hoste) H, ID_domaci Team
+				FROM 2014_zapasy_mladsi
+				GROUP BY Team
+				UNION
+				SELECT sum(SCR_hoste) D, sum(SCR_domaci) H, ID_hoste Team
+				FROM 2014_zapasy_mladsi
+				GROUP BY Team
+			) CLK
+			RIGHT JOIN 2014_tymy_mladsi TM ON CLK.Team = TM.id_teamu
+			GROUP BY id_teamu
+			ORDER BY poradi ASC
+			WHERE TM.id_teamu = 2
+SQL;
+		$result = dbWrapper::dotaz($SQL,Array("id" => $this->idTymu))->fetch();
+
+
+
 	}
 }
