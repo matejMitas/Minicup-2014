@@ -2,15 +2,23 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>$title</title>
+    <title>{$title|upper}</title>
     
-    <link type="text/css" rel="stylesheet" href="css/dem.css">
     <link type="text/css" rel="stylesheet" href="css/jquery-te-1.4.0.css">
 
     <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="js/jquery-te-1.4.0.min.js"></script>
+    <style>
+	aside {
+		float: right;
+		background-color: #AAAAAA;
+		padding: 20px;
+		margin: 20px;
+	}
+    </style>
 </head>
 <body>
-    {$content}
+    {block aside}{/block}
+    {$content|noescape}
 </body>
 </html>
