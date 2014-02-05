@@ -1,5 +1,14 @@
 <?php
 class VystupZapasu {
+    /**
+     * ziskejOdehraneZapasy
+     * 
+     * @param time $datum datum pro vygenerování zápasů
+     *
+     * @access public
+     *
+     * @return string html výstup zápasů
+     */
 	public function ziskejOdehraneZapasy($datum){
 		$sql=<<<SQL
 			SELECT 
@@ -7,9 +16,8 @@ class VystupZapasu {
 			FROM `2014_zapasy_mladsi` a
 			JOIN `2014_tymy_mladsi` b ON a.`ID_domaci`=b.`ID_teamu`
 			JOIN `2014_tymy_mladsi` c ON a.`ID_hoste`=c.`ID_teamu`
-			WHERE a.`odehrano`=1 AND a.`cas_odehrani`+0 > :min AND a.`cas_odehrani`+0 < :max
+			WHERE a.`odehrano`=1 
 SQL;
-
 		$aZapasy=dbWrapper::dotaz($sql,Array("min" => strtotime($datum),"max" => strtotime($datum)+60*60*24))->fetchAll();
 		$return="";
 		foreach ($aZapasy as $klic => $radekZapasu) {
