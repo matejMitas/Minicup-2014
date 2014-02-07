@@ -113,8 +113,18 @@ HTML;
 			ORDER BY poradi ASC
 SQL;
 		$result = dbWrapper::dotaz($SQL,Array("id" => $this->idTymu))->fetch();
+		if ($result["body"] == 0) {
+			$body = "{$result["body"]} bodů";
+		} elseif ($result["body"] == 1) {
+        	$body = "{$result["body"]} bod";
+    	} elseif ($result["body"] <= 4) {
+        	$body = "{$result["body"]} body";
+    	} else {
+        	$body = "{$result["body"]} bodů";
+    	}
+
 		$return = <<<HTML
-{$result["poradi"]}. místo, {$result["body"]} bodů, skóre {$result["dane"]}:{$result["dostane"]}
+{$result["poradi"]}. místo, $body, skóre {$result["dane"]}:{$result["dostane"]}
 HTML;
 		return $return;
 
