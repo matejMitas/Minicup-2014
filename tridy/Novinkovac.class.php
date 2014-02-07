@@ -1,10 +1,6 @@
 <?php
 class Novinkovac{
-	/** Získání textu relativního data a času
-* @param int porovnávaný čas jako Unix timestamp
-* @param int aktuální čas, time() při neuvedení
-* @return string
-*/
+
 
 
 	function __construct() {
@@ -12,27 +8,14 @@ class Novinkovac{
 	}
 	
 public function ziskejNovinky($pocet) {
-	$return="";
-	$vysledek=dbWrapper::dotaz(<<<SQL
-		SELECT *
+	$novinky=dbWrapper::dotaz(<<<SQL
+		SELECT `aktualita`, `titulek`, `vlozeno`
 		FROM `2014_aktuality`
-		ORDER BY `2014_aktuality`.`vlozeno` DESC
+		ORDER BY `vlozeno` DESC
 		LIMIT $pocet
 SQL
-	,Array());
-	$aNovinek = $vysledek->fetchAll();
-
-	foreach ($aNovinek as $klic => $hodnota) {
-
-		$relTime= $this->relativeCzechDate(strtotime($hodnota['vlozeno']));
-
-		$return .= <<<SLOVO
-<h2>{$hodnota["titulek"]}</h2>
-	<p>{$hodnota["aktualita"]}</p>
-	<p><i>{$relTime}</i></p>
-SLOVO;
-	}
-	return $return;	
+	,Array())->fetchAll();
+	return $novinky;
 }
 	
 
@@ -68,45 +51,6 @@ public function vlozNovinku($titulek,$aktualita){
 SQL
 	,Array($titulek,$aktualita));
 }
-
-
-public function relativeCzechDate($time, $now = null) {
-	if (!isset($now)) {
-		$now = time();
-	}
-	$seconds = $now - $time;
-	$minutes = floor($seconds / 60);
-	$hours = floor($minutes / 60);
-	$days = floor($hours / 24);
-	$months = floor($days / 30);
-	$years = floor($days / 365);
-	if ($years >= 2) {
-		return "před $years lety";
-	} elseif ($years == 1) {
-		return "před rokem";
-	} elseif ($months >= 2) {
-		return "před $months měsíci";
-	} elseif ($months == 1) {
-		return "před měsícem";
-	} elseif ($days >= 2) {
-		return "před $days dny";
-	} elseif ($hours >= 2) {
-		return "před $hours hodinami";
-	} elseif ($hours == 1) {
-		return "před hodinou";
-	} elseif ($minutes >= 2) {
-		return "před $minutes minutami";
-	} elseif ($minutes == 1) {
-		return "před minutou";
-	} elseif ($seconds >= 0) {
-		return "před chvílí";
-	} else {
-		return "v budoucnu";
-	}
-}
-	
-	
-
 }
 
 
