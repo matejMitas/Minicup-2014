@@ -1,0 +1,47 @@
+{layout '@layout.latte'}
+
+
+{block detail}
+	<div>
+    <h4>{$title|upper}</h4>
+    {$asideTop}
+    {$asideContent|noescape}
+    </div>
+{/block}
+
+{block left}
+<div>
+	{foreach $zapasy as $zapas}
+		<span>{$zapas[0]} - {$zapas[1]}
+			<b n:tag-if="$zapas[2] > $zapas[3]">{$zapas[2]}</b>:<b n:tag-if="$zapas[2] < $zapas[3]">{$zapas[3]}</b>
+		</span><br>
+	{/foreach}
+</div>
+{/block}
+
+{block tabulka}
+<div><table>
+{for $r = 0; $r < 11; $r++}
+<tr>
+	{for $b = 0; $b < 5; $b++}
+	<td><b n:tag-if="$b == 0 || $b == 4">{$tabulka[$r][$b]}</b></td>
+	{/for}
+</tr>
+{/for}
+</table></div>
+{/block}
+
+{block formular}
+	{$formular|noescape}
+{/block}
+
+{block novinky}
+	{foreach $novinky as $novinka}
+<div>
+	<h2>{$novinka["titulek"]}</h2>
+		{$novinka["aktualita"]|noescape} 
+	<i>{$novinka["vlozeno"]|relDateCZ}</i>
+</div>
+	{/foreach}
+{/block}
+

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{$title|upper} - MINICUP 2014</title>
+    
+    <link type="text/css" rel="stylesheet" href="css/jquery-te-1.4.0.css">
+
+    <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/jquery-te-1.4.0.min.js"></script>
+    <script>
+        alert({$alert});
+    </script>
+    <style>
+	aside {
+		float: right;
+		background-color: #CCC;
+        margin-left: 20px;
+        max-width: 35%;
+        min-width: 35%;
+	}
+    aside div {
+        padding: 20px;
+        box-shadow: 3px 3px 5px black;
+    }
+
+    </style>
+</head>
+<body>
+<aside>
+    {block detail}{/block}
+    {block tabulka}{/block}
+    {block left}{/block}
+</aside>
+<aside>
+    {block novinky}{/block}
+</aside>
+    {block formular}{/block}
+    {$time|noescape}
+</body>
+</html>
