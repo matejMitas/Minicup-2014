@@ -65,9 +65,11 @@ SQL
 				if ($post['action'] == "Zapsat!"){
 					$idZapasu = $_SESSION['ID']['id'];
 					$score = $_SESSION['ID']['score'];
-				}else{ 
+				} elseif ($post['action'] == "Zkontrolovat!") { 
 					$idZapasu = $post['id'];
 					$score = $post['score'];
+				} else {
+					throw new Exception("Nezadána akce při výběr dat.", 1);
 				}
 				if ($this -> byloZapsano($idZapasu) && $this -> jsouKladne($score)){
 					$post['score'] = $this -> upravaUzivalelVstup($score);
@@ -78,10 +80,13 @@ SQL
 						case "Zapsat!":
 							$this -> zapisDB($_SESSION['ID']);
 							unset($_SESSION['ID']);
-							$return = "Zapisovani";
+							header("Location: {$_SERVER['PHP_SELF']}");
+							break;
+						default:
+							throw new Exception("Nezadána akce při ověřování dat.", 1);
 							break;
 					}
-				}else{
+				} else {
     	       		$this -> zjistiChybu($score); # nějaká funkce co zjistí co je přesně za problém
     	       		$return = "";
     	       	}
@@ -265,11 +270,10 @@ SQL
 		 */
 		private function zjistiChybu($score){
 			if ($this -> jsouKladne($score)){
-				$chyba = "<p>???</p>";
-			}else{				
-				$chyba = "<p>???</p>";
+				throw new Exception("Špatně zadané skóre.", 1);
+			} else {				
+				throw new Exception("Neznámá chyba.", 1);
 			}
-			$_SESSION['chyba'] = $chyba;
 		}
 
 
