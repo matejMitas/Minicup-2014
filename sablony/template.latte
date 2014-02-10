@@ -12,9 +12,9 @@
 {block left}
 <div>
 	{foreach $zapasy as $zapas}
-		<span>{$zapas[0]} - {$zapas[1]}
-			<b n:tag-if="$zapas[2] > $zapas[3]">{$zapas[2]}</b>:<b n:tag-if="$zapas[2] < $zapas[3]">{$zapas[3]}</b>
-		</span><br>
+	<span>
+		<b n:tag-if="$zapas[2] > $zapas[3]">{$zapas[0]} {$zapas[2]}</b>:<b n:tag-if="$zapas[2] < $zapas[3]">{$zapas[3]} {$zapas[1]}</b> 
+	</span><br>
 	{/foreach}
 </div>
 {/block}
