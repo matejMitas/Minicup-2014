@@ -17,7 +17,7 @@ if (isset($_POST['titulek'],$_POST['aktualita'])) {
     header("Location: {$_SERVER['PHP_SELF']}");
 }
 
-$VystupVysledku = new VystupVysledku();
+$VystupVysledku = new VystupVysledku("mladsi");
 $VkladacZapasu = new VkladacZapasu('mladsi', 4);
 $DetailTymu = new DetailTymu('mladsi', rand(1,12));
 $Prepocet = new Prepocet("mladsi");
@@ -61,7 +61,7 @@ $template->registerHelper('relDateCZ', function ($time) {
             return "před minutou";
         } elseif ($seconds >= 0) {
             return "před chvílí";
-        } else {
+		} else {
             return "v budoucnu";
         }});
 
@@ -80,7 +80,7 @@ $template->zapasy = $VystupVysledku->ziskejOdehraneZapasy("2014-05-23 00:00:00")
 $template->tabulka = $VystupVysledku->ziskejTabulkuVysledku();
 $template->title = $DetailTymu->ziskejNazevTymu();
 
-$template->asideTop = $DetailTymu->ziskejPoradiSkore();
+$template->asideTop = $DetailTymu->ziskejPoradiSkore()." Úspěšnost: ".$DetailTymu->ziskejProcentualniUspech()." %";
 $template->asideContent = $DetailTymu->ziskejOdehraneZapasy();
 
 $template->time = "<i>Vygenerováno za ". number_format((microtime(True)-$time_start)*1000,2)."ms.</i>";
