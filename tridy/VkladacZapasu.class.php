@@ -60,6 +60,9 @@ SQL
 		 * @return [string] [html formulář]
 		 */
 		public function ziskejFormular($post){
+			if (count($this -> poleZapasu) == 0){
+				return;
+			}
 			if (isset($post['action'])){
 				session_start();
 				if ($post['action'] == "Zapsat!"){
