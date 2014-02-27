@@ -1,0 +1,52 @@
+@import "../css/reset.css";
+@import "visual.scss";
+@import "grid.scss";
+
+$columns: 12;
+$column-width: 60;
+$gutter-width: 10;
+
+$total-width: 100%;
+
+
+
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+header, nav, footer {
+	@include column(12);
+}
+
+header {
+	.logo {
+		@include column(3);
+	}
+	.slogan {
+		@include column(6);
+	}
+}
+
+
+section {
+	@include column(8);
+}
+
+aside {
+	@include column(4);
+}
+
+@media screen and (max-width: 480px) {
+	header {
+		.logo {
+			@include column(12);
+			@include push(2);
+		}
+	}
+}
+
+
+
+
