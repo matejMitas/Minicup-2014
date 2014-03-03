@@ -1,0 +1,48 @@
+section {
+	background: $white;
+	box-shadow: inset 0 0 0 1px $section-outline;
+	border-radius: $border-radius;
+	margin-bottom: 15px;
+
+	#section-padding {
+		padding: 2rem;
+	}
+
+	h2 {
+		color: $light-black;
+		font-size: 24px;
+		font-weight: 700;
+		padding-bottom: 20px;
+		text-transform: uppercase;
+	}
+
+	h3 {
+		font-size: 18px;
+		padding-bottom: 10px;
+	}
+
+	p {
+		font-size: 16px;
+		line-height: 1.15;
+		color: $section-paragraph;
+		padding-bottom: 15px;
+		font-weight: 300;
+		a {
+			color: black;
+			text-decoration: underline;
+			font-weight: 700;
+		}
+		a:hover {
+			color: $dark-blue;
+		}
+	}
+
+	li {
+		color: $section-paragraph;
+		padding-bottom: 5px;
+		font-weight: 300;
+	}
+	li:last-child {
+		padding-bottom: 15px;
+	}
+}
