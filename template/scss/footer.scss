@@ -1,0 +1,31 @@
+footer {
+	
+	.date {
+		background:$light-blue;
+		padding: 30px;
+		h2, h3 {
+			color: white;
+			text-align: center;
+		}
+
+		h2 {
+			font-size: 36px;
+			line-height: 56px;
+		}
+
+		h3 {
+			font-size: 16px;
+		}
+	}
+		
+	.authors{
+		background: $dark-black;
+		text-align: center;
+		font-size: 14px;
+		color: darken(white, 60%);
+		padding: 5px;
+	}
+	img {
+		width: 100%;
+	}
+}
