@@ -1,0 +1,98 @@
+$columns: 12;
+$column-width: 60;
+$gutter-width: 10;
+
+$total-width: 100%;
+
+
+
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: $light-grey;
+  font-family: 'Ubuntu', sans-serif;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;   
+}
+
+
+header, nav, footer {
+	@include column(12);
+}
+
+nav {
+	margin-bottom: 1rem;
+}
+
+header {
+	#logo {
+		@include column(3);
+	}
+	#slogan {
+		@include column(5);
+	}
+	#barton {
+		@include column(3);
+	}
+}
+
+
+section {
+	@include column(8);
+}
+
+aside {
+	@include column(4);
+	.domaci {
+		@include column(6);
+	}
+	.hoste {
+		@include column(6);
+	}
+}
+
+@media screen and (min-width: 980px) {
+	header {
+		#logo {
+			@include column(2.5);
+		}
+		#slogan {
+			@include column(6);
+		}
+		#barton {
+			@include column(3);
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	header {	
+	 	#logo {
+			@include push(3.25);
+	 	}
+		#slogan {
+	 		@include push(3.75);
+		}
+	 }
+	aside {
+		display: none;
+	}
+	section {
+		@include column(12);
+	}
+}
+
+@media screen and (max-width: 480px) {
+	header {
+		#slogan {
+			@include column(8);
+		}
+		#logo {
+			@include push(1.5);
+		}
+		#slogan {
+			@include push(3);
+		}
+	}
+}
