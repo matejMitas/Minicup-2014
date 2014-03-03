@@ -1,0 +1,61 @@
+header {
+	background: $dark-black;
+	color: $white;
+}
+
+#logo {
+	padding: 0 2rem 0 1rem;
+}
+
+#slogan {
+	padding-top: 5.5rem;
+
+	h2 {
+		font-size: 2rem;
+		padding-bottom: 1rem;
+	}
+	h3 {
+		font-size: 0.8rem;
+	}
+}
+
+#barton img {
+	width: 15rem;
+	padding-top: 5.5rem;
+}
+
+@media screen and (min-width: 60rem) {
+		height: 17rem;
+}
+
+@media screen and (max-width: 48rem) {
+	header {
+		#slogan, #barton {
+			padding-top: 0rem;
+		}
+		
+		#slogan {
+			padding-bottom: 2rem;
+		}
+
+		#barton img {
+			display: none;
+		}
+	}
+}
+
+@media screen and (max-width: 30rem) {
+	header {
+		#barton {
+			margin-bottom: 1rem;
+		}
+
+		#barton img {
+			padding-top: 0;
+		}
+
+		#slogan {
+			padding-bottom: 1rem;
+		}
+	}
+}
