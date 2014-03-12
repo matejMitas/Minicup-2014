@@ -1,41 +1,39 @@
 header {
+	position: relative;
 	background: $dark-black;
-	color: $white;
+	color: white;
 }
 
 #logo {
-	padding: 0 2rem 0 1rem;
+	padding: 32px 32px 32px 16px;
 }
 
 #slogan {
-	padding-top: 5.5rem;
+	padding-top: 120px;
 
 	h2 {
-		font-size: 2rem;
-		padding-bottom: 1rem;
+		font-size: 38px;
+		padding-bottom: 14px;
 	}
 	h3 {
-		font-size: 0.8rem;
+		font-size: 13px;
+		text-transform: upper-alpha;
 	}
 }
 
 #barton img {
-	width: 15rem;
-	padding-top: 5.5rem;
+	width: 240px;
+	padding-top: 120px;
 }
 
-@media screen and (min-width: 60rem) {
-		height: 17rem;
-}
-
-@media screen and (max-width: 48rem) {
+@media screen and (max-width: 768px) {
 	header {
 		#slogan, #barton {
-			padding-top: 0rem;
+			padding-top: 0px;
 		}
 		
 		#slogan {
-			padding-bottom: 2rem;
+			padding-bottom: 32px;
 		}
 
 		#barton img {
@@ -44,10 +42,10 @@ header {
 	}
 }
 
-@media screen and (max-width: 30rem) {
+@media screen and (max-width: 480px) {
 	header {
 		#barton {
-			margin-bottom: 1rem;
+			margin-bottom: 16px;
 		}
 
 		#barton img {
@@ -55,7 +53,8 @@ header {
 		}
 
 		#slogan {
-			padding-bottom: 1rem;
+			padding-bottom: 16px;
 		}
 	}
 }
+

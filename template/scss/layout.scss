@@ -7,8 +7,7 @@ $total-width: 100%;
 
 
 body {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
   background: $light-grey;
   font-family: 'Ubuntu', sans-serif;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -16,16 +15,21 @@ body {
 	box-sizing: border-box;   
 }
 
+.center {
+	max-width: 1280px;
+	margin: 0 auto;
+	overflow: hidden;
+}
 
-header, nav, footer {
+footer, .hrane, .nasledujici, .poradi {
 	@include column(12);
 }
 
 nav {
-	margin-bottom: 1rem;
+	margin-bottom: 16px;
 }
 
-header {
+.center {
 	#logo {
 		@include column(3);
 	}
@@ -44,16 +48,37 @@ section {
 
 aside {
 	@include column(4);
+
 	.domaci {
 		@include column(6);
 	}
 	.hoste {
 		@include column(6);
 	}
+	ul {
+		@include row(4);
+		
+		li:first-child {
+			@include column(0.75, 4)
+		}
+		li:nth-child(2) {
+			@include column(1.75 , 4)
+		}
+		li:nth-child(3) {
+			@include column(1, 4)
+		}
+		li:last-child {
+			@include column(0.5, 4)
+		}
+	}
 }
 
-@media screen and (min-width: 980px) {
-	header {
+#mapDiv {
+	@include column(12);
+}
+
+@media screen and (min-width: 1280px) {
+	.center {
 		#logo {
 			@include column(2.5);
 		}
@@ -67,7 +92,7 @@ aside {
 }
 
 @media screen and (max-width: 768px) {
-	header {	
+	.center {	
 	 	#logo {
 			@include push(3.25);
 	 	}
@@ -84,7 +109,7 @@ aside {
 }
 
 @media screen and (max-width: 480px) {
-	header {
+	.center {
 		#slogan {
 			@include column(8);
 		}

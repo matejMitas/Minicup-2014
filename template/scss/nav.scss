@@ -1,11 +1,10 @@
 
-
 nav {
-	height: 4rem;
+	height: 75px;
 	background: $light-blue;
-	font-size: 0.95rem;	
+	font-size: 15px;	
 	position: relative;
-	border-bottom: 2px solid $dark-blue;
+	border-bottom: 1px solid $dark-blue;
 	
 	ul {
 		padding: 0;
@@ -19,16 +18,17 @@ nav {
 	}
 
 	a {
-		color: lighten( $light-blue, 25%);
+		color: darken( $white, 10%);
 		display: inline-block;
-		width: 8rem;
+		width: 128px;
 		text-align: center;
 		text-decoration: none;
 		line-height: 40px;
+		font-weight: 300;
 	}
 
 	li a {
-		padding: 12px;
+		padding: 18px 0px;
 		border-right: 1px solid $dark-blue;
 		box-sizing:border-box;
 		-moz-box-sizing:border-box;
@@ -42,6 +42,8 @@ nav {
 	 a:hover {
 	background-color: $dark-blue;
 	color: white;
+	font-weight: 400;
+	-webkit-transition: all 0.5s ease;
 	}
 
 	a#pull {
@@ -49,7 +51,7 @@ nav {
 	}	
 }
 
-@media screen and (max-width: 48rem) {
+@media screen and (max-width: 768px) {
 	nav { 
   		height: auto;
   	}
@@ -74,7 +76,7 @@ nav {
   	}
 }
 
-@media only screen and (max-width : 30rem) {
+@media only screen and (max-width: 480px) {
 	nav {
 		border-bottom: 0;
 	}
@@ -102,7 +104,7 @@ nav {
 }
 
 /*Smartphone*/
-@media only screen and (max-width : 20rem) {
+@media only screen and (max-width: 320px) {
 	nav li {
 		display: block;
 		float: none;
