@@ -46,6 +46,21 @@ section {
 	@include column(8);
 }
 
+article {
+	@include column(8);
+	
+	#content-padding {
+		@include row(8);
+		
+		.article-text {
+			@include column(5.5,8);
+		}
+	}
+	.article-icon img {
+		@include push(0.5);
+	}
+}
+
 aside {
 	@include column(4);
 
@@ -89,6 +104,9 @@ aside {
 			@include column(3);
 		}
 	}
+	#article-icon img {
+		@include push(1.5);
+	}
 }
 
 @media screen and (max-width: 768px) {
@@ -103,7 +121,7 @@ aside {
 	aside {
 		display: none;
 	}
-	section {
+	section, article {
 		@include column(12);
 	}
 }
