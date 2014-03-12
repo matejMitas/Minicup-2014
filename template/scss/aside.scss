@@ -1,34 +1,30 @@
 aside {
 	background: $dark-black;
 	border-radius: $border-radius;
-	
-	h2, .toogle {
-		text-transform: uppercase;
-		font-weight: 700;
-		border-bottom: 1px solid darken($white, 70%);
-	}
 
+	.aside-padding {
+		padding: 0px 10px 700px 10px;
+
+		& > div {
+			border-bottom: 1px solid darken($white, 70%);
+		}
+
+		.poradi {
+			border-bottom: 0;
+		}
+	}
 
 	h2 {
-		padding: 20px;
 		font-size: 14px;
-		line-height: 40px;
 		color: white;
-	}
+		padding: 25px 0px 25px 0px;
+		text-align: center;
+ 	}
 
 	h3 {
 		color: $light-grey;
 		font-weight: 300;
 		font-size: 13px;
-		padding: 15px 20px;
-	}
-
-	h3:last-child, thead {
-		border-bottom: 1px solid darken($white, 70%);
-	}
-
-	.h2 {
-		margin-top: 40px;
 	}
 
 	.toogle {
@@ -49,12 +45,36 @@ aside {
 
 	.domaci h3 {
 		color: darken($white, 10%);
+		padding: 10px 30px 10px 0px;
+		text-align: right;
 	}
 	.hoste h3 {
 		color: darken($white, 40%);
+		padding: 10px 0px 10px 3px;
 	}
-	table tr {
+
+	ul {
 		color: white;
+		
+		li {
+			font-size: 14px;
+			text-align: center;
+			line-height: 20px;
+			padding: 10px 0 0 0;
+		}
+		li:nth-child(2) {
+			text-align: left;
+		}
+		li:nth-child(2):hover {
+			text-decoration: underline;
+		}
+
+	}
+	
+	h2, .toogle {
+		text-transform: uppercase;
+		font-weight: 700;
+		border-bottom: 1px solid darken($white, 70%);
 	}
 	
 	.gold {
@@ -69,4 +89,3 @@ aside {
 		color: $bronze;
 	}
 }
-
