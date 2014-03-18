@@ -1,12 +1,15 @@
-section {
+section, article {
 	background: $white;
-	// box-shadow: inset 0 0 0 1px $section-outline;
+	box-shadow: inset 0 0 0 1px $section-outline;
 	border-radius: $border-radius;
 	margin-bottom: 15px;
+}
 
-	#section-padding {
-		padding: 32px;
-	}
+#content-padding {
+	padding: 32px;
+}
+
+section {
 
 	h2 {
 		color: $light-black;
@@ -46,3 +49,58 @@ section {
 		padding-bottom: 15px;
 	}
 }
+
+article {
+	
+	h2 {
+		font-size: 38px;
+		padding: 20px 0;
+	}
+
+	h3 {
+		color: $section-paragraph;
+		line-height: 1.5;
+		font-size: 15px;
+		font-weight: 300;
+	}
+
+	h4 {
+		font-size: 15px;
+		font-weight: 300;
+	}
+	
+	.article-date {
+		font-weight: 700;
+	}
+
+	.article-icon {
+		height: 100%;
+		padding: 10px;
+	}
+}
+
+#tymy-wrapper {
+
+		span {			
+			padding: 5px 0 5px 0;
+			
+			h2 {
+				font-size: 30px;
+				padding: 10px;
+				height: 90px;
+				line-height:1.5;
+				color: $section-paragraph;
+				font-weight: 300;
+				text-transform: none;
+				box-shadow: inset 0 0 0 1px $section-paragraph;
+				border-radius: $border-radius;
+
+				&:hover {
+					color: white;
+					background: $yellow;
+					box-shadow: none;
+				}
+			}
+		}
+}
+

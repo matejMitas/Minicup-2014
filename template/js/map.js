@@ -1,25 +1,68 @@
- //Defining map as a global variable to access from other functions
 var map;
-function initMap () {
+var litovel = new google.maps.LatLng(49.70460, 17.08072);
+var opletalova = new google.maps.LatLng(49.70267, 17.08162);
 
-      //Enabling new cartography and themes
-      google.maps.visualRefresh = true;
+var MY_MAPTYPE_ID = 'custom_style';
 
-      //Setting starting options of map
-      var mapOptions = {
-            center: new google.maps.LatLng(49.70431, 17.08154),
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            disableDefaultUI: true
-      };
+function initialize() {
 
-      //Getting map DOM element
-      var mapElement = document.getElementById('mapDiv');
+  var featureOpts = [
+    {
+      stylers: [
+        { hue: '#256ca1' },
+        { visibility: 'simplified' },
+        { gamma: 0.5 },
+        { weight: 0.75 }
+      ]
+    },
+    {
+      elementType: 'labels',
+      stylers: [
+        { visibility: 'on' },
+      ]
+    },
+    {
+      featureType: 'water',
+      stylers: [
+        { color: '#256ca1' }
+      ]
+    }
+  ];
 
-      //Creating a map with DOM element which is just obtained
-      map = new google.maps.Map(mapElement, mapOptions);
+  var mapOptions = {
+    zoom: 16,
+    center: litovel,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+    },
+    mapTypeId: MY_MAPTYPE_ID,
+    disableDefaultUI: true
+  };
 
-      startButtonEvents();
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var marker1 = new google.maps.Marker({
+      position: litovel,
+      map: map,
+      title: 'Hello World!'
+  });
+
+  var marker2 = new google.maps.Marker({
+      position: opletalova,
+      map: map,
+      title: 'Hello World!'
+  });
+
+
+
+  var styledMapOptions = {
+    name: 'Custom Style'
+  };
+
+  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+  map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 }
-google.maps.event.addDomListener(window, 'load', initMap);
 
+google.maps.event.addDomListener(window, 'load', initialize);

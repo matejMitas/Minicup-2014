@@ -21,7 +21,7 @@ body {
 	overflow: hidden;
 }
 
-footer, .hrane, .nasledujici, .poradi {
+footer, .hrane, .nasledujici, .poradi, #map-canvas {
 	@include column(12);
 }
 
@@ -44,9 +44,16 @@ nav {
 
 section {
 	@include column(8);
+
+	#tymy-wrapper {
+		@include row(8);
+			span {
+				@include column(2.666, 8);
+			}
+	}
 }
 
-article {
+#article-wraper {
 	@include column(8);
 	
 	#content-padding {
@@ -55,9 +62,6 @@ article {
 		.article-text {
 			@include column(5.5,8);
 		}
-	}
-	.article-icon img {
-		@include push(0.5);
 	}
 }
 
@@ -88,9 +92,6 @@ aside {
 	}
 }
 
-#mapDiv {
-	@include column(12);
-}
 
 @media screen and (min-width: 1280px) {
 	.center {
@@ -121,7 +122,7 @@ aside {
 	aside {
 		display: none;
 	}
-	section, article {
+	section, .article-wraper {
 		@include column(12);
 	}
 }
@@ -135,7 +136,9 @@ aside {
 			@include push(1.5);
 		}
 		#slogan {
-			@include push(3);
+			@include push(3.5);
 		}
 	}
+
 }
+
