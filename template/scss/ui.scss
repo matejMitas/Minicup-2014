@@ -4,18 +4,20 @@ button, input {
 	font-weight: 700;
 }
 
-input[type=text] {
+input {
 	color: $form-grey;
-	border: 1px solid $form-grey;
+	box-shadow: inset 0 0 0 1px $form-grey;
 	padding: 15px 10px;
+	width: 50%;
+	margin-bottom: 10px;
 }
 
-input[type=text]:focus {
-	border: 2px solid $light-blue;
+input:focus {
+	box-shadow: inset 0 0 0 2px $light-blue;
 	color: $light-blue;
 }
 
-input[type=text]:active {
+input:active {
 
 }
 
@@ -29,7 +31,7 @@ button[type=submit] {
 button[type=submit]:hover {
 	background: white;
 	color: $light-blue;
-	border: 2px solid $light-blue;
+	box-shadow: inset 0 0 0 2px $light-blue;
 }
 
 .button-active {
