@@ -42,7 +42,6 @@
 	<!--[if lt IE 9]>
   		<script>
 	      document.createElement('header');
-	      document.createElement('article');
 	      document.createElement('nav');
 	      document.createElement('section');
 	      document.createElement('aside');
@@ -85,7 +84,7 @@
 			<li><a href="sponzori.html">SPONZOŘI</a></li>
 			<li><a href="kontakt.html">KONTAKT</a></li>
 			</ul>
-		 	<a href="#" id="pull">Menu</a> 
+		 	<a href="#" id="pull"><p>Menu</p></a> 
 		</div>
 	</nav>
 
@@ -181,13 +180,12 @@
 				
 				<aside>
 					<div class="toogle">
-						<span class="aside-active">
-							<a href="">Mladší/</a>
-						</span>
-							<a href="">Starší</a>
+							<span class="mladsi">Mladší/</span>
+							<span class="starsi">Starší</span> 
+
 					</div>
 					
-					<div class="aside-padding">
+					<div class="aside-padding tog">
 						
 						<div class="hrane">
 							<h2>aktuálně hrané</h2>
@@ -282,9 +280,117 @@
 								<li>50</li>
 							</ul>
 						</div>
-					</div>	
-				</aside>
+					</div>
 
+					<div class="aside-padding tog" style="display: none">
+						
+						<div class="hrane">
+							<h2>aktuálně hrané</h2>
+
+							<div class="zapasy">
+								<span class="domaci">
+									<h3>Ivanka pri Dunaji</h3>				
+									<h3>TJ Jiskra Otrokovice</h3>
+								</span>
+								<span class="hoste">
+									<h3>TJ Jiskra Otrokovice</h3>
+									<h3>Ivanka pri Dunaji</h3>
+								</span>
+							</div>
+						</div>
+
+						<div class="nasledujici">
+							<h2>následující zápasy</h2>
+							
+							<div class="zapasy">
+								<span class="domaci">
+									<h3>Ivanka pri Dunaji</h3>
+									<h3>TJ Jissssskra Otrokovice</h3>
+									<h3>TJ Rožnov p. Radhoštěm</h3>
+									<h3>Tatran Litovel</h3>
+								</span>
+
+								<span class="hoste">
+									<h3>Ivanka pri Dunaji</h3>
+									<h3>TJ Jsssice</h3>
+									<h3>TJ Rožnov p. Radhoštěm</h3>
+									<h3>sss</h3>
+								</span>
+							</div>
+
+						</div>	
+
+						<div class="poradi">
+							<h2 class="h2">pořadí v tabulce</h2>
+							<ul class="poradi-head">
+								<li>Pořadí</li>
+								<li>Tým</li>
+								<li>Skóre</li>
+								<li>Bodů</li>
+							</ul>
+							<ul class="gold">
+								<li>1.</li>
+								<li>Ivanka pri Dunaji</li>
+								<li>11:5</li>
+								<li>50</li>
+							</ul>
+							<ul class="silver">
+								<li>2.</li>
+								<li>HBC Jičín</li>
+								<li>11:5</li>
+								<li>50</li>
+							</ul>
+							<ul class="bronze">
+								<li>3.</li>
+								<li>TJ Jiskra Otrokovice</li>
+								<li>11:5</li>
+								<li>50</li>
+							</ul>
+							<ul>
+								<li>4.</li>
+								<li>TJ Rožnov p. Radhoštěm</li>
+								<li>11:5</li>
+								<li>50</li>
+							</ul>
+							<ul>
+								<li>5.</li>
+								<li>Tatran Litovel</li>
+								<li>11:5</li>
+								<li>50</li>
+							</ul>
+							<ul>
+								<li>6.</li>
+								<li>TJ Senice na Hané</li>
+								<li>11:5</li>
+								<li>50</li>
+							</ul>
+							<ul>
+								<li>7.</li>
+								<li>TJ Sokol II Prostějov</li>
+								<li>11:5</li>
+								<li>50</li>
+							</ul>
+							<ul>
+								<li>8.</li>
+								<li>Ivanka pri Dunaji</li>
+								<li>11:5</li>
+								<li>50</li>
+							</ul>
+						</div>
+					</div>	
+
+					<script>
+						var span = $( ".toogle span" );
+							starsi = $( ".starsi" );
+							mladsi = $( ".mladsi" );
+
+						span.click(function() {
+						  $( ".tog").toggle();
+						});
+
+
+
+					</script>
 				
 
 		</div>

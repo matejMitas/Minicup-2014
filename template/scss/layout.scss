@@ -54,7 +54,6 @@ ul.boxes {
 	}
 }
 
-
 section {
 	@include column(8);
 
@@ -62,6 +61,12 @@ section {
 		@include row(8);
 			span {
 				@include column(2.666, 8);
+			}
+	}
+	#detail-wrapper, #form-wrapper {
+		@include row(8);
+			.detailbox {
+				@include column(4, 8);
 			}
 	}
 }
@@ -124,19 +129,25 @@ aside {
 }
 
 @media screen and (max-width: 768px) {
-	.center {	
+	.center {
+		#logo, #slogan {
+			@include column(12);
+		}
+
 	 	#logo {
-			@include push(3.25);
+			@include push(2.5);
 	 	}
 		#slogan {
-	 		@include push(3.75);
+	 		@include push(3);
 		}
 	 }
+	
+	section, article {
+		@include column(12);
+	}
+
 	aside {
 		display: none;
-	}
-	section, .article-wraper {
-		@include column(12);
 	}
 }
 
@@ -159,6 +170,14 @@ aside {
 					margin-bottom: 10px;
 				}
 			}
-
+	
+	section {
+	#detail-wrapper, #form-wrapper {
+		@include row(8);
+			.detailbox {
+				@include column(12);
+			}
+	}
+}	
 }
 
