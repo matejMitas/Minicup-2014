@@ -183,6 +183,11 @@ section {
       float: left;
       width: 66.96429%;
       margin: 0 0.89286%; }
+    #article-wraper #content-padding .article-icon {
+      display: inline;
+      float: left;
+      width: 19.64286%;
+      margin: 0 0.59524%; }
 
 aside {
   display: inline;
@@ -245,10 +250,7 @@ aside {
     display: inline;
     float: left;
     width: 23.80952%;
-    margin: 0 0.59524%; }
-
-  #article-icon img {
-    margin-left: 13.09524%; } }
+    margin: 0 0.59524%; } }
 @media screen and (max-width: 768px) {
   .center #logo, .center #slogan {
     display: inline;
@@ -260,7 +262,7 @@ aside {
   .center #slogan {
     margin-left: 25.59524%; }
 
-  section, article {
+  section, #article-wraper, article {
     display: inline;
     float: left;
     width: 98.80952%;
@@ -277,7 +279,7 @@ aside {
   .center #logo {
     margin-left: 13.09524%; }
   .center #slogan {
-    margin-left: 29.7619%; }
+    display: none; }
 
   ul.boxes li {
     display: inline;
@@ -300,7 +302,26 @@ aside {
       display: inline;
       float: left;
       width: 98.80952%;
-      margin: 0 0.59524%; } }
+      margin: 0 0.59524%; }
+
+  .article-icon svg, .article-icon image {
+    display: none; }
+
+  #content-padding {
+    display: block;
+    width: 101.78571%;
+    margin: 0 -0.89286%;
+    *zoom: 1; }
+    #content-padding:before, #content-padding:after {
+      content: "";
+      display: table; }
+    #content-padding:after {
+      clear: both; }
+    #content-padding .article-text {
+      display: inline;
+      float: left;
+      width: 98.21429%;
+      margin: 0 0.89286%; } }
 header {
   position: relative;
   background: #232020;
@@ -333,7 +354,7 @@ header {
     padding-top: 0px; }
   header #slogan {
     padding-bottom: 32px; }
-  header #barton img {
+  header #barton img, header #slogan {
     display: none; } }
 @media screen and (max-width: 480px) {
   header #barton {
@@ -450,10 +471,12 @@ section h2 {
   font-size: 24px;
   font-weight: 700;
   padding-bottom: 20px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  border-bottom: 1px solid #cccccc; }
 section h3 {
   font-size: 18px;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  padding-top: 20px; }
 section p {
   font-size: 16px;
   line-height: 1.15;
@@ -487,8 +510,7 @@ article h4 {
 article .article-date {
   font-weight: 700; }
 article .article-icon {
-  height: 100%;
-  padding: 10px; }
+  padding-top: 2%; }
 
 ul.tymy li {
   margin-bottom: 10px;
@@ -505,11 +527,19 @@ ul.tymy li {
   ul.tymy li a {
     color: #8f8f8f; }
 
+#foto-wrapper h2 {
+  border-bottom: 0; }
+  #foto-wrapper h2:not(:first-child) {
+    border-top: 1px solid #f2f2f2;
+    padding-top: 20px; }
+
 ul.foto img {
   width: 100%;
   max-height: 200px;
   border: 1px solid black;
   border-radius: 0.5rem; }
+ul.foto li {
+  padding-top: 20px; }
 
 ul.sponzori img {
   width: 90%; }
@@ -517,7 +547,8 @@ ul.sponzori img {
 #detail-wrapper h2 {
   color: #2c8dd7;
   font-size: 36px;
-  padding: 20px 10px 50px 5px; }
+  padding: 20px 10px 50px 5px;
+  border: 0; }
 #detail-wrapper h4 {
   font-size: 30px;
   padding-bottom: 10px; }
@@ -526,16 +557,24 @@ ul.sponzori img {
 #detail-wrapper span.green {
   color: #00cc00; }
 
+#form-wrapper + p {
+  padding-top: 20px; }
+
+#table-wrapper table td, #table-wrapper table th {
+  border: 1px solid black;
+  vertical-align: middle; }
+
 aside {
   background: #232020;
   border-radius: 0.5rem;
   margin-bottom: 15px; }
   aside .aside-padding {
-    padding: 0px 10px 700px 10px; }
+    padding: 0px 10px 0px 10px; }
     aside .aside-padding > div {
       border-bottom: 1px solid #474747; }
     aside .aside-padding .poradi {
-      border-bottom: 0; }
+      border-bottom: 0;
+      padding-bottom: 20px; }
   aside h2 {
     font-size: 14px;
     color: white;

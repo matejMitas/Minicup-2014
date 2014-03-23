@@ -38,9 +38,6 @@ ul.boxes {
 			}
 		}
 
-		@media screen and (max-width: 480px) {
-			
-		}
 
 .center {
 	#logo {
@@ -79,6 +76,10 @@ section {
 		
 		.article-text {
 			@include column(5.5,8);
+		}
+
+		.article-icon {
+			@include column(2.5);
 		}
 	}
 }
@@ -123,9 +124,6 @@ aside {
 			@include column(3);
 		}
 	}
-	#article-icon img {
-		@include push(1.5);
-	}
 }
 
 @media screen and (max-width: 768px) {
@@ -142,7 +140,7 @@ aside {
 		}
 	 }
 	
-	section, article {
+	section, #article-wraper, article {
 		@include column(12);
 	}
 
@@ -160,7 +158,7 @@ aside {
 			@include push(1.5);
 		}
 		#slogan {
-			@include push(3.5);
+			display: none;
 		}
 	}
 
@@ -177,7 +175,19 @@ aside {
 			.detailbox {
 				@include column(12);
 			}
+		}
 	}
-}	
+
+	.article-icon svg, .article-icon image {
+		display: none;
+	}
+
+	#content-padding {
+		@include row(8);
+		
+		.article-text {
+			@include column(8,8);
+		}
+	}	
 }
 
