@@ -1,0 +1,13 @@
+{layout '@layout.latte'}
+
+{block main}
+<div id="section-padding">
+	{foreach $novinky as $novinka}
+	<article>
+		<h2>{$novinka["titulek"]}</h2>
+		<i>{$novinka["vlozeno"]|relDateCZ}</i>
+		<p>{$novinka["aktualita"]|noescape}</p>
+	</article>
+	{/foreach}
+</div>
+{/block}

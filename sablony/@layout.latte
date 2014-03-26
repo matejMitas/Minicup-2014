@@ -1,41 +1,155 @@
 <!doctype html>
-<html lang="cs">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{$title|upper} - MINICUP 2014</title>
+    <title>Minicup 2014</title>
     
-    <link type="text/css" rel="stylesheet" href="css/jquery-te-1.4.0.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
+    
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/complete.scss">
 
-    <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="js/jquery-te-1.4.0.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
-        alert({$alert});
-    </script>
-    <style>
-	aside {
-		float: right;
-		background-color: #CCC;
-        margin-left: 20px;
-        max-width: 35%;
-        min-width: 35%;
-	}
-    aside div {
-        padding: 20px;
-        box-shadow: 3px 3px 5px black;
-    }
+        $(function() {
+            var pull        = $('#pull');
+                menu        = $('nav ul');
+                menuHeight  = menu.height();
 
-    </style>
+            $(pull).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    
+    <!--[if lt IE 9]>
+        <script>
+          document.createElement('header');
+          document.createElement('nav');
+          document.createElement('section');
+          document.createElement('aside');
+          document.createElement('footer');
+        </script>
+    <![endif]-->
+
+
 </head>
 <body>
-<aside>
-    {block detail}{/block}
-    {block tabulka}{/block}
-    {block left}{/block}
-</aside>
-<aside>
-    {block novinky}{/block}
-</aside>
-    {block formular}{/block}
-    {$time|noescape}
+    <header>
+        <div class="center">
+            <div id="logo">
+                <svg width="250" height="250">
+                    <image xlink:href="img/logo.svg" src="img/logo.png" width="250" height="250" />
+                </svg>
+            </div>
+            <div id="slogan">
+                <h2>23. - 25. dubna</h2>
+                <h3>2. ročník mezinárodního turnaje v miniházené </h3>
+            </div>
+            <div id="barton">
+                <a href="http://www.barton-a-partner.cz/"><img src="img/barton.png" alt=""></a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="clearfix">
+        <div class="center">
+            <ul class="clearfix">
+                <li n:foreach="$menu as $polozka => $cz">
+                    <a href="?controller={$polozka}">{$cz|upper}</a>
+                </li>
+            </ul>
+            <a href="#" id="pull">Menu</a> 
+        </div>
+    </nav>
+<div class="center">
+    <section>
+{block main}
+
+{/block}
+    </section>
+
+                
+                <aside>
+                    <div class="toogle">
+                        <span class="aside-active">
+                        <a href="">Mladší/</a>
+                        </span>
+                        <a href="">Starší</a>
+                    </div>
+                    
+                    <div class="aside-padding">
+                        
+                        <div class="hrane">
+                            <h2>aktuálně hrané</h2>
+
+                            {foreach $praveHrane as $zapas}
+                                <div class="zapas">
+                                    <span class="domaci"><h3>{$zapas["0"]}</h3></span>
+                                    <span class="hoste"><h3>{$zapas["1"]}</h3></span>
+                                </div>
+                            {/foreach}
+                        </div>
+
+                        <div class="nasledujici">
+                            <h2>následující zápasy</h2>
+                            
+                            <div class="domaci">
+
+                                <h3>Ivanka pri Dunaji</h3>
+                                <h3>TJ Jiskra Otrokovice</h3>
+                                <h3>TJ Rožnov p. Radhoštěm</h3>
+                                <h3>Tatran Litovel</h3>
+                            </div>
+                            
+                            <div class="hoste">
+                                
+                                <h3>Ivanka pri Dunaji</h3>
+                                <h3>TJ Jiskra Otrokovice</h3>
+                                <h3>TJ Rožnov p. Radhoštěm</h3>
+                                <h3>Tatran Litovel</h3>
+                            </div>
+
+                        </div>  
+
+                        <div class="poradi">
+                            <h2 class="h2">pořadí v tabulce</h2>
+                            <ul class="poradi-head">
+                                <li>Pořadí</li>
+                                <li>Tým</li>
+                                <li>Skóre</li>
+                                <li>Bodů</li>
+                            </ul>
+                            {foreach $tabulka as $klic => $tym}
+                            <ul>
+                                <li>{$tym["poradi"]}.</li>
+                                <li>{$tym["jmeno"]}</li>
+                                <li>{$tym["dane"]}:{$tym["dostane"]}</li>
+                                <li>{$tym["body"]}</li>
+                            </ul>
+                            {/foreach}
+                            
+                        </div>
+                    </div>  
+                </aside>
+        </div>
+    
+<div id="mapDiv"></div>
+    <footer>
+            <div class="date">
+                <h2>23. - 25. dubna</h2>
+                <h3>2. ročník mezinárodního turnaje v miniházené </h3>
+            </div>
+            <div class="authors">Matěj Mitaš, Josef Kolář a spousta dalších lidí</div>
+    </footer>
 </body>
 </html>
