@@ -40,3 +40,4 @@ require 'Nette/Utils/Tokenizer.php';
 require 'Nette/Utils/Strings.php';
 require 'Nette/Utils/Random.php';
 require 'Nette/Utils/Json.php';
+require 'Nette/Iterators/CachingIterator.php';

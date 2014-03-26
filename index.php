@@ -9,6 +9,7 @@ dbWrapper::pripoj();
 
 require 'NetteInit.php';
 
+
 $controllers = array(
     "novinky" => "novinky",
     "informace" => "informace",
@@ -22,9 +23,9 @@ if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
     $controllerPath = "kontrolery/". $_GET["controller"] .".php";
     if (file_exists($controllerPath)) {
         include $controllerPath;
-    } else {
-        $template = new Nette\Templating\FileTemplate('sablony/template.latte');
     }
+} else {
+    include "kontrolery/novinky.php";
 }
 
 $VystupVysledku = new VystupVysledku("mladsi");
