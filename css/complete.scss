@@ -1,0 +1,27 @@
+$light-grey: #ededed;
+$white: white;
+$yellow: #ffdd00;
+$light-blue: #2c8dd7;
+$dark-blue: #256ca1;
+$light-black: #333;
+$dark-black: #232020;
+$bronze: #6f480a;
+$silver: #c1c1c1;
+$gold: #b99404;
+$form-grey: #8f8f8f;
+$section-outline: #cccccc;
+$section-paragraph: #8f8f8f;
+$border-radius: 0.5rem;
+
+@import "reset.scss";
+@import "grid.scss";
+@import "layout.scss";
+@import "header.scss";
+@import "nav.scss";
+@import "content.scss";
+@import "aside.scss";
+@import "footer.scss";
+@import "swipe-aside.scss";
+@import "ui.scss";
+@import "swipebox.css";
+

@@ -1,0 +1,210 @@
+$columns: 12;
+$column-width: 60;
+$gutter-width: 10;
+
+$total-width: 100%;
+
+
+
+body {
+  width: 100%;
+  background: $light-grey;
+  font-family: 'Ubuntu', sans-serif;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;   
+}
+
+.center {
+	max-width: 1280px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+footer, .hrane, .nasledujici, .poradi, #map-canvas {
+	@include column(12);
+}
+
+nav {
+	margin-bottom: 16px;
+}
+
+ul.boxes {
+			@include row(9);
+
+			li {
+				@include column(3,9);
+				margin-bottom: 10px;
+			}
+		}
+
+
+.center {
+	#logo {
+		@include column(3);
+	}
+	#slogan {
+		@include column(5);
+	}
+	#barton {
+		@include column(3);
+	}
+}
+
+section {
+	@include column(8);
+
+	#tymy-wrapper {
+		@include row(8);
+			span {
+				@include column(2.666, 8);
+			}
+	}
+	#detail-wrapper, #form-wrapper {
+		@include row(8);
+			.detailbox {
+				@include column(4, 8);
+			}
+	}
+}
+
+#article-wraper {
+	@include column(8);
+	
+	#content-padding {
+		@include row(8);
+		
+		.article-text {
+			@include column(5.5,8);
+		}
+
+		.article-icon {
+			@include column(2.5);
+		}
+	}
+}
+
+aside {
+	@include column(4);
+
+	.domaci {
+		@include column(6);
+	}
+	.hoste {
+		@include column(6);
+	}
+	ul {
+		@include row(4);
+		
+		li:first-child {
+			@include column(0.75, 4)
+		}
+		li:nth-child(2) {
+			@include column(1.75 , 4)
+		}
+		li:nth-child(3) {
+			@include column(1, 4)
+		}
+		li:last-child {
+			@include column(0.5, 4)
+		}
+	}
+}
+
+
+@media screen and (min-width: 1280px) {
+	.center {
+		#logo {
+			@include column(2.5);
+		}
+		#slogan {
+			@include column(6);
+		}
+		#barton {
+			@include column(3);
+		}
+	}
+	
+	#article-wraper {
+	@include column(8);
+	
+	#content-padding {
+		@include row(8);
+		
+		.article-text {
+			@include column(5.75,8);
+		}
+
+		.article-icon {
+			@include column(2);
+		}
+	}
+}
+
+}
+
+@media screen and (max-width: 768px) {
+	.center {
+		#logo, #slogan {
+			@include column(12);
+		}
+
+	 	#logo {
+			@include push(2.5);
+	 	}
+		#slogan {
+	 		@include push(3);
+		}
+	 }
+	
+	section, #article-wraper, article {
+		@include column(12);
+	}
+
+	aside {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.center {
+		#slogan {
+			@include column(8);
+		}
+		#logo {
+			@include push(1.5);
+		}
+		#slogan {
+			display: none;
+		}
+	}
+
+	ul.boxes {
+				li{
+					@include column(12);
+					margin-bottom: 10px;
+				}
+			}
+	
+	section {
+	#detail-wrapper, #form-wrapper {
+		@include row(8);
+			.detailbox {
+				@include column(12);
+			}
+		}
+	}
+
+	.article-icon svg, .article-icon image {
+		display: none;
+	}
+
+	#content-padding {
+		@include row(8);
+		
+		.article-text {
+			@include column(8,8);
+		}
+	}	
+}
+
