@@ -42,7 +42,7 @@ SQL;
 			FROM `2014_zapasy_{$this->kategorie}` a
 				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
 				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
-			WHERE a.`odehrano` = 0
+			WHERE a.`odehrano` = 0 AND a.`cas_odehrani` > NOW() AND a.`cas_odehrani` < (NOW() + 60*60*30)
 			ORDER BY a.`ID_zapasu` ASC
 			LIMIT $limit
 SQL;
