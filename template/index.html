@@ -180,16 +180,15 @@
 				
 				<aside>
 					<div class="toogle">
-							<span class="mladsi">Mladší/</span>
-							<span class="starsi">Starší</span> 
+							<span class="toggle-src" data-src="mladsi">Mladší</span>
+							/
+							<span class="toggle-src" data-src="starsi">Starší</span> 
 
 					</div>
 					
-					<div class="aside-padding tog">
-						
+					<div class="aside-padding tog toggle-target" data-target="mladsi">
 						<div class="hrane">
 							<h2>aktuálně hrané</h2>
-
 							<div class="zapasy">
 								<span class="domaci">
 									<h3>Ivanka pri Dunaji</h3>				
@@ -201,10 +200,8 @@
 								</span>
 							</div>
 						</div>
-
 						<div class="nasledujici">
 							<h2>následující zápasy</h2>
-							
 							<div class="zapasy">
 								<span class="domaci">
 									<h3>Ivanka pri Dunaji</h3>
@@ -212,7 +209,6 @@
 									<h3>TJ Rožnov p. Radhoštěm</h3>
 									<h3>Tatran Litovel</h3>
 								</span>
-
 								<span class="hoste">
 									<h3>Ivanka pri Dunaji</h3>
 									<h3>TJ Jiskra Otrokovice</h3>
@@ -281,9 +277,7 @@
 							</ul>
 						</div>
 					</div>
-
-					<div class="aside-padding tog" style="display: none">
-						
+					<div class="aside-padding tog toggle-target" data-target="starsi" style="display: none">
 						<div class="hrane">
 							<h2>aktuálně hrané</h2>
 
@@ -380,14 +374,43 @@
 					</div>	
 
 					<script>
-						var span = $( ".toogle span" );
-							starsi = $( ".starsi" );
-							mladsi = $( ".mladsi" );
+						/** trida pro tlacitka */
+						var toggleButtons = ".toggle-src";
 
-						span.click(function() {
-						  $( ".tog").toggle();
+						/** trida pro toggle elementy */
+						var toggleTargets = ".toggle-target";
+
+						/** trida pro highlight tlacitek */
+						var toggleActive = "active";
+
+						/** ovladani togglu: 
+								<element class="toggle-src" data-src="mujcil">
+							ovladane elementy:
+								<element class="toggle-target" data-target="mujcil">
+						*/
+
+
+						$(toggleButtons).click(function(event){
+							var src = $(this).data("src");
+
+							$(toggleButtons).each(function(){
+								$(this).removeClass(toggleActive);
+							});
+							$(this).addClass(toggleActive);
+
+
+							$(toggleTargets).each(function(){
+								var target = $(this).data("target");
+								if (target == src) {
+									$(this).show(200);
+								} else {
+									$(this).hide(200);
+								}
+							});
 						});
 
+						/* $("toggle-src")
+						$("toggle-target") */
 
 
 					</script>
