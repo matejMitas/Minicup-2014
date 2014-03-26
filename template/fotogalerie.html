@@ -13,11 +13,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
 	
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="scss/complete.css">  
+	<link rel="stylesheet" href="scss/complete.css"> 
 
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js">
-	</script>
+	<script src="js/jquery-1.11.0.min.js"></script>	
+	<script src="js/jquery.swipebox.min.js"></script>
         
 	<script>
 		$(function() {
@@ -37,6 +36,14 @@
         		}
     		});
 		});
+	</script>
+
+	<script type="text/javascript">
+		;( function( $ ) {
+
+			$( '.swipebox' ).swipebox();
+
+		} )( jQuery );
 	</script>
 	
 	<!--[if lt IE 9]>
@@ -91,118 +98,178 @@
 
 	<div class="center">
 
-	<section>
-		<div id="content-padding">
-					</div> 
-				</section>
+		<section>
+			<div id="content-padding">
+				<div id="foto-wrapper">
+					<h2>Pátek</h2>
 
-				
-				
-				<aside>
-					<div class="toogle">
-						<span class="aside-active">
-							<a href="">Mladší/</a>
-						</span>
-							<a href="">Starší</a>
-					</div>
+				<ul class="boxes foto">
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-38_DSC_5398.jpg" class="swipebox" title="Úžasný zápas">
+							<img src="img/fotogalerie/thumb1.jpg" alt="image">
+						</a>
+					</li>
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-12_DSC_5320.jpg" class="swipebox" title="Co to tam">
+							<img src="img/fotogalerie/thumb2.jpg" alt="image">
+						</a>
+					</li>
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-07_DSC_5312.jpg" class="swipebox" title="Co to tam">
+							<img src="img/fotogalerie/thumb3.jpg" alt="image">
+						</a>
+					</li>
+				</ul>
+
+				<h2>Sobota</h2>
+
+				<ul class="boxes foto">
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-38_DSC_5398.jpg" class="swipebox" title="Úžasný zápas">
+							<img src="img/fotogalerie/thumb1.jpg" alt="image">
+						</a>
+					</li>
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-12_DSC_5320.jpg" class="swipebox" title="Co to tam">
+							<img src="img/fotogalerie/thumb2.jpg" alt="image">
+						</a>
+					</li>
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-07_DSC_5312.jpg" class="swipebox" title="Co to tam">
+							<img src="img/fotogalerie/thumb3.jpg" alt="image">
+						</a>
+					</li>
+				</ul>
+
+
+				<h2>Neděle</h2>
+
+				<ul class="boxes foto">
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-38_DSC_5398.jpg" class="swipebox" title="Úžasný zápas">
+							<img src="img/fotogalerie/thumb1.jpg" alt="image">
+						</a>
+					</li>
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-12_DSC_5320.jpg" class="swipebox" title="Co to tam">
+							<img src="img/fotogalerie/thumb2.jpg" alt="image">
+						</a>
+					</li>
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-07_DSC_5312.jpg" class="swipebox" title="Co to tam">
+							<img src="img/fotogalerie/thumb3.jpg" alt="image">
+						</a>
+					</li>
+				</ul>
+				</div>
+			</div> 
+		</section>	
 					
-					<div class="aside-padding">
+		<aside>
+						<div class="toogle">
+							<span class="aside-active">
+								<a href="">Mladší/</a>
+							</span>
+								<a href="">Starší</a>
+						</div>
 						
-						<div class="hrane">
-							<h2>aktuálně hrané</h2>
-
-							<div class="zapasy">
-								<span class="domaci">
-									<h3>Ivanka pri Dunaji</h3>				
-									<h3>TJ Jiskra Otrokovice</h3>
-								</span>
-								<span class="hoste">
-									<h3>TJ Jiskra Otrokovice</h3>
-									<h3>Ivanka pri Dunaji</h3>
-								</span>
-							</div>
-						</div>
-
-						<div class="nasledujici">
-							<h2>následující zápasy</h2>
+						<div class="aside-padding">
 							
-							<div class="zapasy">
-								<span class="domaci">
-									<h3>Ivanka pri Dunaji</h3>
-									<h3>TJ Jiskra Otrokovice</h3>
-									<h3>TJ Rožnov p. Radhoštěm</h3>
-									<h3>Tatran Litovel</h3>
-								</span>
+							<div class="hrane">
+								<h2>aktuálně hrané</h2>
 
-								<span class="hoste">
-									<h3>Ivanka pri Dunaji</h3>
-									<h3>TJ Jiskra Otrokovice</h3>
-									<h3>TJ Rožnov p. Radhoštěm</h3>
-									<h3>Tatran Litovel</h3>
-								</span>
+								<div class="zapasy">
+									<span class="domaci">
+										<h3>Ivanka pri Dunaji</h3>				
+										<h3>TJ Jiskra Otrokovice</h3>
+									</span>
+									<span class="hoste">
+										<h3>TJ Jiskra Otrokovice</h3>
+										<h3>Ivanka pri Dunaji</h3>
+									</span>
+								</div>
 							</div>
 
-						</div>	
+							<div class="nasledujici">
+								<h2>následující zápasy</h2>
+								
+								<div class="zapasy">
+									<span class="domaci">
+										<h3>Ivanka pri Dunaji</h3>
+										<h3>TJ Jiskra Otrokovice</h3>
+										<h3>TJ Rožnov p. Radhoštěm</h3>
+										<h3>Tatran Litovel</h3>
+									</span>
 
-						<div class="poradi">
-							<h2 class="h2">pořadí v tabulce</h2>
-							<ul class="poradi-head">
-								<li>Pořadí</li>
-								<li>Tým</li>
-								<li>Skóre</li>
-								<li>Bodů</li>
-							</ul>
-							<ul class="gold">
-								<li>1.</li>
-								<li>Ivanka pri Dunaji</li>
-								<li>11:5</li>
-								<li>50</li>
-							</ul>
-							<ul class="silver">
-								<li>2.</li>
-								<li>HBC Jičín</li>
-								<li>11:5</li>
-								<li>50</li>
-							</ul>
-							<ul class="bronze">
-								<li>3.</li>
-								<li>TJ Jiskra Otrokovice</li>
-								<li>11:5</li>
-								<li>50</li>
-							</ul>
-							<ul>
-								<li>4.</li>
-								<li>TJ Rožnov p. Radhoštěm</li>
-								<li>11:5</li>
-								<li>50</li>
-							</ul>
-							<ul>
-								<li>5.</li>
-								<li>Tatran Litovel</li>
-								<li>11:5</li>
-								<li>50</li>
-							</ul>
-							<ul>
-								<li>6.</li>
-								<li>TJ Senice na Hané</li>
-								<li>11:5</li>
-								<li>50</li>
-							</ul>
-							<ul>
-								<li>7.</li>
-								<li>TJ Sokol II Prostějov</li>
-								<li>11:5</li>
-								<li>50</li>
-							</ul>
-							<ul>
-								<li>8.</li>
-								<li>Ivanka pri Dunaji</li>
-								<li>11:5</li>
-								<li>50</li>
-							</ul>
-						</div>
-					</div>	
-				</aside>
+									<span class="hoste">
+										<h3>Ivanka pri Dunaji</h3>
+										<h3>TJ Jiskra Otrokovice</h3>
+										<h3>TJ Rožnov p. Radhoštěm</h3>
+										<h3>Tatran Litovel</h3>
+									</span>
+								</div>
+
+							</div>	
+
+							<div class="poradi">
+								<h2 class="h2">pořadí v tabulce</h2>
+								<ul class="poradi-head">
+									<li>Pořadí</li>
+									<li>Tým</li>
+									<li>Skóre</li>
+									<li>Bodů</li>
+								</ul>
+								<ul class="gold">
+									<li>1.</li>
+									<li>Ivanka pri Dunaji</li>
+									<li>11:5</li>
+									<li>50</li>
+								</ul>
+								<ul class="silver">
+									<li>2.</li>
+									<li>HBC Jičín</li>
+									<li>11:5</li>
+									<li>50</li>
+								</ul>
+								<ul class="bronze">
+									<li>3.</li>
+									<li>TJ Jiskra Otrokovice</li>
+									<li>11:5</li>
+									<li>50</li>
+								</ul>
+								<ul>
+									<li>4.</li>
+									<li>TJ Rožnov p. Radhoštěm</li>
+									<li>11:5</li>
+									<li>50</li>
+								</ul>
+								<ul>
+									<li>5.</li>
+									<li>Tatran Litovel</li>
+									<li>11:5</li>
+									<li>50</li>
+								</ul>
+								<ul>
+									<li>6.</li>
+									<li>TJ Senice na Hané</li>
+									<li>11:5</li>
+									<li>50</li>
+								</ul>
+								<ul>
+									<li>7.</li>
+									<li>TJ Sokol II Prostějov</li>
+									<li>11:5</li>
+									<li>50</li>
+								</ul>
+								<ul>
+									<li>8.</li>
+									<li>Ivanka pri Dunaji</li>
+									<li>11:5</li>
+									<li>50</li>
+								</ul>
+							</div>
+						</div>	
+		</aside>
 
 				
 

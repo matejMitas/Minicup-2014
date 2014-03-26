@@ -29,6 +29,16 @@ nav {
 	margin-bottom: 16px;
 }
 
+ul.boxes {
+			@include row(9);
+
+			li {
+				@include column(3,9);
+				margin-bottom: 10px;
+			}
+		}
+
+
 .center {
 	#logo {
 		@include column(3);
@@ -41,7 +51,6 @@ nav {
 	}
 }
 
-
 section {
 	@include column(8);
 
@@ -49,6 +58,12 @@ section {
 		@include row(8);
 			span {
 				@include column(2.666, 8);
+			}
+	}
+	#detail-wrapper, #form-wrapper {
+		@include row(8);
+			.detailbox {
+				@include column(4, 8);
 			}
 	}
 }
@@ -61,6 +76,10 @@ section {
 		
 		.article-text {
 			@include column(5.5,8);
+		}
+
+		.article-icon {
+			@include column(2.5);
 		}
 	}
 }
@@ -105,25 +124,28 @@ aside {
 			@include column(3);
 		}
 	}
-	#article-icon img {
-		@include push(1.5);
-	}
 }
 
 @media screen and (max-width: 768px) {
-	.center {	
+	.center {
+		#logo, #slogan {
+			@include column(12);
+		}
+
 	 	#logo {
-			@include push(3.25);
+			@include push(2.5);
 	 	}
 		#slogan {
-	 		@include push(3.75);
+	 		@include push(3);
 		}
 	 }
+	
+	section, #article-wraper, article {
+		@include column(12);
+	}
+
 	aside {
 		display: none;
-	}
-	section, .article-wraper {
-		@include column(12);
 	}
 }
 
@@ -136,9 +158,36 @@ aside {
 			@include push(1.5);
 		}
 		#slogan {
-			@include push(3.5);
+			display: none;
 		}
 	}
 
+	ul.boxes {
+				li{
+					@include column(12);
+					margin-bottom: 10px;
+				}
+			}
+	
+	section {
+	#detail-wrapper, #form-wrapper {
+		@include row(8);
+			.detailbox {
+				@include column(12);
+			}
+		}
+	}
+
+	.article-icon svg, .article-icon image {
+		display: none;
+	}
+
+	#content-padding {
+		@include row(8);
+		
+		.article-text {
+			@include column(8,8);
+		}
+	}	
 }
 

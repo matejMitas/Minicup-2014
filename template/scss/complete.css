@@ -1,3 +1,4 @@
+@import url(swipebox.css);
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -93,6 +94,23 @@ footer, .hrane, .nasledujici, .poradi, #map-canvas {
 nav {
   margin-bottom: 16px; }
 
+ul.boxes {
+  display: block;
+  width: 101.5873%;
+  margin: 0 -0.79365%;
+  *zoom: 1; }
+  ul.boxes:before, ul.boxes:after {
+    content: "";
+    display: table; }
+  ul.boxes:after {
+    clear: both; }
+  ul.boxes li {
+    display: inline;
+    float: left;
+    width: 31.74603%;
+    margin: 0 0.79365%;
+    margin-bottom: 10px; }
+
 .center #logo {
   display: inline;
   float: left;
@@ -129,6 +147,21 @@ section {
       float: left;
       width: 31.53929%;
       margin: 0 0.89286%; }
+  section #detail-wrapper, section #form-wrapper {
+    display: block;
+    width: 101.78571%;
+    margin: 0 -0.89286%;
+    *zoom: 1; }
+    section #detail-wrapper:before, section #detail-wrapper:after, section #form-wrapper:before, section #form-wrapper:after {
+      content: "";
+      display: table; }
+    section #detail-wrapper:after, section #form-wrapper:after {
+      clear: both; }
+    section #detail-wrapper .detailbox, section #form-wrapper .detailbox {
+      display: inline;
+      float: left;
+      width: 48.21429%;
+      margin: 0 0.89286%; }
 
 #article-wraper {
   display: inline;
@@ -150,6 +183,11 @@ section {
       float: left;
       width: 66.96429%;
       margin: 0 0.89286%; }
+    #article-wraper #content-padding .article-icon {
+      display: inline;
+      float: left;
+      width: 19.64286%;
+      margin: 0 0.59524%; }
 
 aside {
   display: inline;
@@ -212,24 +250,26 @@ aside {
     display: inline;
     float: left;
     width: 23.80952%;
-    margin: 0 0.59524%; }
-
-  #article-icon img {
-    margin-left: 13.09524%; } }
+    margin: 0 0.59524%; } }
 @media screen and (max-width: 768px) {
-  .center #logo {
-    margin-left: 27.67857%; }
-  .center #slogan {
-    margin-left: 31.84524%; }
-
-  aside {
-    display: none; }
-
-  section, .article-wraper {
+  .center #logo, .center #slogan {
     display: inline;
     float: left;
     width: 98.80952%;
-    margin: 0 0.59524%; } }
+    margin: 0 0.59524%; }
+  .center #logo {
+    margin-left: 21.42857%; }
+  .center #slogan {
+    margin-left: 25.59524%; }
+
+  section, #article-wraper, article {
+    display: inline;
+    float: left;
+    width: 98.80952%;
+    margin: 0 0.59524%; }
+
+  aside {
+    display: none; } }
 @media screen and (max-width: 480px) {
   .center #slogan {
     display: inline;
@@ -239,10 +279,52 @@ aside {
   .center #logo {
     margin-left: 13.09524%; }
   .center #slogan {
-    margin-left: 29.7619%; } }
+    display: none; }
+
+  ul.boxes li {
+    display: inline;
+    float: left;
+    width: 98.80952%;
+    margin: 0 0.59524%;
+    margin-bottom: 10px; }
+
+  section #detail-wrapper, section #form-wrapper {
+    display: block;
+    width: 101.78571%;
+    margin: 0 -0.89286%;
+    *zoom: 1; }
+    section #detail-wrapper:before, section #detail-wrapper:after, section #form-wrapper:before, section #form-wrapper:after {
+      content: "";
+      display: table; }
+    section #detail-wrapper:after, section #form-wrapper:after {
+      clear: both; }
+    section #detail-wrapper .detailbox, section #form-wrapper .detailbox {
+      display: inline;
+      float: left;
+      width: 98.80952%;
+      margin: 0 0.59524%; }
+
+  .article-icon svg, .article-icon image {
+    display: none; }
+
+  #content-padding {
+    display: block;
+    width: 101.78571%;
+    margin: 0 -0.89286%;
+    *zoom: 1; }
+    #content-padding:before, #content-padding:after {
+      content: "";
+      display: table; }
+    #content-padding:after {
+      clear: both; }
+    #content-padding .article-text {
+      display: inline;
+      float: left;
+      width: 98.21429%;
+      margin: 0 0.89286%; } }
 header {
   position: relative;
-  background: #2a2a2a;
+  background: #232020;
   color: white; }
 
 #logo {
@@ -261,14 +343,18 @@ header {
 
 #barton img {
   width: 240px;
-  padding-top: 120px; }
+  padding-top: 120px;
+  opacity: .5; }
+
+#barton img:hover {
+  opacity: 1; }
 
 @media screen and (max-width: 768px) {
   header #slogan, header #barton {
     padding-top: 0px; }
   header #slogan {
     padding-bottom: 32px; }
-  header #barton img {
+  header #barton img, header #slogan {
     display: none; } }
 @media screen and (max-width: 480px) {
   header #barton {
@@ -291,13 +377,13 @@ nav {
     display: inline;
     float: left; }
   nav a {
-    color: #e6e6e6;
+    color: #a9d2f1;
     display: inline-block;
     width: 128px;
     text-align: center;
     text-decoration: none;
     line-height: 40px;
-    font-weight: 300; }
+    font-weight: 400; }
   nav li a {
     padding: 18px 0px;
     border-right: 1px solid #256ca1;
@@ -349,17 +435,12 @@ nav {
     background-color: #12344e;
     width: 100%;
     position: relative;
-    color: white; }
+    color: white;
+    height: 75px; }
 
-  nav a#pull:after {
-    content: "";
-    background: url("../img/nav-icon.png") no-repeat;
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    position: absolute;
-    right: 15px;
-    top: 10px; } }
+  nav a#pull p {
+    text-align: center;
+    padding-top: 17px; } }
 /*Smartphone*/
 @media only screen and (max-width: 320px) {
   nav li {
@@ -368,7 +449,10 @@ nav {
     width: 100%; }
 
   nav li a {
-    border-bottom: 1px solid #576979; } }
+    border-bottom: 1px solid #576979; }
+
+  nav a#pull:after {
+    left: 200px; } }
 section, article {
   background: white;
   box-shadow: inset 0 0 0 1px #cccccc;
@@ -378,15 +462,21 @@ section, article {
 #content-padding {
   padding: 32px; }
 
+section h1 {
+  font-size: 68px;
+  font-weight: 300;
+  padding: 30px 0 70px 0; }
 section h2 {
   color: #333333;
   font-size: 24px;
   font-weight: 700;
   padding-bottom: 20px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  border-bottom: 1px solid #cccccc; }
 section h3 {
   font-size: 18px;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  padding-top: 20px; }
 section p {
   font-size: 16px;
   line-height: 1.15;
@@ -420,36 +510,71 @@ article h4 {
 article .article-date {
   font-weight: 700; }
 article .article-icon {
-  height: 100%;
-  padding: 10px; }
+  padding-top: 2%; }
 
-#tymy-wrapper span {
-  padding: 5px 0 5px 0; }
-  #tymy-wrapper span h2 {
-    font-size: 30px;
-    padding: 10px;
-    height: 90px;
-    line-height: 1.5;
-    color: #8f8f8f;
-    font-weight: 300;
-    text-transform: none;
-    box-shadow: inset 0 0 0 1px #8f8f8f;
-    border-radius: 0.5rem; }
-    #tymy-wrapper span h2:hover {
-      color: white;
-      background: #ffdd00;
-      box-shadow: none; }
+ul.tymy li {
+  margin-bottom: 10px;
+  font-size: 24px;
+  padding: 2.5em 0;
+  color: #8f8f8f;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 0 1px #8f8f8f; }
+  ul.tymy li:hover {
+    color: white;
+    background: #ffdd00;
+    box-shadow: none; }
+  ul.tymy li a {
+    color: #8f8f8f; }
+
+#foto-wrapper h2 {
+  border-bottom: 0; }
+  #foto-wrapper h2:not(:first-child) {
+    border-top: 1px solid #f2f2f2;
+    padding-top: 20px; }
+
+ul.foto img {
+  width: 100%;
+  max-height: 200px;
+  border: 1px solid black;
+  border-radius: 0.5rem; }
+ul.foto li {
+  padding-top: 20px; }
+
+ul.sponzori img {
+  width: 90%; }
+
+#detail-wrapper h2 {
+  color: #2c8dd7;
+  font-size: 36px;
+  padding: 20px 10px 50px 5px;
+  border: 0; }
+#detail-wrapper h4 {
+  font-size: 30px;
+  padding-bottom: 10px; }
+#detail-wrapper span.red {
+  color: red; }
+#detail-wrapper span.green {
+  color: #00cc00; }
+
+#form-wrapper + p {
+  padding-top: 20px; }
+
+#table-wrapper table td, #table-wrapper table th {
+  border: 1px solid black;
+  vertical-align: middle; }
 
 aside {
-  background: #2a2a2a;
+  background: #232020;
   border-radius: 0.5rem;
   margin-bottom: 15px; }
   aside .aside-padding {
-    padding: 0px 10px 700px 10px; }
+    padding: 0px 10px 0px 10px; }
     aside .aside-padding > div {
       border-bottom: 1px solid #474747; }
     aside .aside-padding .poradi {
-      border-bottom: 0; }
+      border-bottom: 0;
+      padding-bottom: 20px; }
   aside h2 {
     font-size: 14px;
     color: white;
@@ -465,9 +590,9 @@ aside {
     padding: 40px 0 40px 0;
     border-radius: 10px 10px 0 0;
     font-size: 18px; }
-  aside .toogle a {
+  aside .toogle {
     color: gray; }
-  aside .aside-active a {
+  aside .aside-active {
     color: white; }
   aside .domaci h3 {
     color: #e6e6e6;
@@ -514,7 +639,7 @@ footer {
     footer .date h3 {
       font-size: 16px; }
   footer .authors {
-    background: #2a2a2a;
+    background: #232020;
     text-align: center;
     font-size: 14px;
     color: #666666;
@@ -628,18 +753,20 @@ footer {
 
   .main-content #sidebar-toggle .bar:last-child {
     margin-bottom: 0; } }
-button, input {
+button, input, textarea {
   border: 0;
   border-radius: 0.5rem;
   font-weight: 700; }
 
-input[type=text] {
+input, textarea {
   color: #8f8f8f;
-  border: 1px solid #8f8f8f;
-  padding: 15px 10px; }
+  box-shadow: inset 0 0 0 1px #8f8f8f;
+  padding: 15px 10px;
+  width: 50%;
+  margin-bottom: 10px; }
 
-input[type=text]:focus {
-  border: 2px solid #2c8dd7;
+input:focus, textarea:focus {
+  box-shadow: inset 0 0 0 2px #2c8dd7;
   color: #2c8dd7; }
 
 button[type=submit] {
@@ -651,7 +778,7 @@ button[type=submit] {
 button[type=submit]:hover {
   background: white;
   color: #2c8dd7;
-  border: 2px solid #2c8dd7; }
+  box-shadow: inset 0 0 0 2px #2c8dd7; }
 
 .button-active {
   background: #2c8dd7;

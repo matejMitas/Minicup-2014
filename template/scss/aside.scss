@@ -4,7 +4,7 @@ aside {
 	margin-bottom: 15px;
 
 	.aside-padding {
-		padding: 0px 10px 700px 10px;
+		padding: 0px 10px 0px 10px;
 
 		& > div {
 			border-bottom: 1px solid darken($white, 72%);
@@ -12,6 +12,7 @@ aside {
 
 		.poradi {
 			border-bottom: 0;
+			padding-bottom: 20px;
 		}
 	}
 
@@ -36,11 +37,11 @@ aside {
 		font-size: 18px;
 	}
 	
-	.toogle a {
+	.toogle {
 		color: darken($white, 50%);
 	}
 
-	.aside-active a {
+	.aside-active {
 		color: white;
 	}
 
