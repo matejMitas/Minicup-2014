@@ -30,7 +30,7 @@ function initialize() {
   ];
 
   var mapOptions = {
-    zoom: 16,
+    zoom: 14,
     center: litovel,
     mapTypeControlOptions: {
       mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]

@@ -124,6 +124,23 @@ aside {
 			@include column(3);
 		}
 	}
+	
+	#article-wraper {
+	@include column(8);
+	
+	#content-padding {
+		@include row(8);
+		
+		.article-text {
+			@include column(5.75,8);
+		}
+
+		.article-icon {
+			@include column(2);
+		}
+	}
+}
+
 }
 
 @media screen and (max-width: 768px) {

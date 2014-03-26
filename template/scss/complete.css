@@ -250,7 +250,33 @@ aside {
     display: inline;
     float: left;
     width: 23.80952%;
-    margin: 0 0.59524%; } }
+    margin: 0 0.59524%; }
+
+  #article-wraper {
+    display: inline;
+    float: left;
+    width: 65.47619%;
+    margin: 0 0.59524%; }
+    #article-wraper #content-padding {
+      display: block;
+      width: 101.78571%;
+      margin: 0 -0.89286%;
+      *zoom: 1; }
+      #article-wraper #content-padding:before, #article-wraper #content-padding:after {
+        content: "";
+        display: table; }
+      #article-wraper #content-padding:after {
+        clear: both; }
+      #article-wraper #content-padding .article-text {
+        display: inline;
+        float: left;
+        width: 70.08929%;
+        margin: 0 0.89286%; }
+      #article-wraper #content-padding .article-icon {
+        display: inline;
+        float: left;
+        width: 15.47619%;
+        margin: 0 0.59524%; } }
 @media screen and (max-width: 768px) {
   .center #logo, .center #slogan {
     display: inline;
@@ -372,7 +398,7 @@ nav {
   nav ul {
     padding: 0;
     width: 100%;
-    height: 40px; }
+    height: 75px; }
   nav li {
     display: inline;
     float: left; }
@@ -760,14 +786,15 @@ button, input, textarea {
 
 input, textarea {
   color: #8f8f8f;
-  box-shadow: inset 0 0 0 1px #8f8f8f;
+  border: 1px solid #8f8f8f;
   padding: 15px 10px;
   width: 50%;
   margin-bottom: 10px; }
 
 input:focus, textarea:focus {
-  box-shadow: inset 0 0 0 2px #2c8dd7;
-  color: #2c8dd7; }
+  border: 2px solid #2c8dd7;
+  color: #2c8dd7;
+  transition: border .5s ease; }
 
 button[type=submit] {
   color: white;
@@ -778,7 +805,8 @@ button[type=submit] {
 button[type=submit]:hover {
   background: white;
   color: #2c8dd7;
-  box-shadow: inset 0 0 0 2px #2c8dd7; }
+  border: 2px solid #2c8dd7;
+  transition: border .1s ease; }
 
 .button-active {
   background: #2c8dd7;
