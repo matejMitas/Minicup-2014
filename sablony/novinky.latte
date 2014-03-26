@@ -1,12 +1,24 @@
 {layout '@layout.latte'}
 
 {block main}
-<div id="section-padding">
+<div id="article-wraper">
 	{foreach $novinky as $novinka}
 	<article>
-		<h2>{$novinka["titulek"]}</h2>
-		<i>{$novinka["vlozeno"]|relDateCZ}</i>
-		<p>{$novinka["aktualita"]|noescape}</p>
+		<div id="content-padding">
+			<div class="article-text">
+				<h4>přidáno <span class="article-date">{$novinka["vlozeno"]|relDateCZ}</span></h4>
+
+				<h2>{$novinka["titulek"]}</h2>
+
+				<h3>{$novinka["aktualita"]|noescape}</h3>
+			</div>
+			
+			<div class="article-icon">
+				<svg width="100" height="100">
+	  				<image xlink:href="img/prispevky-icon/foto.svg" src="img/logo.png" width="100" height="100" />
+				</svg>
+			</div>	
+		</div>
 	</article>
 	{/foreach}
 </div>

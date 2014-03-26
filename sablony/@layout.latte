@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
     <title>Minicup 2014</title>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
+    </script>
+
+    <script src="js/map.js">
+    </script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
     
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/complete.scss">
+    <link rel="stylesheet" href="css/style.php?file=complete.scss">  
 
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js">
+    </script>
+        
     <script>
         $(function() {
             var pull        = $('#pull');
@@ -41,7 +49,6 @@
         </script>
     <![endif]-->
 
-
 </head>
 <body>
     <header>
@@ -52,8 +59,8 @@
                 </svg>
             </div>
             <div id="slogan">
-                <h2>23. - 25. dubna</h2>
-                <h3>2. ročník mezinárodního turnaje v miniházené </h3>
+                <h2>23. - 25. května</h2>
+                <h3>2. ročník mezinárodního turnaje v miniházené</h3>
             </div>
             <div id="barton">
                 <a href="http://www.barton-a-partner.cz/"><img src="img/barton.png" alt=""></a>
@@ -65,33 +72,27 @@
         <div class="center">
             <ul class="clearfix">
                 <li n:foreach="$menu as $polozka => $cz">
-                    <a href="?controller={$polozka}">{$cz|upper}</a>
+                    <a href="{$polozka}">{$cz|upper}</a>
                 </li>
             </ul>
             <a href="#" id="pull">Menu</a> 
         </div>
     </nav>
 <div class="center">
-    <section>
 {block main}
 
 {/block}
-    </section>
-
-                
-                <aside>
+<aside>
                     <div class="toogle">
-                        <span class="aside-active">
-                        <a href="">Mladší/</a>
-                        </span>
-                        <a href="">Starší</a>
+                            <span class="toggle-src" data-src="mladsi">Mladší</span>
+                            /
+                            <span class="toggle-src" data-src="starsi">Starší</span> 
+
                     </div>
                     
-                    <div class="aside-padding">
-                        
+                    <div class="aside-padding tog toggle-target" data-target="mladsi">
                         <div class="hrane">
                             <h2>aktuálně hrané</h2>
-
                             {foreach $praveHrane as $zapas}
                                 <div class="zapas">
                                     <span class="domaci"><h3>{$zapas["0"]}</h3></span>
@@ -99,26 +100,14 @@
                                 </div>
                             {/foreach}
                         </div>
-
                         <div class="nasledujici">
                             <h2>následující zápasy</h2>
-                            
-                            <div class="domaci">
-
-                                <h3>Ivanka pri Dunaji</h3>
-                                <h3>TJ Jiskra Otrokovice</h3>
-                                <h3>TJ Rožnov p. Radhoštěm</h3>
-                                <h3>Tatran Litovel</h3>
-                            </div>
-                            
-                            <div class="hoste">
-                                
-                                <h3>Ivanka pri Dunaji</h3>
-                                <h3>TJ Jiskra Otrokovice</h3>
-                                <h3>TJ Rožnov p. Radhoštěm</h3>
-                                <h3>Tatran Litovel</h3>
-                            </div>
-
+                            {foreach $nasledujici as $zapas}
+                                <div class="zapas">
+                                    <span class="domaci"><h3>{$zapas["0"]}</h3></span>
+                                    <span class="hoste"><h3>{$zapas["1"]}</h3></span>
+                                </div>
+                            {/foreach}
                         </div>  
 
                         <div class="poradi">
@@ -129,8 +118,12 @@
                                 <li>Skóre</li>
                                 <li>Bodů</li>
                             </ul>
+                            
                             {foreach $tabulka as $klic => $tym}
-                            <ul>
+                            <ul {if $iterator->getCounter() == 1}class="gold"{/if}
+                                {if $iterator->getCounter() == 2}class="silver"{/if}
+                                {if $iterator->getCounter() == 3}class="bronze"{/if}
+                            >
                                 <li>{$tym["poradi"]}.</li>
                                 <li>{$tym["jmeno"]}</li>
                                 <li>{$tym["dane"]}:{$tym["dostane"]}</li>
@@ -139,8 +132,51 @@
                             {/foreach}
                             
                         </div>
-                    </div>  
-                </aside>
+                    </div>
+                    </aside>
+                    <script>
+                        /** trida pro tlacitka */
+                        var toggleButtons = ".toggle-src";
+
+                        /** trida pro toggle elementy */
+                        var toggleTargets = ".toggle-target";
+
+                        /** trida pro highlight tlacitek */
+                        var toggleActive = "active";
+
+                        /** ovladani togglu: 
+                                <element class="toggle-src" data-src="mujcil">
+                            ovladane elementy:
+                                <element class="toggle-target" data-target="mujcil">
+                        */
+
+
+                        $(toggleButtons).click(function(event){
+                            var src = $(this).data("src");
+
+                            $(toggleButtons).each(function(){
+                                $(this).removeClass(toggleActive);
+                            });
+                            $(this).addClass(toggleActive);
+
+
+                            $(toggleTargets).each(function(){
+                                var target = $(this).data("target");
+                                if (target == src) {
+                                    $(this).show();
+                                } else {
+                                    $(this).hide();
+                                }
+                            });
+                        });
+
+                        /* $("toggle-src")
+                        $("toggle-target") */
+
+
+                    </script>
+                
+
         </div>
     
 <div id="mapDiv"></div>
