@@ -149,7 +149,8 @@ HTML;
 			INNER JOIN `2014_tymy_{$this->kategorie}` b ON b.`ID_teamu` = :id
 			WHERE a.`ID_domaci` = :id OR a.`ID_hoste` = :id
 SQL;
-		$uspesnost = dbWrapper::dotaz($SQL,array("id" => $this->idTymu))->fetchAll()[0][0];
+		// $uspesnost = dbWrapper::dotaz($SQL,array("id" => $this->idTymu))->fetchAll()[0][0];
+		$uspesnost = 1;
 		return round($uspesnost*100);
 	}
 }
