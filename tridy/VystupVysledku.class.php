@@ -19,7 +19,7 @@ class VystupVysledku {
     function __construct($kategorie) {
     	$this->kategorie = $kategorie;
     }
-	public function ziskejOdehraneZapasy($datum){
+	public function ziskejOdehraneZapasy($datum) {
 		$sql=<<<SQL
 			SELECT 
 			b.`jmeno`,c.`jmeno`,a.`SCR_domaci`,`SCR_hoste`
@@ -33,7 +33,21 @@ SQL;
 		Array(strtotime($datum),strtotime($datum)+60*60*24))->fetchAll();
 		
 		return $aZapasy;
-		}
+	}
+
+	public function ziskejPraveHraneZapasy($limit = 2) {
+		$sql=<<<SQL
+			SELECT 
+			b.`jmeno`,c.`jmeno`
+			FROM `2014_zapasy_{$this->kategorie}` a
+				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
+				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
+			WHERE a.`odehrano` = 0
+			ORDER BY a.`ID_zapasu` ASC
+			LIMIT $limit
+SQL;
+		return dbWrapper::dotaz($sql, Array())->fetchAll();
+	}
 
 	public function ziskejTabulkuVysledku(){
 		$SQL=<<<SQL

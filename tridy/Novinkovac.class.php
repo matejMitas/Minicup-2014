@@ -1,12 +1,6 @@
 <?php
 class Novinkovac{
 
-
-
-	function __construct() {
-		
-	}
-	
 public function ziskejNovinky($pocet) {
 	$novinky=dbWrapper::dotaz(<<<SQL
 		SELECT `aktualita`, `titulek`, `vlozeno`
