@@ -9,7 +9,29 @@ dbWrapper::pripoj();
 
 require 'NetteInit.php';
 
-$novinkovac = new Novinkovac();
+$controllers = array(
+    "novinky" => "novinky",
+    "informace" => "informace",
+    "tabulky" => "tabulky",
+    "tymy" => "týmy",
+    "fotogalerie" => "fotogalerie",
+    "sponzori" => "sponzoři"
+    );
+
+if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
+    $controllerPath = "kontrolery/". $_GET["controller"] .".php";
+    if (file_exists($controllerPath)) {
+        include $controllerPath;
+    } else {
+        $template = new Nette\Templating\FileTemplate('sablony/template.latte');
+    }
+}
+
+$VystupVysledku = new VystupVysledku("mladsi");
+$template->tabulka = $VystupVysledku->ziskejTabulkuVysledku();
+$template->praveHrane = $VystupVysledku->ziskejPraveHraneZapasy();
+
+
 
 if (isset($_POST['titulek'],$_POST['aktualita'])) {
     $novinkovac->vlozNovinku($_POST['titulek'],$_POST['aktualita']);
@@ -17,18 +39,9 @@ if (isset($_POST['titulek'],$_POST['aktualita'])) {
     header("Location: {$_SERVER['PHP_SELF']}");
 }
 
-$VystupVysledku = new VystupVysledku("mladsi");
-$VkladacZapasu = new VkladacZapasu('mladsi', 4);
-$DetailTymu = new DetailTymu('mladsi', rand(1,12));
-$Prepocet = new Prepocet("mladsi");
 
 
 
-
-
-use Nette\Templating\FileTemplate;
-
-$template = new FileTemplate('sablony/template.latte'); // soubor se šablonou
 $template->setCacheStorage(new Nette\Caching\Storages\PhpFileStorage('sablony/cache'));
 $template->onPrepareFilters[] = function($template) {
     $template->registerFilter(new Nette\Latte\Engine);
@@ -64,20 +77,28 @@ $template->registerHelper('relDateCZ', function ($time) {
 		} else {
             return "v budoucnu";
         }});
-
 if (isset($_SESSION["zprava"])){
     $template->alert = "Nějaká zpráva: {$_SESSION['zprava']}";
     unset($_SESSION["zprava"]);
 }
 
-$template->novinky = $novinkovac->ziskejNovinky(3);
-$template->formular = $novinkovac->ziskejVkladaciFormular().$VkladacZapasu->ziskejFormular($_POST);
+
+$template->menu = $controllers;
+
+
+
+$VkladacZapasu = new VkladacZapasu('mladsi', 4);
+$DetailTymu = new DetailTymu('mladsi', rand(1,12));
+$Prepocet = new Prepocet("mladsi");
+
+
+
 
 $Prepocet->aktualizujBody();
 $Prepocet->serad();
 
 $template->zapasy = $VystupVysledku->ziskejOdehraneZapasy("2014-05-23 00:00:00");
-$template->tabulka = $VystupVysledku->ziskejTabulkuVysledku();
+
 $template->title = $DetailTymu->ziskejNazevTymu();
 
 $template->asideTop = $DetailTymu->ziskejPoradiSkore()." Úspěšnost: ".$DetailTymu->ziskejProcentualniUspech()." %";
