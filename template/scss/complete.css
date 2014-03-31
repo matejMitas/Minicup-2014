@@ -114,12 +114,12 @@ ul.boxes {
 .center #logo {
   display: inline;
   float: left;
-  width: 23.80952%;
+  width: 27.97619%;
   margin: 0 0.59524%; }
 .center #slogan {
   display: inline;
   float: left;
-  width: 40.47619%;
+  width: 36.30952%;
   margin: 0 0.59524%; }
 .center #barton {
   display: inline;
@@ -307,7 +307,7 @@ aside {
   .center #slogan {
     display: none; }
 
-  ul.boxes li {
+  ul.boxes li, ul.sponzori li {
     display: inline;
     float: left;
     width: 98.80952%;
@@ -354,10 +354,10 @@ header {
   color: white; }
 
 #logo {
-  padding: 32px 32px 32px 16px; }
+  padding: 16px 32px 16px 16px; }
 
 #slogan {
-  padding-top: 120px; }
+  padding-top: 110px; }
   #slogan h2 {
     font-size: 42px;
     padding-bottom: 14px;
@@ -368,8 +368,8 @@ header {
     font-weight: 700; }
 
 #barton img {
-  width: 240px;
-  padding-top: 120px;
+  width: 260px;
+  padding-top: 110px;
   opacity: .5; }
 
 #barton img:hover {
@@ -568,7 +568,7 @@ ul.foto li {
   padding-top: 20px; }
 
 ul.sponzori img {
-  width: 90%; }
+  width: 70%; }
 
 #detail-wrapper h2 {
   color: #2c8dd7;
@@ -585,10 +585,6 @@ ul.sponzori img {
 
 #form-wrapper + p {
   padding-top: 20px; }
-
-#table-wrapper table td, #table-wrapper table th {
-  border: 1px solid black;
-  vertical-align: middle; }
 
 aside {
   background: #232020;
@@ -811,3 +807,57 @@ button[type=submit]:hover {
 .button-active {
   background: #2c8dd7;
   color: white; }
+
+#table-wrapper {
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  /* Zebra striping */ }
+  @media screen and (min-width: 768px) {
+    #table-wrapper td, #table-wrapper th {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left; } }
+  @media screen and (max-width: 760px) {
+    #table-wrapper {
+      /* Force table to not be like tables anymore */
+      /* Hide table headers (but not display: none;, for accessibility) */
+      /*
+      Label the data
+      */ }
+      #table-wrapper table, #table-wrapper thead, #table-wrapper tbody, #table-wrapper th, #table-wrapper td, #table-wrapper tr {
+        display: block; }
+      #table-wrapper thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; }
+      #table-wrapper tr {
+        border: 1px solid #ccc; }
+      #table-wrapper td, #table-wrapper th {
+        border: none; }
+      #table-wrapper td {
+        /* Behave  like a "row" */
+        position: relative;
+        padding-left: 50%;
+        margin: 10px; }
+      #table-wrapper td:before {
+        /* Now like a table header */
+        position: absolute;
+        left: 6px;
+        width: 50%;
+        padding-right: 10px; }
+      #table-wrapper td:nth-of-type(1):before {
+        content: "Cas"; }
+      #table-wrapper td:nth-of-type(2):before {
+        content: "Domaci"; }
+      #table-wrapper td:nth-of-type(3):before {
+        content: "Hoste"; } }
+  #table-wrapper table {
+    width: 100%;
+    border-collapse: collapse; }
+  #table-wrapper tr:nth-of-type(odd) {
+    background: #eee; }
+  #table-wrapper th {
+    background: #333;
+    color: white;
+    border: none; }
