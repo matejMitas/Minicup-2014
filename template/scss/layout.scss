@@ -199,13 +199,5 @@ aside {
 	.article-icon svg, .article-icon image {
 		display: none;
 	}
-
-	#content-padding {
-		@include row(8);
-		
-		.article-text {
-			@include column(8,8);
-		}
-	}	
 }
 

@@ -234,6 +234,48 @@
 						</div>
 					</div>	
 		</aside>
+
+		<script>
+						/** trida pro tlacitka */
+						var toggleButtons = ".toggle-src";
+
+						/** trida pro toggle elementy */
+						var toggleTargets = ".toggle-target";
+
+						/** trida pro highlight tlacitek */
+						var toggleActive = "active";
+
+						/** ovladani togglu: 
+								<element class="toggle-src" data-src="mujcil">
+							ovladane elementy:
+								<element class="toggle-target" data-target="mujcil">
+						*/
+
+
+						$(toggleButtons).click(function(event){
+							var src = $(this).data("src");
+
+							$(toggleButtons).each(function(){
+								$(this).removeClass(toggleActive);
+							});
+							$(this).addClass(toggleActive);
+
+
+							$(toggleTargets).each(function(){
+								var target = $(this).data("target");
+								if (target == src) {
+									$(this).show();
+								} else {
+									$(this).hide();
+								}
+							});
+						});
+
+						/* $("toggle-src")
+						$("toggle-target") */
+
+
+					</script>
 		
 	</div> 
 	

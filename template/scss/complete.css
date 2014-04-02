@@ -331,23 +331,7 @@ aside {
       margin: 0 0.59524%; }
 
   .article-icon svg, .article-icon image {
-    display: none; }
-
-  #content-padding {
-    display: block;
-    width: 101.78571%;
-    margin: 0 -0.89286%;
-    *zoom: 1; }
-    #content-padding:before, #content-padding:after {
-      content: "";
-      display: table; }
-    #content-padding:after {
-      clear: both; }
-    #content-padding .article-text {
-      display: inline;
-      float: left;
-      width: 98.21429%;
-      margin: 0 0.89286%; } }
+    display: none; } }
 header {
   position: relative;
   background: #232020;
@@ -808,74 +792,72 @@ button[type=submit]:hover {
   background: #2c8dd7;
   color: white; }
 
-#table-wrapper {
-  /* Zebra striping */ }
-  #table-wrapper .toggle-src {
-    font-size: 18px;
-    color: #cccccc;
-    font-weight: 400; }
-  #table-wrapper .active {
-    color: #2c8dd7; }
-  #table-wrapper td:hover {
-    background: #2c8dd7;
-    color: white; }
-  #table-wrapper td:nth-child(2):hover {
-    color: black;
-    background: none; }
-  @media screen and (min-width: 768px) {
-    #table-wrapper td, #table-wrapper th {
-      padding: 10px;
-      border: 1px solid #ccc;
-      text-align: left; } }
-  @media screen and (max-width: 760px) {
-    #table-wrapper table, #table-wrapper thead, #table-wrapper tbody, #table-wrapper th, #table-wrapper td, #table-wrapper tr {
-      display: block; }
-    #table-wrapper thead tr {
-      position: absolute;
-      top: -9999px;
-      left: -9999px; }
-    #table-wrapper tr {
-      border: 1px solid #ccc; }
-    #table-wrapper td, #table-wrapper th {
-      border: none; }
-    #table-wrapper td {
-      position: relative;
-      padding-left: 50%;
-      margin: 10px; }
-    #table-wrapper td:before {
-      position: absolute;
-      left: 6px;
-      width: 50%;
-      padding-right: 10px; }
-    #table-wrapper .rozlos td:nth-of-type(1):before {
-      content: "Cas"; }
-    #table-wrapper .rozlos td:nth-of-type(2):before {
-      content: "Domaci"; }
-    #table-wrapper .rozlos td:nth-of-type(3):before {
-      content: "Hoste"; }
-    #table-wrapper .zapasy td:nth-of-type(1):before {
-      content: "Domaci"; }
-    #table-wrapper .zapasy td:nth-of-type(2):before {
-      content: "Skore"; }
-    #table-wrapper .zapasy td:nth-of-type(3):before {
-      content: "Hoste"; }
-    #table-wrapper .tabul td:nth-of-type(1):before {
-      content: "Domaci"; }
-    #table-wrapper .tabul td:nth-of-type(2):before {
-      content: "Skore"; }
-    #table-wrapper .tabul td:nth-of-type(3):before {
-      content: "Hoste"; }
-    #table-wrapper .tabul td:nth-of-type(4):before {
-      content: "Domaci"; }
-    #table-wrapper .tabul td:nth-of-type(5):before {
-      content: "Skore"; } }
-  #table-wrapper table {
-    margin-top: 30px;
-    width: 100%;
-    border-collapse: collapse; }
-  #table-wrapper tr:nth-of-type(even) {
-    background: #eee; }
-  #table-wrapper th {
-    background: #333;
-    color: white;
+#table-wrapper .toggle-src {
+  font-size: 18px;
+  color: #cccccc;
+  font-weight: 400; }
+#table-wrapper .active {
+  color: #2c8dd7; }
+#table-wrapper td:hover {
+  background: #2c8dd7;
+  color: white; }
+#table-wrapper td:nth-child(2):hover {
+  color: black;
+  background: none; }
+@media screen and (min-width: 768px) {
+  #table-wrapper td, #table-wrapper th {
+    padding: 15px;
+    border: 1px solid #ccc;
+    text-align: left; } }
+@media screen and (max-width: 760px) {
+  #table-wrapper table, #table-wrapper thead, #table-wrapper tbody, #table-wrapper th, #table-wrapper td, #table-wrapper tr {
+    display: block; }
+  #table-wrapper thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px; }
+  #table-wrapper tr {
+    border: 1px solid #ccc; }
+  #table-wrapper td, #table-wrapper th {
     border: none; }
+  #table-wrapper td {
+    position: relative;
+    padding-left: 50%;
+    margin: 10px; }
+  #table-wrapper td:before {
+    position: absolute;
+    left: 6px;
+    width: 50%;
+    padding-right: 10px; }
+  #table-wrapper .rozlos td:nth-of-type(1):before {
+    content: "Cas"; }
+  #table-wrapper .rozlos td:nth-of-type(2):before {
+    content: "Domaci"; }
+  #table-wrapper .rozlos td:nth-of-type(3):before {
+    content: "Hoste"; }
+  #table-wrapper .tabul td:nth-of-type(1):before {
+    content: "Poradi"; }
+  #table-wrapper .tabul td:nth-of-type(2):before {
+    content: "Tym"; }
+  #table-wrapper .tabul td:nth-of-type(3):before {
+    content: "Zapasu"; }
+  #table-wrapper .tabul td:nth-of-type(4):before {
+    content: "Skore"; }
+  #table-wrapper .tabul td:nth-of-type(5):before {
+    content: "Bodu"; }
+  #table-wrapper .zapasy td:nth-of-type(1):before {
+    content: "Domaci"; }
+  #table-wrapper .zapasy td:nth-of-type(2):before {
+    content: "Skore"; }
+  #table-wrapper .zapasy td:nth-of-type(3):before {
+    content: "Hoste"; } }
+#table-wrapper table {
+  margin-top: 30px;
+  width: 100%;
+  border-collapse: collapse; }
+#table-wrapper tr:nth-of-type(even) {
+  background: #ededed; }
+#table-wrapper th {
+  background: #333333;
+  color: white;
+  border: none; }
