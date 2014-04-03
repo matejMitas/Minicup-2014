@@ -16,7 +16,8 @@ $controllers = array(
     "tabulky" => "tabulky",
     "tymy" => "týmy",
     "fotogalerie" => "fotogalerie",
-    "sponzori" => "sponzoři"
+    "sponzori" => "sponzoři",
+    "kontakt" => "kontakt"
     );
 
 if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
@@ -28,17 +29,19 @@ if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
     include "kontrolery/novinky.php";
 }
 
-$VystupVysledku = new VystupVysledku("mladsi");
-$template->tabulka = $VystupVysledku->ziskejTabulkuVysledku();
-$template->praveHrane = $VystupVysledku->ziskejPraveHraneZapasy();
+$VystupVysledkuML = new VystupVysledku("mladsi");
+$VystupVysledkuST = new VystupVysledku("starsi");
+$template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku());
+$template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy());
 
 
 
-if (isset($_POST['titulek'],$_POST['aktualita'])) {
+
+/* if (isset($_POST['titulek'],$_POST['aktualita'])) {
     $novinkovac->vlozNovinku($_POST['titulek'],$_POST['aktualita']);
     $_SESSION["zprava"]="Novinka úspěšně vložena!";
     header("Location: {$_SERVER['PHP_SELF']}");
-}
+} */
 
 
 
@@ -97,8 +100,6 @@ $Prepocet = new Prepocet("mladsi");
 
 $Prepocet->aktualizujBody();
 $Prepocet->serad();
-
-$template->zapasy = $VystupVysledku->ziskejOdehraneZapasy("2014-05-23 00:00:00");
 
 $template->title = $DetailTymu->ziskejNazevTymu();
 
