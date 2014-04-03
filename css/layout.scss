@@ -30,21 +30,22 @@ nav {
 }
 
 ul.boxes {
-			@include row(9);
+		@include row(9);
 
-			li {
-				@include column(3,9);
-				margin-bottom: 10px;
-			}
+		li {
+			@include column(3,9);
+			margin-bottom: 10px;
 		}
+}
+
 
 
 .center {
 	#logo {
-		@include column(3);
+		@include column(3.5);
 	}
 	#slogan {
-		@include column(5);
+		@include column(4.5);
 	}
 	#barton {
 		@include column(3);
@@ -179,16 +180,16 @@ aside {
 		}
 	}
 
-	ul.boxes {
-				li{
-					@include column(12);
-					margin-bottom: 10px;
-				}
-			}
+	ul.boxes, ul.sponzori {
+		li{
+			@include column(12);
+			margin-bottom: 10px;
+		}
+	}
 	
 	section {
-	#detail-wrapper, #form-wrapper {
-		@include row(8);
+		#detail-wrapper, #form-wrapper {
+			@include row(8);
 			.detailbox {
 				@include column(12);
 			}
@@ -198,13 +199,5 @@ aside {
 	.article-icon svg, .article-icon image {
 		display: none;
 	}
-
-	#content-padding {
-		@include row(8);
-		
-		.article-text {
-			@include column(8,8);
-		}
-	}	
 }
 
