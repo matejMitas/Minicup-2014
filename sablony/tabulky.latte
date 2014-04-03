@@ -2,7 +2,105 @@
 {block main}
 <section>
 <div id="content-padding">
-<h2>Bude zveřejněno!</h2>
+{*}<h2>Bude zveřejněno!</h2>{/*}
+
+<div id="table-wrapper">
+	<div class="toogle">
+		<span class="toggle-src-main" data-src="rozlos">Rozlosování</span>/<span class="toggle-src-main" data-src="zapasy">Zápasy</span>/<span class="toggle-src-main" data-src="tabul">Tabulky</span>	
+	</div>
+		<div class="toggle-target-main" data-target="rozlos">
+			<span class="toggle-src-sub" data-src="mladsi">Mladší</span>/<span class="toggle-src-sub" data-src="starsi">Starší</span>
+			<table class="rozlos toggle-target-sub" data-target="mladsi">
+				<thead>
+				<tr>
+					<th>Domácí Mladší</th>
+					<th>Čas</th>
+					<th>Hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>9:00</td>
+					<td>Ivanka pri Dunaji</td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="rozlos toggle-target-sub" data-target="starsi">
+				<thead>
+				<tr>
+					<th>Domácí Starší</th>
+					<th>Čas</th>
+					<th>Hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>9:00</td>
+					<td>Ivanka pri Dunaji</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="toggle-target-main" data-target="zapasy">
+			<table class="zapasy">
+				<thead>
+				<tr>
+					<th>Domácí</th>
+					<th>Skóre</th>
+					<th>Hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>7:00</td>
+					<td>Ivanka pri Dunaji</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="toggle-target-main" data-target="tabul">
+			<div class="toogle">
+				<span class="toggle-src-sub" data-src="mladsi">Mladší</span>/<span class="toggle-src-sub" data-src="starsi">Starší</span>
+			</div>
+			
+			{foreach array("mladsi" => "Mladší", "mladsi" => "Starší") as $key => $value}
+			<table class="tabul toggle-target-sub" data-target="{$key}">
+				<thead>
+				<tr>
+					<th>Pořadí</th>
+					<th>Tým</th>
+					<th>Zápasů</th>
+					<th>Skóre</th>
+					<th>Bodů</th>
+				</tr>
+				</thead>
+				<tbody>
+				{foreach $tabulka[$key] as $klic => $tym}
+				<tr {if $iterator->getCounter() == 1}class="gold"{/if}{if $iterator->getCounter() == 2}class="silver"{/if}{if $iterator->getCounter() == 3}class="bronze"{/if}>
+					<td>{$tym["poradi"]}.</td>
+					<td>{$tym["jmeno"]}</td>
+					<td>počet zápasů {$value}</td>
+					<td>{$tym["dane"]}:{$tym["dostane"]}</td>
+					<td>{$tym["body"]}</td>
+				</tr>
+				{/foreach}	
+				</tbody>
+			</table>
+			{/foreach}
+		</div>
+</div>
+
+
+<script>
+toggle(".toggle-src-main", ".toggle-target-main");
+toggle(".toggle-src-sub", ".toggle-target-sub");
+</script>
+
 </div>
 </section>
 {/block}
