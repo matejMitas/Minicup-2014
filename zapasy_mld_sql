@@ -1,0 +1,132 @@
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(1,12,"2014-05-23 13:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(11,2,"2014-05-23 13:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(3,10,"2014-05-23 13:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(9,4,"2014-05-23 13:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(5,8,"2014-05-23 14:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(7,6,"2014-05-23 14:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(11,1,"2014-05-23 14:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(10,12,"2014-05-23 14:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(2,9,"2014-05-23 15:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(8,3,"2014-05-23 15:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(4,7,"2014-05-23 15:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(6,5,"2014-05-23 15:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(1,10,"2014-05-23 16:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(9,11,"2014-05-23 16:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(12,8,"2014-05-23 16:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(7,2,"2014-05-23 16:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(3,6,"2014-05-23 17:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(5,4,"2014-05-23 17:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(9,1,"2014-05-24 09:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(8,10,"2014-05-24 09:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(11,7,"2014-05-24 09:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(6,12,"2014-05-24 09:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(2,5,"2014-05-24 10:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(4,3,"2014-05-24 10:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(1,8,"2014-05-24 10:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(7,9,"2014-05-24 10:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(10,6,"2014-05-24 11:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(5,11,"2014-05-24 11:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(12,4,"2014-05-24 11:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(3,2,"2014-05-24 11:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(7,1,"2014-05-24 12:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(6,8,"2014-05-24 12:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(9,5,"2014-05-24 12:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(4,10,"2014-05-24 12:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(11,3,"2014-05-24 13:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(2,12,"2014-05-24 13:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(1,6,"2014-05-24 13:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(5,7,"2014-05-24 13:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(8,4,"2014-05-24 14:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(3,9,"2014-05-24 14:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(10,2,"2014-05-24 14:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(12,11,"2014-05-24 14:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(5,1,"2014-05-24 15:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(4,6,"2014-05-24 15:00",0);	
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(7,3,"2014-05-25 09:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(2,8,"2014-05-25 09:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(9,12,"2014-05-25 09:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(11,10,"2014-05-25 09:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(1,4,"2014-05-25 10:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(3,5,"2014-05-25 10:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(6,2,"2014-05-25 10:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(12,7,"2014-05-25 10:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(8,11,"2014-05-25 11:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(10,9,"2014-05-25 11:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(3,1,"2014-05-25 11:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(2,4,"2014-05-25 11:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(5,12,"2014-05-25 12:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(11,6,"2014-05-25 12:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(7,10,"2014-05-25 12:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(9,8,"2014-05-25 12:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(1,2,"2014-05-25 13:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(12,3,"2014-05-25 13:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(4,11,"2014-05-25 13:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(10,5,"2014-05-25 13:30",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(6,9,"2014-05-25 14:00",0);
+INSERT INTO `2014_zapasy_mladsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
+(8,7,"2014-05-25 14:00",0);
