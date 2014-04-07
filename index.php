@@ -20,6 +20,12 @@ $controllers = array(
     "kontakt" => "kontakt"
     );
 
+
+
+$VystupVysledkuML = new VystupVysledku("mladsi");
+$VystupVysledkuST = new VystupVysledku("starsi");
+
+
 if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
     $controllerPath = "kontrolery/". $_GET["controller"] .".php";
     if (file_exists($controllerPath)) {
@@ -29,8 +35,7 @@ if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
     include "kontrolery/novinky.php";
 }
 
-$VystupVysledkuML = new VystupVysledku("mladsi");
-$VystupVysledkuST = new VystupVysledku("starsi");
+
 $template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku());
 $template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy());
 
@@ -91,7 +96,7 @@ $template->menu = $controllers;
 
 
 
-$VkladacZapasu = new VkladacZapasu('mladsi', 4);
+// $VkladacZapasu = new VkladacZapasu('mladsi', 4);
 $DetailTymu = new DetailTymu('mladsi', rand(1,12));
 $Prepocet = new Prepocet("mladsi");
 
