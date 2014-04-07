@@ -10,38 +10,33 @@
 	</div>
 		<div class="toggle-target-main" data-target="rozlos">
 			<span class="toggle-src-sub" data-src="mladsi">Mladší</span>/<span class="toggle-src-sub" data-src="starsi">Starší</span>
-			<table class="rozlos toggle-target-sub" data-target="mladsi">
+			<hr>
+			{var datumy = Array("23. 5.","24. 5.","25. 5.")}
+			{foreach $rozlosovani as $kategorie => $value}
+			<div class="rozlos toggle-target-sub" data-target="{$kategorie}">
+			{foreach $value as $den => $rozlos}
+			<h2>{$datumy[$den]}</h2>
+			<table class="rozlos">
 				<thead>
 				<tr>
-					<th>Domácí Mladší</th>
+					<th>Domácí</th>
 					<th>Čas</th>
 					<th>Hosté</th>
 				</tr>
 				</thead>
 				<tbody>
+				{foreach $rozlos as $zapas}
 				<tr>
-					<td>SK Žeravice</td>
-					<td>9:00</td>
-					<td>Ivanka pri Dunaji</td>
+					<td>{$zapas[0]}</td>
+					<td>{date("G:i",strtotime($zapas[2]))}</td>
+					<td>{$zapas[1]}</td>
 				</tr>
-				</tbody>
+				{/foreach}
+				</tbody>	
 			</table>
-			<table class="rozlos toggle-target-sub" data-target="starsi">
-				<thead>
-				<tr>
-					<th>Domácí Starší</th>
-					<th>Čas</th>
-					<th>Hosté</th>
-				</tr>
-				</thead>
-				<tbody>
-				<tr>
-					<td>SK Žeravice</td>
-					<td>9:00</td>
-					<td>Ivanka pri Dunaji</td>
-				</tr>
-				</tbody>
-			</table>
+			{/foreach}
+			</div>
+			{/foreach}
 		</div>
 
 		<div class="toggle-target-main" data-target="zapasy">
