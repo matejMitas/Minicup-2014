@@ -26,7 +26,7 @@ $VystupVysledkuML = new VystupVysledku("mladsi");
 $VystupVysledkuST = new VystupVysledku("starsi");
 
 
-if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
+if (isset($_GET["controller"], $controllers[$_GET["controller"]]) || (isset($_GET["controller"]) && $_GET["controller"] == "admin")) {
     $controllerPath = "kontrolery/". $_GET["controller"] .".php";
     if (file_exists($controllerPath)) {
         include $controllerPath;
@@ -36,17 +36,11 @@ if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
 }
 
 
-$template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku());
-$template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy());
+$template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku(),"starsi" => $VystupVysledkuST->ziskejTabulkuVysledku());
+$template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy(),"starsi" => $VystupVysledkuST->ziskejPraveHraneZapasy());
+$template->odehraneZapasy = array("mladsi" => $VystupVysledkuML->ziskejOdehraneZapasy(),"starsi" => $VystupVysledkuST->ziskejOdehraneZapasy());
 
 
-
-
-/* if (isset($_POST['titulek'],$_POST['aktualita'])) {
-    $novinkovac->vlozNovinku($_POST['titulek'],$_POST['aktualita']);
-    $_SESSION["zprava"]="Novinka úspěšně vložena!";
-    header("Location: {$_SERVER['PHP_SELF']}");
-} */
 
 
 
@@ -96,20 +90,18 @@ $template->menu = $controllers;
 
 
 
-// $VkladacZapasu = new VkladacZapasu('mladsi', 4);
-$DetailTymu = new DetailTymu('mladsi', rand(1,12));
+
+
+
 $Prepocet = new Prepocet("mladsi");
-
-
-
-
+$Prepocet->aktualizujBody();
+$Prepocet->serad();
+$Prepocet = new Prepocet("starsi");
 $Prepocet->aktualizujBody();
 $Prepocet->serad();
 
-$template->title = $DetailTymu->ziskejNazevTymu();
 
-$template->asideTop = $DetailTymu->ziskejPoradiSkore()." Úspěšnost: ".$DetailTymu->ziskejProcentualniUspech()." %";
-$template->asideContent = $DetailTymu->ziskejOdehraneZapasy();
+
 
 $template->time = "<i>Vygenerováno za ". number_format((microtime(True)-$time_start)*1000,2)."ms.</i>";
 
