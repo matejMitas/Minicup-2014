@@ -29,11 +29,6 @@ public function ziskejVkladaciFormular() {
 <script language="javascript" type="text/javascript">
 $(document).ready(function(){	
 	$('textarea').jqte();
-	var nahled= "";
-	$('#aktualita').change(function(){
-		nahled = $('#aktualita').text();
-		$('#nahled').text(nahled);
-	});
 });
 </script>
 VYSTUP;
