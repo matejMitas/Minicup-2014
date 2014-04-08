@@ -19,20 +19,20 @@ class VystupVysledku {
     function __construct($kategorie) {
     	$this->kategorie = $kategorie;
     }
-	public function ziskejOdehraneZapasy($datum) {
+
+	public function ziskejOdehraneZapasy($limit=0) {
+		$limit = $limit == 0 ? 66 : $limit;
 		$sql=<<<SQL
 			SELECT 
-			b.`jmeno`,c.`jmeno`,a.`SCR_domaci`,`SCR_hoste`
+			b.`jmeno`,c.`jmeno`,`SCR_domaci`,`SCR_hoste`,a.`cas_odehrani`
 			FROM `2014_zapasy_{$this->kategorie}` a
 			JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
 			JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
 			WHERE a.`odehrano`=1 
-			ORDER BY a.`cas_odehrani` ASC 
+			ORDER BY a.`cas_odehrani` ASC
+			LIMIT $limit
 SQL;
-		$aZapasy=dbWrapper::dotaz($sql,
-		Array(strtotime($datum),strtotime($datum)+60*60*24))->fetchAll();
-		
-		return $aZapasy;
+		return dbWrapper::dotaz($sql,Array())->fetchAll();
 	}
 
 	public function ziskejPraveHraneZapasy($limit = 2) {
@@ -61,7 +61,7 @@ SQL;
 			FROM `2014_zapasy_{$this->kategorie}`
 			GROUP BY Team
 		)CLK
-		RIGHT JOIN 2014_tymy_mladsi TM ON CLK.Team = TM.id_teamu
+		RIGHT JOIN 2014_tymy_{$this->kategorie} TM ON CLK.Team = TM.id_teamu
 		GROUP BY `id_teamu`
 		ORDER BY `poradi` ASC
 SQL;
