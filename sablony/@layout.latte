@@ -166,6 +166,47 @@
 </div>
 </div>
 <div class="aside-padding tog toggle-target-aside" data-target="starsi">
+{ifset $praveHrane["starsi"][0]}
+	<div class="hrane">
+		<h2>aktuálně hrané</h2>
+		{foreach $praveHrane["starsi"] as $zapas}
+		<div class="zapas">
+			<span class="domaci"><h3>{$zapas["0"]}</h3></span>
+			<span class="hoste"><h3>{$zapas["1"]}</h3></span>
+		</div>
+		{/foreach}
+	</div>
+{/ifset}
+
+{ifset $nasledujici["starsi"][0]}
+	<div class="nasledujici">
+		<h2>následující zápasy</h2>
+		{foreach $nasledujici["starsi"] as $zapas}
+		<div class="zapas">
+			<span class="domaci"><h3>{$zapas["0"]}</h3></span>
+			<span class="hoste"><h3>{$zapas["1"]}</h3></span>
+		</div>
+		{/foreach}
+	</div>  
+{/ifset}
+
+<div class="poradi">
+	<h2 class="h2">pořadí v tabulce</h2>
+	<ul class="poradi-head">
+		<li>Pořadí</li>
+		<li>Tým</li>
+		<li>Skóre</li>
+		<li>Bodů</li>
+	</ul>
+	{foreach $tabulka["starsi"] as $klic => $tym}
+	<ul {if $tym["poradi"] == 1}class="gold"{/if}{if $tym["poradi"] == 2}class="silver"{/if}{if $tym["poradi"] == 3}class="bronze"{/if}>
+		<li>{$tym["poradi"]}.</li>
+		<li>{$tym["jmeno"]}</li>
+		<li>{$tym["dane"]}:{$tym["dostane"]}</li>
+		<li>{$tym["body"]}</li>
+	</ul>
+	{/foreach}
+</div>
 </div>
 </aside>
 <script>
