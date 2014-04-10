@@ -20,15 +20,14 @@ class VystupVysledku {
     	$this->kategorie = $kategorie;
     }
 
-	public function ziskejOdehraneZapasy($limit=0) {
-		$limit = $limit == 0 ? 66 : $limit;
+	public function ziskejNasledujiciZapasy($limit = 4) {
 		$sql=<<<SQL
 			SELECT 
-			b.`jmeno`,c.`jmeno`,`SCR_domaci`,`SCR_hoste`,a.`cas_odehrani`
+			b.`jmeno`,c.`jmeno`,a.`ID_domaci`,a.`ID_hoste`
 			FROM `2014_zapasy_{$this->kategorie}` a
-			JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
-			JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
-			WHERE a.`odehrano`=1 
+				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
+				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
+			WHERE a.`odehrano`= 0 AND a.`cas_odehrani` > NOW()
 			ORDER BY a.`cas_odehrani` ASC
 			LIMIT $limit
 SQL;
@@ -42,7 +41,7 @@ SQL;
 			FROM `2014_zapasy_{$this->kategorie}` a
 				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
 				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
-			WHERE a.`odehrano` = 0 AND a.`cas_odehrani` > NOW() AND a.`cas_odehrani` < (NOW() + 60*60*30)
+			WHERE a.`odehrano` = 0 AND a.`cas_odehrani` < NOW() AND a.`cas_odehrani`+60*60*30 > NOW()
 			ORDER BY a.`ID_zapasu` ASC
 			LIMIT $limit
 SQL;
