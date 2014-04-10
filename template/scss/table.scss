@@ -84,7 +84,8 @@
 	table { 
 		margin-top: 30px;
 		width: 100%; 
-		border-collapse: collapse; 
+		border-collapse: collapse;
+		color: darken($section-outline, 20%);
 	}
 
 	tr:nth-of-type(even) { 
