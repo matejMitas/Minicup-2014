@@ -4,11 +4,9 @@ function __autoload($trida){
     require_once("tridy/$trida.class.php");
 }
 spl_autoload_register("__autoload");
-
-dbWrapper::pripoj();
-
 require 'NetteInit.php';
-
+session_start();
+dbWrapper::pripoj();
 
 $controllers = array(
     "novinky" => "novinky",
@@ -26,7 +24,8 @@ $VystupVysledkuML = new VystupVysledku("mladsi");
 $VystupVysledkuST = new VystupVysledku("starsi");
 
 
-if (isset($_GET["controller"], $controllers[$_GET["controller"]]) || (isset($_GET["controller"]) && $_GET["controller"] == "admin")) {
+if (isset($_GET["controller"], $controllers[$_GET["controller"]]) || (isset($_GET["controller"]) && 
+    in_array($_GET["controller"],Array("login","administrace")))) {
     $controllerPath = "kontrolery/". $_GET["controller"] .".php";
     if (file_exists($controllerPath)) {
         include $controllerPath;
@@ -36,9 +35,12 @@ if (isset($_GET["controller"], $controllers[$_GET["controller"]]) || (isset($_GE
 }
 
 
-$template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku(),"starsi" => $VystupVysledkuST->ziskejTabulkuVysledku());
-$template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy(),"starsi" => $VystupVysledkuST->ziskejPraveHraneZapasy());
-$template->odehraneZapasy = array("mladsi" => $VystupVysledkuML->ziskejOdehraneZapasy(),"starsi" => $VystupVysledkuST->ziskejOdehraneZapasy());
+$template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku(),
+                            "starsi" => $VystupVysledkuST->ziskejTabulkuVysledku());
+$template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy(),
+                            "starsi" => $VystupVysledkuST->ziskejPraveHraneZapasy());
+$template->nasledujici = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(),
+                            "starsi" => $VystupVysledkuST->ziskejNasledujiciZapasy());
 
 
 
@@ -93,12 +95,7 @@ $template->menu = $controllers;
 
 
 
-$Prepocet = new Prepocet("mladsi");
-$Prepocet->aktualizujBody();
-$Prepocet->serad();
-$Prepocet = new Prepocet("starsi");
-$Prepocet->aktualizujBody();
-$Prepocet->serad();
+
 
 
 
