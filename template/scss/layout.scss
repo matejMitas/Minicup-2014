@@ -38,6 +38,13 @@ ul.boxes {
 		}
 }
 
+.togmain {
+	@include column(9);
+}
+
+.togsub {
+	@include column(3);
+}
 
 
 .center {
@@ -198,6 +205,16 @@ aside {
 
 	.article-icon svg, .article-icon image {
 		display: none;
+	}
+
+	.togmain {
+			@include column(12);
+			margin-bottom: 20px;
+	}
+
+	.togsub {
+			@include column(12);
+			margin-bottom: 20px;
 	}
 }
 

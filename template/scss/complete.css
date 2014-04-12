@@ -111,6 +111,18 @@ ul.boxes {
     margin: 0 0.79365%;
     margin-bottom: 10px; }
 
+.togmain {
+  display: inline;
+  float: left;
+  width: 73.80952%;
+  margin: 0 0.59524%; }
+
+.togsub {
+  display: inline;
+  float: left;
+  width: 23.80952%;
+  margin: 0 0.59524%; }
+
 .center #logo {
   display: inline;
   float: left;
@@ -331,7 +343,21 @@ aside {
       margin: 0 0.59524%; }
 
   .article-icon svg, .article-icon image {
-    display: none; } }
+    display: none; }
+
+  .togmain {
+    display: inline;
+    float: left;
+    width: 98.80952%;
+    margin: 0 0.59524%;
+    margin-bottom: 20px; }
+
+  .togsub {
+    display: inline;
+    float: left;
+    width: 98.80952%;
+    margin: 0 0.59524%;
+    margin-bottom: 20px; } }
 header {
   position: relative;
   background: #232020;
@@ -792,10 +818,16 @@ button[type=submit]:hover {
   background: #2c8dd7;
   color: white; }
 
-#table-wrapper .toggle-src {
+#table-wrapper .toggle-src-main {
   font-size: 18px;
   color: #cccccc;
-  font-weight: 400; }
+  font-weight: 400;
+  cursor: pointer; }
+#table-wrapper .toggle-src-sub-zapasy, #table-wrapper .toggle-src-sub-rozlos, #table-wrapper .toggle-src-sub-tabul {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #1b5078;
+  text-align: center; }
 #table-wrapper .active {
   color: #2c8dd7; }
 #table-wrapper td:hover {
@@ -804,6 +836,8 @@ button[type=submit]:hover {
 #table-wrapper td:nth-child(2):hover {
   color: black;
   background: none; }
+#table-wrapper .tabul {
+  margin-top: 30px; }
 @media screen and (min-width: 768px) {
   #table-wrapper td, #table-wrapper th {
     padding: 15px;
@@ -851,8 +885,12 @@ button[type=submit]:hover {
     content: "Skore"; }
   #table-wrapper .zapasy td:nth-of-type(3):before {
     content: "Hoste"; } }
+@media screen and (max-width: 480px) {
+  #table-wrapper .toggle-src-sub-zapasy, #table-wrapper .toggle-src-sub-rozlos, #table-wrapper .toggle-src-sub-tabul {
+    font-size: 26px; }
+  #table-wrapper .toggle-src-main {
+    font-size: 25px; } }
 #table-wrapper table {
-  margin-top: 30px;
   width: 100%;
   border-collapse: collapse;
   color: #999999; }
@@ -862,3 +900,6 @@ button[type=submit]:hover {
   background: #333333;
   color: white;
   border: none; }
+#table-wrapper h4 {
+  font-size: 30px;
+  padding: 50px 0 20px 0; }

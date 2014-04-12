@@ -38,6 +38,40 @@
     		});
 		});
 	</script>
+
+	<script>
+	var toggle = function(toggleButtons, toggleTargets, toggleActive) {
+		if(typeof toggleActive == "undefined") var toggleActive = "active";
+
+		$(toggleTargets).each(function(index,el){
+			if (index == 0) {
+				$(el).show();
+			} else {
+				$(el).hide();
+			}
+		});
+
+		$(toggleTargets+":first-of-type").show();
+
+		$(toggleButtons+":first-of-type").each(function(index,el){
+			$(el).addClass(toggleActive);
+		});
+
+		$(toggleButtons).click(function(event){
+	   		var src = $(this).data("src");
+	   		$(toggleButtons).removeClass(toggleActive);
+	   		$(this).addClass(toggleActive);
+			$(toggleTargets).each(function(){
+				var target = $(this).data("target");
+				if (target == src) {
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+			});
+		});
+	};
+	</script>
 	
 	<!--[if lt IE 9]>
   		<script>
@@ -89,265 +123,989 @@
 	<div class="center">
 
 	<section>
-		<div id="content-padding">
-			<div id="table-wrapper">
+<div id="content-padding">
+<div id="table-wrapper">
+	<div class="toogle togmain">
+		<span class="toggle-src-main" data-src="rozlos">Rozlosování /</span>
+		<span class="toggle-src-main" data-src="zapasy">Zápasy /</span>
+		<span class="toggle-src-main" data-src="tabul">Tabulky</span>	
+	</div>
+	
+	<div class="toggle-target-main" data-target="rozlos">
+		<div class="toogle togsub">
+			<span class="toggle-src-sub-rozlos" data-src="mladsi">Mladší /</span>
+			<span class="toggle-src-sub-rozlos" data-src="starsi"> Starší</span>
+		</div>
 
-				<div class="toogle">
-							<span class="toggle-src" data-src="rozlos">
-									Rozlosování
-							</span>
-
-							/
-							<span class="toggle-src" data-src="zapasy">
-									Zápasy
-							</span> 
-
-							/
-							<span class="toggle-src" data-src="tabul">
-									Tabulky
-							</span>	
-					</div>
-
-
-
-					<table class="rozlos toggle-target" data-target="rozlos">
-						<thead>
-						<tr>
-							<th>Domácí</th>
-							<th>Čas</th>
-							<th>Hosté</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						</tbody>
-					</table>
-
-					<table class="zapasy toggle-target" data-target="zapasy" style="display:none">
-						<thead>
-						<tr>
-							<th>Domácí</th>
-							<th>Skóre</th>
-							<th>Hosté</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>7:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						<tr>
-							<td>SK Žeravice</td>
-							<td>9:00</td>
-							<td>Ivanka pri Dunaji</td>
-						</tr>
-						</tbody>
-					</table>
-
-					<table class="tabul toggle-target" data-target="tabul" style="display:none">
-						<thead>
-						<tr>
-							<th>Pořadí</th>
-							<th>Tým</th>
-							<th>Zápasů</th>
-							<th>Skóre</th>
-							<th>Bodů</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>1.</td>
-							<td>Ivanka pri Dunaji</td>
-							<td>11</td>
-							<td>15:23</td>
-							<td>50</td>
-						</tr>
-						<tr>
-							<td>2.</td>
-							<td>HBC Jičín</td>
-							<td>11</td>
-							<td>15:23</td>
-							<td>50</td>
-						</tr>
-						<tr>
-							<td>3.</td>
-							<td>TJ Jiskra Otrokovice</td>
-							<td>11</td>
-							<td>15:23</td>
-							<td>50</td>
-						</tr>
-						<tr>
-							<td>4.</td>
-							<td>TJ Rožnov p. Radhoštěm</td>
-							<td>11</td>
-							<td>15:23</td>
-							<td>50</td>
-						</tr>
-						<tr>
-							<td>5.</td>
-							<td>Tatran Litovel</td>
-							<td>11</td>
-							<td>15:23</td>
-							<td>50</td>
-						</tr>
-						</tbody>
-					</table>
-
-				<script>
-						/** trida pro tlacitka */
-						var toggleButtons = ".toggle-src";
-
-						/** trida pro toggle elementy */
-						var toggleTargets = ".toggle-target";
-
-						/** trida pro highlight tlacitek */
-						var toggleActive = "active";
-
-						/** ovladani togglu: 
-								<element class="toggle-src" data-src="mujcil">
-							ovladane elementy:
-								<element class="toggle-target" data-target="mujcil">
-						*/
-
-
-						$(toggleButtons).click(function(event){
-							var src = $(this).data("src");
-
-							$(toggleButtons).each(function(){
-								$(this).removeClass(toggleActive);
-							});
-							$(this).addClass(toggleActive);
-
-
-							$(toggleTargets).each(function(){
-								var target = $(this).data("target");
-								if (target == src) {
-									$(this).show();
-								} else {
-									$(this).hide();
-								}
-							});
-						});
-
-						/* $("toggle-src")
-						$("toggle-target") */
-
-
-					</script>
-
+			<div class="rozlos toggle-target-sub-rozlos" data-target="mladsi">
+			
+			<br>
+			<h4>Pátek 23. 5.</h4>
+			<table class="rozlos">
+				<thead>
+				<tr>
+					<th>domácí</th>
+					<th>čas</th>
+					<th>hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>13:00</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>Velká bystřice</td>
+					<td>13:00</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>13:30</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>13:30</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>14:00</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>14:00</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>Velká bystřice</td>
+					<td>14:30</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>14:30</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>15:00</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>15:00</td>
+					<td>SK Žeravice</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>15:30</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>15:30</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>16:00</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>16:00</td>
+					<td>Velká bystřice</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>16:30</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>16:30</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>17:00</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>17:00</td>
+					<td> --- </td>
+				</tr>
+				</tbody>	
+			</table>
+			<h4>Sobota 24. 5.</h4>
+			<table class="rozlos">
+				<thead>
+				<tr>
+					<th>domácí</th>
+					<th>čas</th>
+					<th>hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>9:00</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>9:00</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Velká bystřice</td>
+					<td>9:30</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>9:30</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>10:00</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>10:00</td>
+					<td>SK Žeravice</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>10:30</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>10:30</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>11:00</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>11:00</td>
+					<td>Velká bystřice</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>11:30</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>11:30</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>12:00</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>12:00</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>12:30</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>12:30</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Velká bystřice</td>
+					<td>13:00</td>
+					<td>SK Žeravice</td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>13:00</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>13:30</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>13:30</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>14:00</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>14:00</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>14:30</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>14:30</td>
+					<td>Velká bystřice</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>15:00</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>15:00</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				</tbody>	
+			</table>
+			<h4>Neděle 25. 5.</h4>
+			<table class="rozlos">
+				<thead>
+				<tr>
+					<th>domácí</th>
+					<th>čas</th>
+					<th>hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>9:00</td>
+					<td>SK Žeravice</td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>9:00</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>9:30</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>Velká bystřice</td>
+					<td>9:30</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>10:00</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>10:00</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>10:30</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>10:30</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>11:00</td>
+					<td>Velká bystřice</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>11:00</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>SK Žeravice</td>
+					<td>11:30</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>11:30</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>12:00</td>
+					<td> --- </td>
+				</tr>
+				<tr>
+					<td>Velká bystřice</td>
+					<td>12:00</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>12:30</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>12:30</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>13:00</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>13:00</td>
+					<td>SK Žeravice</td>
+				</tr>
+				<tr>
+					<td> --- </td>
+					<td>13:30</td>
+					<td>Velká bystřice</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>13:30</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>14:00</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>14:00</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				</tbody>	
+			</table>
 			</div>
-		</div> 			
-	</section>
+			<div class="rozlos toggle-target-sub-rozlos" data-target="starsi">
+			<br>
+			<h4>Pátek 23. 5.</h4>
+			<table class="rozlos">
+				<thead>
+				<tr>
+					<th>domácí</th>
+					<th>čas</th>
+					<th>hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>13:00</td>
+					<td>Otrokovice</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>13:00</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Dukla Praha</td>
+					<td>13:30</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>13:30</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td>Velká Bystřice</td>
+					<td>14:00</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>14:00</td>
+					<td>Dvůr Králové</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>14:30</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>14:30</td>
+					<td>Otrokovice</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>15:00</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>15:00</td>
+					<td>Dukla Praha</td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>15:30</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td>Dvůr Králové</td>
+					<td>15:30</td>
+					<td>Velká Bystřice</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>16:00</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>16:00</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>Otrokovice</td>
+					<td>16:30</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>16:30</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Dukla Praha</td>
+					<td>17:00</td>
+					<td>Dvůr Králové</td>
+				</tr>
+				<tr>
+					<td>Velká Bystřice</td>
+					<td>17:00</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				</tbody>	
+			</table>
+			<h4>Sobota 24. 5.</h4>
+			<table class="rozlos">
+				<thead>
+				<tr>
+					<th>domácí</th>
+					<th>čas</th>
+					<th>hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>9:00</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>9:00</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>9:30</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td>Dvůr Králové</td>
+					<td>9:30</td>
+					<td>Otrokovice</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>10:00</td>
+					<td>Velká Bystřice</td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>10:00</td>
+					<td>Dukla Praha</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>10:30</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>10:30</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>11:00</td>
+					<td>Dvůr Králové</td>
+				</tr>
+				<tr>
+					<td>Velká Bystřice</td>
+					<td>11:00</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>Otrokovice</td>
+					<td>11:30</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td>Dukla Praha</td>
+					<td>11:30</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>12:00</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>Dvůr Králové</td>
+					<td>12:00</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>12:30</td>
+					<td>Velká Bystřice</td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>12:30</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>13:00</td>
+					<td>Dukla Praha</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>13:00</td>
+					<td>Otrokovice</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>13:30</td>
+					<td>Dvůr Králové</td>
+				</tr>
+				<tr>
+					<td>Velká Bystřice</td>
+					<td>13:30</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>14:00</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td>Dukla Praha</td>
+					<td>14:00</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>14:30</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Otrokovice</td>
+					<td>14:30</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>Velká Bystřice</td>
+					<td>15:00</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>15:00</td>
+					<td>Dvůr Králové</td>
+				</tr>
+				</tbody>	
+			</table>
+			<h4>Neděle 25. 5.</h4>
+			<table class="rozlos">
+				<thead>
+				<tr>
+					<th>domácí</th>
+					<th>čas</th>
+					<th>hosté</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>9:00</td>
+					<td>Dukla Praha</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>9:00</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>9:30</td>
+					<td>Otrokovice</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>9:30</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>10:00</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td>Dukla Praha</td>
+					<td>10:00</td>
+					<td>Velká Bystřice</td>
+				</tr>
+				<tr>
+					<td>Dvůr Králové</td>
+					<td>10:30</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Otrokovice</td>
+					<td>10:30</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>11:00</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>11:00</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>Dukla Praha</td>
+					<td>11:30</td>
+					<td>Tatran Litovel</td>
+				</tr>
+				<tr>
+					<td>STM Olomouc</td>
+					<td>11:30</td>
+					<td>DHK Zora Olomouc</td>
+				</tr>
+				<tr>
+					<td>Velká Bystřice</td>
+					<td>12:00</td>
+					<td>Otrokovice</td>
+				</tr>
+				<tr>
+					<td>HBC Jičín</td>
+					<td>12:00</td>
+					<td>Dvůr Králové</td>
+				</tr>
+				<tr>
+					<td>Sokol Prostějov</td>
+					<td>12:30</td>
+					<td>Handball Val. Meziříčí</td>
+				</tr>
+				<tr>
+					<td>TJ JM Chodov</td>
+					<td>12:30</td>
+					<td>ŠKP Bratislava</td>
+				</tr>
+				<tr>
+					<td>Tatran Litovel</td>
+					<td>13:00</td>
+					<td>STM Olomouc</td>
+				</tr>
+				<tr>
+					<td>Otrokovice</td>
+					<td>13:00</td>
+					<td>Dukla Praha</td>
+				</tr>
+				<tr>
+					<td>DHK Zora Olomouc</td>
+					<td>13:30</td>
+					<td>HBC Jičín</td>
+				</tr>
+				<tr>
+					<td>Handball Val. Meziříčí</td>
+					<td>13:30</td>
+					<td>Velká Bystřice</td>
+				</tr>
+				<tr>
+					<td>Dvůr Králové</td>
+					<td>14:00</td>
+					<td>TJ JM Chodov</td>
+				</tr>
+				<tr>
+					<td>ŠKP Bratislava</td>
+					<td>14:00</td>
+					<td>Sokol Prostějov</td>
+				</tr>
+				</tbody>	
+			</table>
+			</div>
+		</div>
+
+		<div class="toggle-target-main" data-target="zapasy">
+			<div class="toogle">
+				<span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span>/
+				<span class="toggle-src-sub-zapasy" data-src="starsi">Starší</span>
+			</div>
+			<div class="zapasy toggle-target-sub-zapasy" data-target="mladsi">
+				<br>
+				<h4>Dosud nebyly odehrány žádné zápasy!</h4>
+			</div>
+			<div class="zapasy toggle-target-sub-zapasy" data-target="starsi">
+				<br>
+				<h4>Dosud nebyly odehrány žádné zápasy!</h4>
+			</div>
+		</div>
+
+		<div class="toggle-target-main" data-target="tabul">
+			<div class="toogle">
+				<span class="toggle-src-sub-tabul" data-src="mladsi">Mladší</span>/
+				<span class="toggle-src-sub-tabul" data-src="starsi">Starší</span>
+			</div>
+			
+			<table class="tabul toggle-target-sub-tabul" data-target="mladsi">
+				<thead>
+				<tr>
+					<th>Pořadí</th>
+					<th>Tým</th>
+					<th>Zápasů</th>
+					<th>Skóre</th>
+					<th>Bodů</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>1.</td>
+					<td>Tatran Litovel</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>DHK Zora Olomouc</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>SK Žeravice</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td> --- </td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Sokol Prostějov</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Handball Val. Meziříčí</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>ŠKP Bratislava</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>HBC Jičín</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>TJ JM Chodov</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>STM Olomouc</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Velká bystřice</td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td> --- </td>
+					<td>počet zápasů Mladší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="tabul toggle-target-sub-tabul" data-target="starsi">
+				<thead>
+				<tr>
+					<th>Pořadí</th>
+					<th>Tým</th>
+					<th>Zápasů</th>
+					<th>Skóre</th>
+					<th>Bodů</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>1.</td>
+					<td>Tatran Litovel</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>STM Olomouc</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Dukla Praha</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>DHK Zora Olomouc</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Velká Bystřice</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Dvůr Králové</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Sokol Prostějov</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>ŠKP Bratislava</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>TJ JM Chodov</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Handball Val. Meziříčí</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>HBC Jičín</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Otrokovice</td>
+					<td>počet zápasů Starší</td>
+					<td>0:0</td>
+					<td>0</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+</div>
+
+
+<script>
+toggle(".toggle-src-main", ".toggle-target-main");
+toggle(".toggle-src-sub-rozlos", ".toggle-target-sub-rozlos");
+toggle(".toggle-src-sub-zapasy", ".toggle-target-sub-zapasy");
+toggle(".toggle-src-sub-tabul",  ".toggle-target-sub-tabul");
+</script>
+
+</div>
+</section>
 
 				
 				
