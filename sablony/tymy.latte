@@ -2,7 +2,20 @@
 {block main}
 <section>
 <div id="content-padding">
-<h2>Bude zveřejněno!</h2>
+<div class="toogle">
+	<span class="toggle-src-main" data-src="mladsi">Mladší</span>
+	<span class="toggle-src-main" data-src="starsi">Starší</span>
+</div>
+{foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
+<ul class="boxes tymy toggle-target-main" data-target="{$key}">
+	{foreach $tabulka[$key] as $klic => $tym}
+		<li><a href="">{$tym["jmeno"]}</a></li>
+	{/foreach}
+</ul>
+{/foreach}
+<script>
+	toggle(".toggle-src-main",".toggle-target-main");
+</script>
 </div>
 </section>
 {/block}

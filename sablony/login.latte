@@ -1,0 +1,19 @@
+{extends '@layout.latte'}
+{block main}
+<section>
+<div id="content-padding">
+<h2>Přihlášení</h2>
+<br>
+<div id="form-wrapper">
+<form method="POST">
+	<input required type="text" name="name" id="">
+	<input required type="password" name="password" id="">
+	<input type="submit" name="submit" id="">
+</form>
+</div>
+{ifset $error}
+{$error}
+{/ifset}
+</div>
+</section>
+{/block}

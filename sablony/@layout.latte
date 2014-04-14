@@ -1,191 +1,187 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Minicup 2014</title>
+	<title>Minicup 2014</title>
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
-    </script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
+	</script>
 
-    <script src="js/map.js">
-    </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
-    
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.php?file=complete.scss">  
+	<script src="js/map.js">
+	</script>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
+	
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/style.php?file=complete.scss">  
 
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js">
-    </script>
-        
-    <script>
-        $(function() {
-            var pull        = $('#pull');
-                menu        = $('nav ul');
-                menuHeight  = menu.height();
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js">
+	</script>
+		
+	<script>
+		$(function() {
+			var pull		= $('#pull');
+				menu		= $('nav ul');
+				menuHeight  = menu.height();
 
-            $(pull).on('click', function(e) {
-                e.preventDefault();
-                menu.slideToggle();
-            });
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
 
-            $(window).resize(function(){
-                var w = $(window).width();
-                if(w > 320 && menu.is(':hidden')) {
-                    menu.removeAttr('style');
-                }
-            });
-        });
-    </script>
-    
-    <!--[if lt IE 9]>
-        <script>
-          document.createElement('header');
-          document.createElement('nav');
-          document.createElement('section');
-          document.createElement('aside');
-          document.createElement('footer');
-        </script>
-    <![endif]-->
+			$(window).resize(function(){
+				var w = $(window).width();
+				if(w > 320 && menu.is(':hidden')) {
+					menu.removeAttr('style');
+				}
+			});
+		});
+	</script>
+
+	<script>
+	var toggle = function(toggleButtons, toggleTargets, toggleActive) {
+		if(typeof toggleActive == "undefined") var toggleActive = "active";
+
+		$(toggleTargets).each(function(index,el){
+			if (index == 0) {
+				$(el).show();
+			} else {
+				$(el).hide();
+			}
+		});
+
+		$(toggleTargets+":first-of-type").show();
+
+		$(toggleButtons+":first-of-type").each(function(index,el){
+			$(el).addClass(toggleActive);
+		});
+
+		$(toggleButtons).click(function(event){
+	   		var src = $(this).data("src");
+	   		$(toggleButtons).removeClass(toggleActive);
+	   		$(this).addClass(toggleActive);
+			$(toggleTargets).each(function(){
+				var target = $(this).data("target");
+				if (target == src) {
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+			});
+		});
+	};
+	</script>
+	
+	<!--[if lt IE 9]>
+		<script>
+		  document.createElement('header');
+		  document.createElement('nav');
+		  document.createElement('section');
+		  document.createElement('aside');
+		  document.createElement('footer');
+		</script>
+	<![endif]-->
 
 </head>
 <body>
-    <header>
-        <div class="center">
-            <div id="logo">
-                <svg width="275" height="275">
-                    <image xlink:href="img/logo.svg" src="img/logo.png" width="275" height="275" />
-                </svg>
-            </div>
-            <div id="slogan">
-                <h2>23. - 25. května</h2>
-                <h3>2. ročník mezinárodního turnaje v miniházené</h3>
-            </div>
-            <div id="barton">
-                <a href="http://www.barton-a-partner.cz/"><img src="img/barton.png" alt=""></a>
-            </div>
-        </div>
-    </header>
+	<header>
+		<div class="center">
+			<div id="logo">
+			<a href="aktuality">
+				<svg width="275" height="275">
+					<image xlink:href="img/logo.svg" src="img/logo.png" width="275" height="275" />
+				</svg>
+			</a>
+			</div>
+			<div id="slogan">
+				<h2>23. - 25. května</h2>
+				<h3>2. ročník mezinárodního turnaje v miniházené</h3>
+			</div>
+			<div id="barton">
+				<a href="http://www.barton-a-partner.cz/"><img src="img/barton.png" alt=""></a>
+			</div>
+		</div>
+	</header>
 
-    <nav class="clearfix">
-        <div class="center">
-            <ul class="clearfix">
-                <li n:foreach="$menu as $polozka => $cz">
-                    <a href="{$polozka}">{$cz|upper}</a>
-                </li>
-            </ul>
-            <a href="#" id="pull">Menu</a> 
-        </div>
-    </nav>
+	<nav class="clearfix">
+		<div class="center">
+			<ul class="clearfix">
+				<li n:foreach="$menu as $polozka => $cz">
+					<a href="{$polozka}">{$cz|upper}</a>
+				</li>
+			</ul>
+			<a href="#" id="pull">Menu</a> 
+		</div>
+	</nav>
 <div class="center">
 {block main}
 
 {/block}
 <aside>
-                    <div class="toogle">
-                            <span class="toggle-src" data-src="mladsi">Mladší</span>
-                            /
-                            <span class="toggle-src" data-src="starsi">Starší</span> 
+<div class="toogle">
+	<span class="toggle-src-aside active" data-src="mladsi">Mladší</span>/
+	<span class="toggle-src-aside" data-src="starsi">Starší</span> 
+</div>
 
-                    </div>
-                    
-                    <div class="aside-padding tog toggle-target" data-target="mladsi">
-                        <div class="hrane">
-                            <h2>aktuálně hrané</h2>
-                            {foreach $praveHrane as $zapas}
-                                <div class="zapas">
-                                    <span class="domaci"><h3>{$zapas["0"]}</h3></span>
-                                    <span class="hoste"><h3>{$zapas["1"]}</h3></span>
-                                </div>
-                            {/foreach}
-                        </div>
-                        <div class="nasledujici">
-                            <h2>následující zápasy</h2>
-                            {foreach $nasledujici as $zapas}
-                                <div class="zapas">
-                                    <span class="domaci"><h3>{$zapas["0"]}</h3></span>
-                                    <span class="hoste"><h3>{$zapas["1"]}</h3></span>
-                                </div>
-                            {/foreach}
-                        </div>  
+{foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
+<div class="aside-padding tog toggle-target-aside" data-target="{$key}">
+{ifset $praveHrane[$key][0]}
+	<div class="hrane">
+		<h2>aktuálně hrané</h2>
+		{foreach $praveHrane[$key] as $zapas}
+		<div class="zapas">
+			<span class="domaci"><h3>{$zapas["0"]}</h3></span>
+			<span class="hoste"><h3>{$zapas["1"]}</h3></span>
+		</div>
+		{/foreach}
+	</div>
+{/ifset}
 
-                        <div class="poradi">
-                            <h2 class="h2">pořadí v tabulce</h2>
-                            <ul class="poradi-head">
-                                <li>Pořadí</li>
-                                <li>Tým</li>
-                                <li>Skóre</li>
-                                <li>Bodů</li>
-                            </ul>
-                            
-                            {foreach $tabulka as $klic => $tym}
-                            <ul {if $iterator->getCounter() == 1}class="gold"{/if}
-                                {if $iterator->getCounter() == 2}class="silver"{/if}
-                                {if $iterator->getCounter() == 3}class="bronze"{/if}
-                            >
-                                <li>{$tym["poradi"]}.</li>
-                                <li>{$tym["jmeno"]}</li>
-                                <li>{$tym["dane"]}:{$tym["dostane"]}</li>
-                                <li>{$tym["body"]}</li>
-                            </ul>
-                            {/foreach}
-                            
-                        </div>
-                    </div>
-                    </aside>
-                    <script>
-                        /** trida pro tlacitka */
-                        var toggleButtons = ".toggle-src";
+{ifset $nasledujici[$key][0]}
+	<div class="nasledujici">
+		<h2>následující zápasy</h2>
+		{foreach $nasledujici[$key] as $zapas}
+		<div class="zapas">
+			<span class="domaci"><h3>{$zapas["0"]}</h3></span>
+			<span class="hoste"><h3>{$zapas["1"]}</h3></span>
+		</div>
+		{/foreach}
+	</div>  
+{/ifset}
 
-                        /** trida pro toggle elementy */
-                        var toggleTargets = ".toggle-target";
-
-                        /** trida pro highlight tlacitek */
-                        var toggleActive = "active";
-
-                        /** ovladani togglu: 
-                                <element class="toggle-src" data-src="mujcil">
-                            ovladane elementy:
-                                <element class="toggle-target" data-target="mujcil">
-                        */
-
-
-                        $(toggleButtons).click(function(event){
-                            var src = $(this).data("src");
-
-                            $(toggleButtons).each(function(){
-                                $(this).removeClass(toggleActive);
-                            });
-                            $(this).addClass(toggleActive);
-
-
-                            $(toggleTargets).each(function(){
-                                var target = $(this).data("target");
-                                if (target == src) {
-                                    $(this).show();
-                                } else {
-                                    $(this).hide();
-                                }
-                            });
-                        });
-
-                        /* $("toggle-src")
-                        $("toggle-target") */
-
-
-                    </script>
-                
-
-        </div>
-    
+<div class="poradi">
+	<h2 class="h2">pořadí v tabulce</h2>
+	<ul class="poradi-head">
+		<li>Pořadí</li>
+		<li>Tým</li>
+		<li>Skóre</li>
+		<li>Bodů</li>
+	</ul>
+	{foreach $tabulka[$key] as $klic => $tym}
+	<ul {if $tym["poradi"] == 1}class="gold"{/if}{if $tym["poradi"] == 2}class="silver"{/if}{if $tym["poradi"] == 3}class="bronze"{/if}>
+		<li>{$tym["poradi"]}.</li>
+		<li>{$tym["jmeno"]}</li>
+		<li>{$tym["dane"]}:{$tym["dostane"]}</li>
+		<li>{$tym["body"]}</li>
+	</ul>
+	{/foreach}
+</div>
+</div>
+{/foreach}
+</aside>
+<script>
+toggle(".toggle-src-aside",".toggle-target-aside");
+</script>
+</div>
+	
 <div id="mapDiv"></div>
-    <footer>
-            <div class="date">
-                <h2>23. - 25. května</h2>
-                <h3>2. ročník mezinárodního turnaje v miniházené </h3>
-            </div>
-            <div class="authors">Matěj Mitaš, Josef Kolář a spousta dalších lidí</div>
-    </footer>
+	<footer>
+			<div class="date">
+				<h2>23. - 25. května</h2>
+				<h3>2. ročník mezinárodního turnaje v miniházené </h3>
+			</div>
+			<div class="authors">Matěj Mitaš, Josef Kolář a spousta dalších lidí <br> {$time|noescape}</div>
+	</footer>
 </body>
 </html>

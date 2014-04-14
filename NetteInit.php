@@ -41,3 +41,6 @@ require 'Nette/Utils/Strings.php';
 require 'Nette/Utils/Random.php';
 require 'Nette/Utils/Json.php';
 require 'Nette/Iterators/CachingIterator.php';
+
+require 'Nette/Security/IIdentity.php';
+require 'Nette/Security/Identity.php';

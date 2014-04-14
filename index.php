@@ -4,11 +4,9 @@ function __autoload($trida){
     require_once("tridy/$trida.class.php");
 }
 spl_autoload_register("__autoload");
-
-dbWrapper::pripoj();
-
 require 'NetteInit.php';
-
+session_start();
+dbWrapper::pripoj();
 
 $controllers = array(
     "novinky" => "novinky",
@@ -16,10 +14,18 @@ $controllers = array(
     "tabulky" => "tabulky",
     "tymy" => "týmy",
     "fotogalerie" => "fotogalerie",
-    "sponzori" => "sponzoři"
+    "sponzori" => "sponzoři",
+    "kontakt" => "kontakt"
     );
 
-if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
+
+
+$VystupVysledkuML = new VystupVysledku("mladsi");
+$VystupVysledkuST = new VystupVysledku("starsi");
+
+
+if (isset($_GET["controller"], $controllers[$_GET["controller"]]) || (isset($_GET["controller"]) && 
+    in_array($_GET["controller"],Array("login","administrace")))) {
     $controllerPath = "kontrolery/". $_GET["controller"] .".php";
     if (file_exists($controllerPath)) {
         include $controllerPath;
@@ -28,17 +34,15 @@ if (isset($_GET["controller"], $controllers[$_GET["controller"]])) {
     include "kontrolery/novinky.php";
 }
 
-$VystupVysledku = new VystupVysledku("mladsi");
-$template->tabulka = $VystupVysledku->ziskejTabulkuVysledku();
-$template->praveHrane = $VystupVysledku->ziskejPraveHraneZapasy();
+
+$template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku(),
+                            "starsi" => $VystupVysledkuST->ziskejTabulkuVysledku());
+$template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy(),
+                            "starsi" => $VystupVysledkuST->ziskejPraveHraneZapasy());
+$template->nasledujici = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(),
+                            "starsi" => $VystupVysledkuST->ziskejNasledujiciZapasy());
 
 
-
-if (isset($_POST['titulek'],$_POST['aktualita'])) {
-    $novinkovac->vlozNovinku($_POST['titulek'],$_POST['aktualita']);
-    $_SESSION["zprava"]="Novinka úspěšně vložena!";
-    header("Location: {$_SERVER['PHP_SELF']}");
-}
 
 
 
@@ -88,22 +92,13 @@ $template->menu = $controllers;
 
 
 
-$VkladacZapasu = new VkladacZapasu('mladsi', 4);
-$DetailTymu = new DetailTymu('mladsi', rand(1,12));
-$Prepocet = new Prepocet("mladsi");
 
 
 
 
-$Prepocet->aktualizujBody();
-$Prepocet->serad();
 
-$template->zapasy = $VystupVysledku->ziskejOdehraneZapasy("2014-05-23 00:00:00");
 
-$template->title = $DetailTymu->ziskejNazevTymu();
 
-$template->asideTop = $DetailTymu->ziskejPoradiSkore()." Úspěšnost: ".$DetailTymu->ziskejProcentualniUspech()." %";
-$template->asideContent = $DetailTymu->ziskejOdehraneZapasy();
 
 $template->time = "<i>Vygenerováno za ". number_format((microtime(True)-$time_start)*1000,2)."ms.</i>";
 

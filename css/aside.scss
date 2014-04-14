@@ -35,6 +35,10 @@ aside {
 		padding: 40px 0 40px 0;
 		border-radius: 10px 10px 0 0;
 		font-size: 18px;
+		& > span {
+			cursor: pointer; 
+			cursor: hand;
+		}
 	}
 	
 	.toogle {
