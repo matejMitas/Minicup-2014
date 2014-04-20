@@ -23,17 +23,19 @@ $controllers = array(
 $VystupVysledkuML = new VystupVysledku("mladsi");
 $VystupVysledkuST = new VystupVysledku("starsi");
 
-
-if (isset($_GET["controller"], $controllers[$_GET["controller"]]) || (isset($_GET["controller"]) && 
-    in_array($_GET["controller"],Array("login","administrace")))) {
-    $controllerPath = "kontrolery/". $_GET["controller"] .".php";
-    if (file_exists($controllerPath)) {
-        include $controllerPath;
+if (isset($_GET["controller"])) {
+    if (isset($controllers[$_GET["controller"]])) {
+        include "kontrolery/". $_GET["controller"] .".php";
+        $title = $controllers[$_GET["controller"]];
+    } elseif (in_array($_GET["controller"], Array("login","administrace"))) {
+        include "kontrolery/". $_GET["controller"] .".php";
+    } else {
+        header("Location: /minicup/2014/");
     }
 } else {
     include "kontrolery/novinky.php";
+    $title = null;
 }
-
 
 $template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku(),
                             "starsi" => $VystupVysledkuST->ziskejTabulkuVysledku());
@@ -41,6 +43,7 @@ $template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZap
                             "starsi" => $VystupVysledkuST->ziskejPraveHraneZapasy());
 $template->nasledujici = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(),
                             "starsi" => $VystupVysledkuST->ziskejNasledujiciZapasy());
+$template->title = $title;
 
 
 
@@ -82,25 +85,11 @@ $template->registerHelper('relDateCZ', function ($time) {
 		} else {
             return "v budoucnu";
         }});
-if (isset($_SESSION["zprava"])){
-    $template->alert = "Nějaká zpráva: {$_SESSION['zprava']}";
-    unset($_SESSION["zprava"]);
-}
-
 
 $template->menu = $controllers;
 
 
+$template->time = number_format((microtime(True)-$time_start)*1000,0);
 
-
-
-
-
-
-
-
-
-$template->time = "<i>Vygenerováno za ". number_format((microtime(True)-$time_start)*1000,2)."ms.</i>";
-
-$template->render(); // vykreslí šablonu
+$template->render();
 
