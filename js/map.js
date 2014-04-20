@@ -1,3 +1,4 @@
+$(function(){
 var map;
 var litovel = new google.maps.LatLng(49.70460, 17.08072);
 var opletalova = new google.maps.LatLng(49.70267, 17.08162);
@@ -39,7 +40,7 @@ function initialize() {
     disableDefaultUI: true
   };
 
-  map = new google.maps.Map(document.getElementById('map-canvas'),
+  map = new google.maps.Map(document.getElementById('mapDiv'),
       mapOptions);
 
   var marker1 = new google.maps.Marker({
@@ -66,3 +67,5 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+});
