@@ -5,21 +5,23 @@
 {*}<h2>Bude zveřejněno!</h2>{/*}
 
 <div id="table-wrapper">
-	<div class="toogle">
-		<span class="toggle-src-main" data-src="rozlos">Rozlosování</span>/
-		<span class="toggle-src-main" data-src="zapasy">Zápasy</span>/
-		<span class="toggle-src-main" data-src="tabul">Tabulky</span>	
+
+	<div class="toogle togmain">
+		<span class="toggle-src-main" data-src="rozlos">Rozlosování</span> / <span class="toggle-src-main" data-src="zapasy">Zápasy</span> / <span class="toggle-src-main" data-src="tabul">Tabulky</span>	
 	</div>
+
 		<div class="toggle-target-main" data-target="rozlos">
-		<div class="toogle">
-			<span class="toggle-src-sub-rozlos" data-src="mladsi">Mladší</span>/
-			<span class="toggle-src-sub-rozlos" data-src="starsi">Starší</span>
+		<div class="toogle togsub">
+			<span class="toggle-src-sub-rozlos" data-src="mladsi">Mladší</span> / <span class="toggle-src-sub-rozlos" data-src="starsi">Starší</span>
 		</div>
+
 			{var datumy = Array("23. 5.","24. 5.","25. 5.")}
-			{foreach $rozlosovani as $kategorie => $value}
-			<div class="rozlos toggle-target-sub-rozlos" data-target="{$kategorie}">
+		{foreach $rozlosovani as $kategorie => $value}
+
+		<div class="rozlos toggle-target-sub-rozlos" data-target="{$kategorie}">
 			{foreach $value as $den => $rozlos}
-			<h2>{$datumy[$den]}</h2>
+			<br>
+			<h4>{$datumy[$den]}</h4>
 			<table class="rozlos">
 				<thead>
 				<tr>
@@ -44,15 +46,14 @@
 		</div>
 
 		<div class="toggle-target-main" data-target="zapasy">
+		{if !isset($odehraneZapasy)}
+			<h4>Dosud nebyly odehrány žádné zápasy!</h4>
+		{else}
 			<div class="toogle">
-				<span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span>/
-				<span class="toggle-src-sub-zapasy" data-src="starsi">Starší</span>
+				<span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span> / <span class="toggle-src-sub-zapasy" data-src="starsi">Starší</span>
 			</div>
 			{foreach $odehraneZapasy as $kategorie => $value}
 			<div class="zapasy toggle-target-sub-zapasy" data-target="{$kategorie}">
-			{if !isset($value[0])}
-				<h2>Dosud nebyly odehrány žádné zápasy!</h2>
-			{else}
 			<table class="zapasy">
 				<thead>
 				<tr>
@@ -73,9 +74,9 @@
 			{/foreach}
 			</tbody>	
 			</table>
-			{/if}
 			</div>
 			{/foreach}
+		{/if}
 		</div>
 
 		<div class="toggle-target-main" data-target="tabul">
