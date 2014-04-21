@@ -1,0 +1,36 @@
+{extends '@layout.latte'}
+{block main}
+<section>
+<div id="content-padding">
+<div id="detail-wrapper">
+<h1>{$jmeno}</h1>
+<div class="detailbox">
+        <h3>Zápasy</h3>
+        {foreach $zapasy as $zapas}
+            {if $zapas[5]==0}
+                <p>{$zapas[1]} - {$zapas[2]}</p>
+            {else}
+                {if $zapas[1]==$jmeno} {*}zvolený tým je domácí{/*}
+                    <p>vs. {$zapas[2]}</p>
+                    <h4><span n:class="$zapas[4] > $zapas[5] ? green : red">{$zapas[4]}</span>:{$zapas[5]}</h4>
+                {else}
+                    <p>vs. {$zapas[1]}</p>
+                    <h4><span n:class="$zapas[4] < $zapas[5] ? green : red">{$zapas[5]}</span>:{$zapas[4]}</h4>
+                {/if}
+            {/if}
+            <p><strong>{$zapas[3]}</strong></p>
+        {/foreach}
+</div>
+
+<div class="detailbox">
+        <h2>{$data["poradi"]}. místo</h2>
+        <h2>{$data["body"]}</h2>
+        <h2>{$data["dane"]}:{$data["dostane"]}</h2>
+</div>
+
+<p><span class="red">Červená</span> u zápasů znamená prohru, <span class="green">zelená</span> výhru. Vždy je uváděno skore konkrétního týmu.</p>
+
+</div>
+</div>
+</section>
+{/block}

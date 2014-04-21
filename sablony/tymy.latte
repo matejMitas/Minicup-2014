@@ -2,14 +2,15 @@
 {block main}
 <section>
 <div id="content-padding">
-<div class="toogle">
+<div class="toogle togmain">
 	<span class="toggle-src-main" data-src="mladsi">Mladší</span>
 	<span class="toggle-src-main" data-src="starsi">Starší</span>
 </div>
+<br>
 {foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
 <ul class="boxes tymy toggle-target-main" data-target="{$key}">
-	{foreach $tabulka[$key] as $klic => $tym}
-		<li><a href="">{$tym["jmeno"]}</a></li>
+	{foreach $tymy[$key] as $klic => $tym}
+		<li><a href="{$key}/{$tym[1]}">{$tym[0]}</a></li>
 	{/foreach}
 </ul>
 {/foreach}
