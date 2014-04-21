@@ -44,7 +44,7 @@ $template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZap
 $template->nasledujici = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(),
                             "starsi" => $VystupVysledkuST->ziskejNasledujiciZapasy());
 $template->title = $title;
-
+$template->basePath = "Minicup-2014";
 
 
 

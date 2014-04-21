@@ -10,17 +10,17 @@
 	<meta name="robots" content="index, follow">
 
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=latin-ext' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/style.php?file=complete.scss"> 
+	<link rel="stylesheet" href="/{$basePath}/css/style.php?file=complete.scss"> 
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-	<script src="js/jquery-1.9.js"></script>
-	<script src="js/map.js"></script>
-	<script src="js/main.js"></script>
+	<script src="/{$basePath}/js/jquery-1.9.js"></script>
+	<script src="/{$basePath}/js/map.js"></script>
+	<script src="/{$basePath}/js/main.js"></script>
 	<script>
 		var toggle = function(toggleButtons, toggleTargets, toggleActive) {
-			if(typeof toggleActive == "undefined") var toggleActive = "active";
+			if(typeof toggleActive === "undefined") var toggleActive = "active";
 
 			$(toggleTargets).each(function(index,el){
-				if (index == 0) {
+				if (index === 0) {
 					$(el).show();
 				} else {
 					$(el).hide();
@@ -39,7 +39,7 @@
 			   	$(this).addClass(toggleActive);
 				$(toggleTargets).each(function(){
 					var target = $(this).data("target");
-					if (target == src) {
+					if (target === src) {
 						$(this).show();
 					} else {
 						$(this).hide();
@@ -56,6 +56,7 @@
 		  document.createElement('section');
 		  document.createElement('aside');
 		  document.createElement('footer');
+		  document.createElement('article');
 		</script>
 	<![endif]-->
 
@@ -64,9 +65,9 @@
 	<header>
 		<div class="center">
 			<div id="logo">
-			<a href="novinky">
+			<a href="/{$basePath}/novinky">
 				<svg width="275" height="275">
-					<image xlink:href="img/logo.svg" src="img/logo.png" width="275" height="275" />
+					<image xlink:href="/{$basePath}/img/logo.svg" src="img/logo.png" width="275" height="275" />
 				</svg>
 			</a>
 			</div>
@@ -156,22 +157,28 @@
 		<h2>23. - 25. května</h2>
 		<h3>2. ročník mezinárodního turnaje v miniházené </h3>
 	</div>
-	<div class="authors">Matěj Mitaš, Josef Kolář a spousta dalších lidí <br>Vygenerováno za {$time}ms.</div>
+	<div class="authors">Tatran Litovel | 2014 © Matěj Mitaš, Josef Kolář<br>Vygenerováno za {$time}ms.
+		<a href="http://www.toplist.cz/">
+	<script language="JavaScript" type="text/javascript">
+	<!--
+	document.write('<img src="http://toplist.cz/dot.asp?id=1561645&http='+escape(document.referrer)+'&t='+escape(document.title)+
+	'&wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)+'&cd='+escape(window.screen.colorDepth)+'" width="1" height="1" border=0 alt="TOPlist" />');
+	//--></script><noscript><img src="http://toplist.cz/dot.asp?id=1561645" border="0"
+	alt="TOPlist" width="1" height="1" /></noscript></a></div>
 </footer>
-<a href="http://www.toplist.cz/"><script language="JavaScript" type="text/javascript">
-<!--
-document.write('<img src="http://toplist.cz/dot.asp?id=1561645&http='+escape(document.referrer)+'&t='+escape(document.title)+
-'&wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)+'&cd='+escape(window.screen.colorDepth)+'" width="1" height="1" border=0 alt="TOPlist" />');
-//--></script><noscript><img src="http://toplist.cz/dot.asp?id=1561645" border="0"
-alt="TOPlist" width="1" height="1" /></noscript></a>
 <script>
   (function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-40772204-1', 'tatranlitovel.cz');
-  ga('send', 'pageview');
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-40772204-1', 'tatranlitovel.cz');
+	ga('require', 'displayfeatures');
+	ga('send', 'pageview');
 </script>
+<!--[if lt IE 9]>
+	<script>
+		$(".poradi").hide();
+	</script>
+<![endif]-->
 </body>
 </html>
