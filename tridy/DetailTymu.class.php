@@ -20,7 +20,16 @@ class DetailTymu {
 	 * @var string
 	 */
 	private $nazevTymu;
-
+        
+        public static function ziskejVsechnyTymy($kategorie) {
+            $SQL = <<<SQL
+		SELECT `jmeno`,`id_teamu` 
+		FROM `2014_tymy_{$kategorie}`
+SQL;
+		return dbWrapper::dotaz($SQL, Array())->fetchAll();
+        }
+        
+        
 	/**
 	 * Konstruktor pro daný detail
 	 * @param string $kategorie 'mladsi','starsi' pro danou kategorii tymu
@@ -46,7 +55,6 @@ SQL;
 	 * @return string html tabulka odehranych zapasu
 	 */		
 	public function ziskejOdehraneZapasy(){
-		$return = "";
 		$SQL = <<<SQL
 		SELECT 
 			b.`jmeno`, a.`SCR_domaci`, a.`SCR_hoste`, c.`jmeno`, 
@@ -57,32 +65,18 @@ SQL;
 		WHERE a.`ID_domaci`= :id OR a.`ID_hoste`= :id
 SQL;
 		$poleZapasu = dbWrapper::dotaz($SQL, Array("id" => $this->idTymu))->fetchAll();
+                $return = Array();
 		foreach ($poleZapasu as $klic => $zapas) {
-			$cas = date("H:i:s",$zapas[4]);
+			$cas = date("H:i",$zapas[4]);
 			$den = date("j. n.",$zapas[4]);
 			if ($zapas[5] == 1) {
 				$stav = "Odehráno $den v $cas";
-				$oddelovac =":";
-				if ($zapas[1]>$zapas[2]) {
-					$zapas[0] = "<b>{$zapas[0]}</b>";
-				} elseif($zapas[1]<$zapas[2]) {
-					$zapas[3] = "<b>{$zapas[3]}</b>";
-				}
 			} else {
 				$stav = "Odehraje se $den v $cas";
-				$oddelovac = "";
 			}
-			$return .= <<<HTML
-\n			<tr>
-				<td>{$zapas[0]}</td>
-				<td>{$zapas[1]}$oddelovac{$zapas[2]}</td>
-				<td>{$zapas[3]}</td>
-				<td>$stav</td>
-				<td></td>
-			</tr>
-HTML;
+                        $return[] =  Array($zapas[5],$zapas[0],$zapas[3],$stav,$zapas[1],$zapas[2]);
 		}
-		return "<table>\n$return\n</table>";
+		return $return;
 	}
 
 	/**
@@ -94,13 +88,13 @@ HTML;
 	}
 
 
-    /**
-     * získá aktuální pořadí, počet bodů a skóre jednoho týmu
-     * 
-     * @access public
-     *
-     * @return string html výstup
-     */
+        /**
+         * získá aktuální pořadí, počet bodů a skóre jednoho týmu
+         * 
+         * @access public
+         *
+         * @return string html výstup
+         */
 	public function ziskejPoradiSkore() {
 		$SQL = <<<SQL
 		SELECT `poradi`, `body`, ifnull(sum(D),0) dane, ifnull(sum(H),0) dostane, `id_teamu`
@@ -120,19 +114,19 @@ HTML;
 SQL;
 		$result = dbWrapper::dotaz($SQL,Array("id" => $this->idTymu))->fetch();
 		if ($result["body"] == 0) {
-			$body = "{$result["body"]} bodů";
+                    $body = "{$result["body"]} bodů";
 		} elseif ($result["body"] == 1) {
-        	$body = "{$result["body"]} bod";
-    	} elseif ($result["body"] <= 4) {
-        	$body = "{$result["body"]} body";
-    	} else {
-        	$body = "{$result["body"]} bodů";
-    	}
+                    $body = "{$result["body"]} bod";
+                } elseif ($result["body"] <= 4) {
+                    $body = "{$result["body"]} body";
+                } else {
+                    $body = "{$result["body"]} bodů";
+                }
 
-		$return = <<<HTML
-		{$result["poradi"]}. místo, $body, skóre {$result["dane"]}:{$result["dostane"]}
-HTML;
-		return $return;
+		return Array("poradi" => $result["poradi"],
+                                "body" => $body,
+                                "dane" => $result["dane"],
+                                "dostane" => $result["dostane"]);
 	}
 
     /**
