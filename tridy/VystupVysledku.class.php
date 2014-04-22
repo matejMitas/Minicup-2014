@@ -25,8 +25,8 @@ class VystupVysledku {
 			SELECT 
 			b.`jmeno`,c.`jmeno`,a.`ID_domaci`,a.`ID_hoste`
 			FROM `2014_zapasy_{$this->kategorie}` a
-				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
-				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
+                            JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
+                            JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
 			WHERE a.`odehrano`= 0 AND a.`cas_odehrani` > NOW()
 			ORDER BY a.`cas_odehrani` ASC
 			LIMIT $limit
@@ -37,10 +37,10 @@ SQL;
 	public function ziskejPraveHraneZapasy($limit = 2) {
 		$sql=<<<SQL
 			SELECT 
-			b.`jmeno`,c.`jmeno`
+			b.`jmeno`,c.`jmeno`,a.`ID_domaci`,a.`ID_hoste`
 			FROM `2014_zapasy_{$this->kategorie}` a
-				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
-				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
+                            JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
+                            JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
 			WHERE a.`odehrano` = 0 AND a.`cas_odehrani` < NOW() AND a.`cas_odehrani`+60*60*30 > NOW()
 			ORDER BY a.`ID_zapasu` ASC
 			LIMIT $limit
@@ -50,7 +50,7 @@ SQL;
 
 	public function ziskejTabulkuVysledku() {
 		$SQL=<<<SQL
-		SELECT `poradi`,`jmeno`,ifnull(sum(D),0) dane, ifnull(sum(H),0) dostane, `body`
+		SELECT `poradi`,`jmeno`,ifnull(sum(D),0) dane, ifnull(sum(H),0) dostane, `body`, `id_teamu`
 			FROM (
 			SELECT sum(`SCR_domaci`) D, sum(`SCR_hoste`) H, `ID_domaci` Team
 			FROM `2014_zapasy_{$this->kategorie}`
