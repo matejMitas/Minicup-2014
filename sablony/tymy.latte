@@ -2,6 +2,10 @@
 {block main}
 <section>
 <div id="content-padding">
+<div class="toogle">
+	<span class="toggle-src-sub-tabul" data-src="mladsi">Mladší</span>
+	<span class="toggle-src-sub-tabul" data-src="starsi">Starší</span>
+
 <div class="toogle togmain">
 	<span class="toggle-src-main" data-src="mladsi">Mladší</span>
 	<span class="toggle-src-main" data-src="starsi">Starší</span>
@@ -15,7 +19,7 @@
 </ul>
 {/foreach}
 <script>
-	toggle(".toggle-src-main",".toggle-target-main");
+	toggle(".toggle-src-sub-tabul",".toggle-target-main");
 </script>
 </div>
 </section>
