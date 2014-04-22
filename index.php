@@ -30,7 +30,7 @@ if (isset($_GET["controller"])) {
     } elseif (in_array($_GET["controller"], Array("login","administrace"))) {
         include "kontrolery/". $_GET["controller"] .".php";
     } else {
-        header("Location: /minicup/2014/");
+        header("Location: /minicup/");
     }
 } else {
     include "kontrolery/novinky.php";
