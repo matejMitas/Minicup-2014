@@ -76,7 +76,9 @@
 				<h3>2. ročník mezinárodního turnaje v miniházené</h3>
 			</div>
 			<div id="barton">
-				<a href="http://www.barton-a-partner.cz/"><img src="img/barton.png" alt=""></a>
+				<a target="_blank" href="http://www.barton-a-partner.cz/">
+                                    <img src="/{$basePath}/img/barton.png" alt="Bartoň a partner">
+                                </a>
 			</div>
 		</div>
 	</header>
@@ -107,8 +109,8 @@
 		<h2>aktuálně hrané</h2>
 		{foreach $praveHrane[$key] as $zapas}
 		<div class="zapas">
-			<span class="domaci"><h3>{$zapas["0"]}</h3></span>
-			<span class="hoste"><h3>{$zapas["1"]}</h3></span>
+			<span class="domaci"><a href="/{$basePath}/{$key}/{$zapas["2"]}"><h3>{$zapas["0"]}</h3></a></span>
+			<span class="hoste"><a href="/{$basePath}/{$key}/{$zapas["3"]}"><h3>{$zapas["1"]}</h3></a></span>
 		</div>
 		{/foreach}
 	</div>
@@ -119,8 +121,8 @@
 		<h2>následující zápasy</h2>
 		{foreach $nasledujici[$key] as $zapas}
 		<div class="zapas">
-			<span class="domaci"><h3>{$zapas["0"]}</h3></span>
-			<span class="hoste"><h3>{$zapas["1"]}</h3></span>
+            <span class="domaci"><a href="/{$basePath}/{$key}/{$zapas["2"]}"><h3>{$zapas["0"]}</h3></a></span>
+            <span class="hoste"><a href="/{$basePath}/{$key}/{$zapas["3"]}"><h3>{$zapas["1"]}</h3></a></span>
 		</div>
 		{/foreach}
 	</div>  
@@ -135,12 +137,16 @@
 		<li>Bodů</li>
 	</ul>
 	{foreach $tabulka[$key] as $klic => $tym}
-	<ul {if $tym["poradi"] == 1}class="gold"{/if}{if $tym["poradi"] == 2}class="silver"{/if}{if $tym["poradi"] == 3}class="bronze"{/if}>
-		<li>{$tym["poradi"]}.</li>
-		<li>{$tym["jmeno"]}</li>
-		<li>{$tym["dane"]}:{$tym["dostane"]}</li>
-		<li>{$tym["body"]}</li>
-	</ul>
+    <a href="/{$basePath}/{$key}/{$tym['id_teamu']}">
+		<ul {if $tym["poradi"] == 1}class="gold"{/if}
+        	{if $tym["poradi"] == 2}class="silver"{/if}
+        	{if $tym["poradi"] == 3}class="bronze"{/if}>
+			<li>{$tym["poradi"]}.</li>
+			<li>{$tym["jmeno"]}</li>
+			<li>{$tym["dane"]}:{$tym["dostane"]}</li>
+			<li>{$tym["body"]}</li>
+		</ul>
+    </a>
 	{/foreach}
 </div>
 </div>
