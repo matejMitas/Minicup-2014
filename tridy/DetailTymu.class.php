@@ -21,6 +21,11 @@ class DetailTymu {
 	 */
 	private $nazevTymu;
         
+        /**
+         * 
+         * @param string $kategorie
+         * @return array vsechny tymy   
+         */
         public static function ziskejVsechnyTymy($kategorie) {
             $SQL = <<<SQL
 		SELECT `jmeno`,`id_teamu` 
