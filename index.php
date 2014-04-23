@@ -1,4 +1,5 @@
 <?php
+$basePath = "Minicup-2014";
 $time_start=microtime(True);
 function __autoload($trida){
     require_once("tridy/$trida.class.php");
@@ -7,7 +8,6 @@ spl_autoload_register("__autoload");
 require 'NetteInit.php';
 session_start();
 dbWrapper::pripoj();
-
 $controllers = array(
     "novinky" => "novinky",
     "informace" => "informace",
@@ -30,21 +30,23 @@ if (isset($_GET["controller"])) {
     } elseif (in_array($_GET["controller"], Array("login","administrace"))) {
         include "kontrolery/". $_GET["controller"] .".php";
     } else {
-        header("Location: /minicup/");
+        //header("HTTP/1.0 404 Not Found");
+        print_r($_SERVER);
+        header("Location: /{$basePath}/");
     }
 } else {
     include "kontrolery/novinky.php";
     $title = null;
 }
-
+$template->basePath = $basePath;
 $template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku(),
                             "starsi" => $VystupVysledkuST->ziskejTabulkuVysledku());
 $template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy(),
                             "starsi" => $VystupVysledkuST->ziskejPraveHraneZapasy());
-$template->nasledujici = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(),
-                            "starsi" => $VystupVysledkuST->ziskejNasledujiciZapasy());
-$template->title = $title;
-$template->basePath = "Minicup-2014";
+$template->nasledujici = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(6),
+                            "starsi" => $VystupVysledkuST->ziskejNasledujiciZapasy(6));
+$template->title = !isset($template->title) ? $title : $template->title;
+
 
 
 
