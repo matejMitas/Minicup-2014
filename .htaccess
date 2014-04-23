@@ -5,17 +5,17 @@ RewriteBase /Minicup-2014/
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ $1 [R=301,NE,L]
 
-# pro treti parametr
+# pro detail tymu
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(mladsi|starsi)/(1|2|3|4|5|6|7|8|9|10|11|12)$ index.php?controller=tymy&cat=$1&id=$2 [L]
 
-# pro druhy parametr
+# pro administraci a vkladani zapasu
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^/]+)/([^/]+)$ index.php?controller=$1&akce=$2 [L]
+RewriteRule ^administrace/(mladsi|starsi)$ index.php?controller=administrace&cat=$1 [L]
 
-# pro prvni parametr
+# pro hlavni controller
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)$ index.php?controller=$1 [L]
