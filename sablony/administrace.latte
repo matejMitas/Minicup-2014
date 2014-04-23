@@ -2,9 +2,13 @@
 {block main}
 <section>
 	<div id="content-padding">
-	<h2>Vložení nové novinky</h2>
+	<div class="toogle">
+    	<span class="toggle-src-sub-tabul"><a href="/{$basePath}/administrace">Vložení novinky</a></span> --- 
+    	<span class="toggle-src-sub-tabul"><a href="/{$basePath}/administrace/mladsi">Vložení výsledku mladší</a></span> ---
+    	<span class="toggle-src-sub-tabul"><a href="/{$basePath}/administrace/starsi">Vložení výsledku starší</a></span>
+	</div>
 	<br>
-	{$NN|noescape}
+	{$form|noescape}
 	</div> 
 </section>
 {/block}

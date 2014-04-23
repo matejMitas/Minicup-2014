@@ -2,7 +2,7 @@
 
 use Nette\Templating\FileTemplate;
 $template = new FileTemplate('sablony/login.latte');
-
+$template->title = "přihlášení";
 if ($_POST) {
 	if ($_POST["name"]) {
 		if ($_POST["password"]) {
@@ -27,6 +27,6 @@ if (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) {
 
 function checkLogin($name,$pass){
 	$logins = array("admin" => "administrator",
-					"mates" => "mitas");
+			"mates" => "mitas");
 	return isset($logins[$name]) && $logins[$name] == $pass;
 }
