@@ -10,8 +10,13 @@ if (!isset($_SESSION["logged"]) || $_SESSION["logged"] === false) {
 
 if (isset($_GET["cat"])) {
     $template->title = "VKLÁDÁNÍ výsledků kategorie {$_GET["cat"]}";
-    $vkladac = new VkladacZapasu($_GET["cat"], 4);
-    $template->form = $vkladac->ziskejFormular($_POST);
+    try {
+        $vkladac = new VkladacZapasu($_GET["cat"], 6);
+        $template->form = $vkladac->ziskejFormular($_POST);
+    } catch (Exception $e) {
+        $template->form = $e->getMessage();
+    }
+    
     
     $Prepocet = new Prepocet($_GET["cat"]);
     $Prepocet->aktualizujBody();
