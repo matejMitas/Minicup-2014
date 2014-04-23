@@ -12,10 +12,10 @@
             {else}
                 {if $zapas[1]==$jmeno} {*}zvolený tým je domácí{/*}
                     <p>vs. {$zapas[2]}</p>
-                    <h4><span n:class="$zapas[4] > $zapas[5] ? green : red">{$zapas[4]}</span>:{$zapas[5]}</h4>
-                {else}
+                    <h4><span n:class="$zapas[4] > $zapas[5]? green, $zapas[4] < $zapas[5]? red">{$zapas[4]}</span>:{$zapas[5]}</h4>
+                {else} {*}zvolený tým je hostí{/*}
                     <p>vs. {$zapas[1]}</p>
-                    <h4><span n:class="$zapas[4] < $zapas[5] ? green : red">{$zapas[5]}</span>:{$zapas[4]}</h4>
+                    <h4><span n:class="$zapas[4] < $zapas[5]? green, $zapas[4] > $zapas[5]? red">{$zapas[5]}</span>:{$zapas[4]}</h4>
                 {/if}
             {/if}
             <p><strong>{$zapas[3]}</strong></p>
