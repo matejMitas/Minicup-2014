@@ -1,190 +1,205 @@
 <!doctype html>
 <html lang="cs">
-<head>
-	<meta charset="UTF-8">
-	<title>{ifset $title}{$title|striptags|upper} - {/ifset}MINICUP 2014</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="author" content="Matěj Mitaš, Josef Kolář, Štěpán Hudeček">
-	<meta name="description" content="Web o druhém ročníku házenkářského turnaje minižáků dvou kategorií v Litovli.">
-	<meta name="keywords" content="házená,Litovel,Tatran Litovel,miniházená,turnaj,děti,sport">
-	<meta name="robots" content="index, follow">
+    <head>
+        <meta charset="UTF-8">
+        <title>{ifset $title}{$title|striptags|upper} - {/ifset}MINICUP 2014</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="author" content="Matěj Mitaš, Josef Kolář, Štěpán Hudeček">
+        <meta name="description" content="Web o druhém ročníku házenkářského turnaje minižáků dvou kategorií v Litovli.">
+        <meta name="keywords" content="házená,Litovel,Tatran Litovel,miniházená,turnaj,děti,sport">
+        <meta name="robots" content="index, follow">
+        
+        
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/{$basePath}/img/favicon/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/{$basePath}/img/favicon/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/{$basePath}/img/favicon/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="/{$basePath}/img/favicon/apple-touch-icon-precomposed.png">
+        <link rel="icon" type="image/png" href="/{$basePath}/img/favicon/favicon32.png">
+        <!--[if IE]><link rel="SHORTCUT ICON" href="/{$basePath}/img/favicon/favicon.ico"/><![endif]--><!-- Internet Explorer-->
 
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=latin-ext' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/{$basePath}/css/style.php?file=complete.scss"> 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-	<script src="/{$basePath}/js/jquery-1.9.js"></script>
-	<script src="/{$basePath}/js/map.js"></script>
-	<script src="/{$basePath}/js/main.js"></script>
-	<script>
-		var toggle = function(toggleButtons, toggleTargets, toggleActive) {
-			if(typeof toggleActive === "undefined") var toggleActive = "active";
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/{$basePath}/css/style.php?file=complete.scss"> 
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+        <script src="/{$basePath}/js/jquery-1.9.js"></script>
+        <script src="/{$basePath}/js/map.js"></script>
+        <script src="/{$basePath}/js/main.js"></script>
+        <script>
+	   var toggle = function(toggleButtons, toggleTargets, toggleActive) {
+	       if (typeof toggleActive === "undefined")
+		  var toggleActive = "active";
 
-			$(toggleTargets).each(function(index,el){
-				if (index === 0) {
-					$(el).show();
-				} else {
-					$(el).hide();
-				}
-			});
-	
-			$(toggleTargets+":first-of-type").show();
-	
-			$(toggleButtons+":first-of-type").each(function(index,el){
-				$(el).addClass(toggleActive);
-			});
-	
-			$(toggleButtons).click(function(event){
-			   	var src = $(this).data("src");
-			   	$(toggleButtons).removeClass(toggleActive);
-			   	$(this).addClass(toggleActive);
-				$(toggleTargets).each(function(){
-					var target = $(this).data("target");
-					if (target === src) {
-						$(this).show();
-					} else {
-						$(this).hide();
-					}
-				});
-			});
-		};
-	</script>
+	       $(toggleTargets).each(function(index, el) {
+		  if (index === 0) {
+		      $(el).show();
+		  } else {
+		      $(el).hide();
+		  }
+	       });
 
-	<!--[if lt IE 9]>
-		<script>
-		  document.createElement('header');
-		  document.createElement('nav');
-		  document.createElement('section');
-		  document.createElement('aside');
-		  document.createElement('footer');
-		  document.createElement('article');
-		</script>
-	<![endif]-->
+	       $(toggleTargets + ":first-of-type").show();
 
-</head>
-<body>
-	<header>
-		<div class="center">
-			<div id="logo">
-			<a href="/{$basePath}/novinky">
-				<svg width="275" height="275">
-					<image xlink:href="/{$basePath}/img/logo.svg" src="img/logo.png" width="275" height="275" />
-				</svg>
-			</a>
-			</div>
-			<div id="slogan">
-				<h2>23. - 25. května</h2>
-				<h3>2. ročník mezinárodního turnaje v miniházené</h3>
-			</div>
-			<div id="barton">
-				<a target="_blank" href="http://www.barton-a-partner.cz/">
-                                    <img src="/{$basePath}/img/barton.png" alt="Bartoň a partner">
-                                </a>
-			</div>
-		</div>
-	</header>
+	       $(toggleButtons + ":first-of-type").each(function(index, el) {
+		  $(el).addClass(toggleActive);
+	       });
 
-	<nav class="clearfix">
-		<div class="center">
-			<ul class="clearfix">
-				<li n:foreach="$menu as $polozka => $cz">
-					<a href="/{$basePath}/{$polozka}">{$cz|upper}</a>
-				</li>
-			</ul>
-			<a id="pull">Menu</a> 
-		</div>
-	</nav>
-<div class="center">
-{block main}
+	       $(toggleButtons).click(function(event) {
+		  var src = $(this).data("src");
+		  $(toggleButtons).removeClass(toggleActive);
+		  $(this).addClass(toggleActive);
+		  $(toggleTargets).each(function() {
+		      var target = $(this).data("target");
+		      if (target === src) {
+			 $(this).show();
+		      } else {
+			 $(this).hide();
+		      }
+		  });
+	       });
+	   };
+        </script>
 
-{/block}
-<aside>
-<div class="toogle">
-	<span class="toggle-src-aside active" data-src="mladsi">Mladší</span> / <span class="toggle-src-aside" data-src="starsi">Starší</span> 
-</div>
+        <!--[if lt IE 9]>
+	        <script>
+		 document.createElement('header');
+		 document.createElement('nav');
+		 document.createElement('section');
+		 document.createElement('aside');
+		 document.createElement('footer');
+		 document.createElement('article');
+	        </script>
+        <![endif]-->
 
-{foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
-<div class="aside-padding tog toggle-target-aside" data-target="{$key}">
-{ifset $praveHrane[$key][0]}
-	<div class="hrane">
-		<h2>aktuálně hrané</h2>
-		{foreach $praveHrane[$key] as $zapas}
-		<div class="zapas">
-			<span class="domaci"><a href="/{$basePath}/{$key}/{$zapas["2"]}"><h3>{$zapas["0"]}</h3></a></span>
-			<span class="hoste"><a href="/{$basePath}/{$key}/{$zapas["3"]}"><h3>{$zapas["1"]}</h3></a></span>
-		</div>
-		{/foreach}
-	</div>
-{/ifset}
+    </head>
+    <body>
+        <header>
+	   <div class="center">
+	       <div id="logo">
+		  <a href="/{$basePath}/novinky">
+		      <svg width="275" height="275">
+		      <image xlink:href="/{$basePath}/img/logo.svg" src="img/logo.png" width="275" height="275" />
+		      </svg>
+		  </a>
+	       </div>
+	       <div id="slogan">
+		  <h2>23. - 25. května</h2>
+		  <h3>2. ročník mezinárodního turnaje v miniházené</h3>
+	       </div>
+	       <div id="barton">
+		  <a target="_blank" href="http://www.barton-a-partner.cz/">
+		      <img src="/{$basePath}/img/barton.png" alt="Bartoň a partner">
+		  </a>
+	       </div>
+	   </div>
+        </header>
+        <nav class="clearfix">
+	   <div class="center">
+	       <ul class="clearfix">
+		  <li n:foreach="$menu as $polozka => $cz">
+		      <a href="/{$basePath}/{$polozka}">{$cz|upper}</a>
+		  </li>
+	       </ul>
+	       <a id="pull">Menu</a> 
+	   </div>
+        </nav>
+        <div class="center">
+	   {block main}
 
-{ifset $nasledujici[$key][0]}
-	<div class="nasledujici">
-		<h2>následující zápasy</h2>
-		{foreach $nasledujici[$key] as $zapas}
-		<div class="zapas">
-            <span class="domaci"><a href="/{$basePath}/{$key}/{$zapas["2"]}"><h3>{$zapas["0"]}</h3></a></span>
-            <span class="hoste"><a href="/{$basePath}/{$key}/{$zapas["3"]}"><h3>{$zapas["1"]}</h3></a></span>
-		</div>
-		{/foreach}
-	</div>  
-{/ifset}
+	   {/block}
+	   <aside>
+	       <div class="toogle">
+		  <span class="toggle-src-aside active" data-src="mladsi">Mladší</span> / <span class="toggle-src-aside" data-src="starsi">Starší</span> 
+	       </div>
 
-<div class="poradi">
-	<h2 class="h2">pořadí v tabulce</h2>
-	<ul class="poradi-head">
-		<li>Pořadí</li>
-		<li>Tým</li>
-		<li>Skóre</li>
-		<li>Bodů</li>
-	</ul>
-	{foreach $tabulka[$key] as $klic => $tym}
-    <a href="/{$basePath}/{$key}/{$tym['id_teamu']}">
-		<ul {if $tym["poradi"] == 1}class="gold"{/if}
-        	{if $tym["poradi"] == 2}class="silver"{/if}
-        	{if $tym["poradi"] == 3}class="bronze"{/if}>
-			<li>{$tym["poradi"]}.</li>
-			<li>{$tym["jmeno"]}</li>
-			<li>{$tym["dane"]}:{$tym["dostane"]}</li>
-			<li>{$tym["body"]}</li>
-		</ul>
-    </a>
-	{/foreach}
-</div>
-</div>
-{/foreach}
-</aside>
-<script>
-	toggle(".toggle-src-aside",".toggle-target-aside");
-</script>
-</div>
-	
-<div id="mapDiv"></div>
-<footer>
-	<div class="date">
-		<h2>23. - 25. května</h2>
-		<h3>2. ročník mezinárodního turnaje v miniházené </h3>
-	</div>
-	<div class="authors">Tatran Litovel | 2014 © Matěj Mitaš, Josef Kolář<br>Vygenerováno za {$time}ms.
-		<a href="http://www.toplist.cz/">
-	<script language="JavaScript" type="text/javascript">
-	<!--
-	document.write('<img src="http://toplist.cz/dot.asp?id=1561645&http='+escape(document.referrer)+'&t='+escape(document.title)+
-	'&wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)+'&cd='+escape(window.screen.colorDepth)+'" width="1" height="1" border=0 alt="TOPlist" />');
-	//--></script><noscript><img src="http://toplist.cz/dot.asp?id=1561645" border="0"
-	alt="TOPlist" width="1" height="1" /></noscript></a></div>
-</footer>
-<script>
-  (function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-40772204-1', 'tatranlitovel.cz');
-	ga('require', 'displayfeatures');
-	ga('send', 'pageview');
-</script>
-<!--[if lt IE 9]>
-	<script>
-		$(".poradi").hide();
-	</script>
-<![endif]-->
-</body>
+	       {foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
+		  <div class="aside-padding tog toggle-target-aside" data-target="{$key}">
+		      {ifset $praveHrane[$key][0]}
+			 <div class="hrane">
+			     <h2>aktuálně hrané</h2>
+			     {foreach $praveHrane[$key] as $zapas}
+				<div class="zapas">
+				    <span class="domaci"><a href="/{$basePath}/{$key}/{$zapas["2"]}"><h3>{$zapas["0"]}</h3></a></span>
+				    <span class="hoste"><a href="/{$basePath}/{$key}/{$zapas["3"]}"><h3>{$zapas["1"]}</h3></a></span>
+				</div>
+			     {/foreach}
+			 </div>
+		      {/ifset}
+
+		      {ifset $nasledujici[$key][0]}
+			 <div class="nasledujici">
+			     <h2>následující zápasy</h2>
+			     {foreach $nasledujici[$key] as $zapas}
+				<div class="zapas">
+				    <span class="domaci"><a href="/{$basePath}/{$key}/{$zapas["2"]}"><h3>{$zapas["0"]}</h3></a></span>
+				    <span class="hoste"><a href="/{$basePath}/{$key}/{$zapas["3"]}"><h3>{$zapas["1"]}</h3></a></span>
+				</div>
+			     {/foreach}
+			 </div>  
+		      {/ifset}
+
+		      <div class="poradi">
+			 <h2 class="h2">pořadí v tabulce</h2>
+			 <ul class="poradi-head">
+			     <li>Pořadí</li>
+			     <li>Tým</li>
+			     <li>Skóre</li>
+			     <li>Bodů</li>
+			 </ul>
+			 {foreach $tabulka[$key] as $klic => $tym}
+			     <a href="/{$basePath}/{$key}/{$tym['id_teamu']}">
+				<ul {if $tym["poradi"] == 1}class="gold"{/if}
+							 {if $tym["poradi"] == 2}class="silver"{/if}
+							 {if $tym["poradi"] == 3}class="bronze"{/if}>
+				    <li>{$tym["poradi"]}.</li>
+				    <li>{$tym["jmeno"]}</li>
+				    <li>{$tym["dane"]}:{$tym["dostane"]}</li>
+				    <li>{$tym["body"]}</li>
+				</ul>
+			     </a>
+			 {/foreach}
+		      </div>
+		  </div>
+	       {/foreach}
+	   </aside>
+	   <script>
+	       toggle(".toggle-src-aside", ".toggle-target-aside");
+	   </script>
+        </div>
+
+        <div id="mapDiv"></div>
+        <footer>
+	   <div class="date">
+	       <h2>23. - 25. května</h2>
+	       <h3>2. ročník mezinárodního turnaje v miniházené </h3>
+	   </div>
+	   <div class="authors">Tatran Litovel | 2014 © Matěj Mitaš, Josef Kolář<br>Vygenerováno za {$time}ms.
+	       <a href="http://www.toplist.cz/">
+		  <script language="JavaScript" type="text/javascript">
+		      <!--
+		  document.write('<img src="http://toplist.cz/dot.asp?id=1561645&http=' + escape(document.referrer) + '&t=' + escape(document.title) +
+			     '&wi=' + escape(window.screen.width) + '&he=' + escape(window.screen.height) + '&cd=' + escape(window.screen.colorDepth) + '" width="1" height="1" border=0 alt="TOPlist" />');
+		      //--></script><noscript><img src="http://toplist.cz/dot.asp?id=1561645" border="0"
+				        alt="TOPlist" width="1" height="1" /></noscript></a></div>
+        </footer>
+        <script>
+	   (function(i, s, o, g, r, a, m) {
+	       i['GoogleAnalyticsObject'] = r;
+	       i[r] = i[r] || function() {
+		  (i[r].q = i[r].q || []).push(arguments)
+	       }, i[r].l = 1 * new Date();
+	       a = s.createElement(o),
+		      m = s.getElementsByTagName(o)[0];
+	       a.async = 1;
+	       a.src = g;
+	       m.parentNode.insertBefore(a, m)
+	   })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+	   ga('create', 'UA-40772204-1', 'tatranlitovel.cz');
+	   ga('require', 'displayfeatures');
+	   ga('send', 'pageview');
+        </script>
+        <!--[if lt IE 9]>
+	        <script>
+		        $(".poradi").hide();
+	        </script>
+        <![endif]-->
+    </body>
 </html>
