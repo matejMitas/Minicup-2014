@@ -33,6 +33,21 @@ class VystupVysledku {
 SQL;
 		return dbWrapper::dotaz($sql,Array())->fetchAll();
 	}
+        
+        public function ziskejOdehraneZapasy($datum) {
+		$sql=<<<SQL
+                        SELECT 
+			b.`jmeno`,c.`jmeno`, a.`SCR_domaci`,a.`SCR_hoste`,a.`cas_odehrani`
+			FROM `2014_zapasy_{$this->kategorie}` a
+				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
+				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
+			WHERE a.`odehrano` = 1 
+				AND UNIX_TIMESTAMP(a.`cas_odehrani`) > UNIX_TIMESTAMP(:datum) 
+				AND UNIX_TIMESTAMP(a.`cas_odehrani`) < (UNIX_TIMESTAMP(:datum) + 24*60*60)
+			ORDER BY a.`ID_zapasu` ASC
+SQL;
+		return dbWrapper::dotaz($sql,Array("datum" => $datum))->fetchAll();
+	}
 
 	public function ziskejPraveHraneZapasy($limit = 2) {
 		$sql=<<<SQL

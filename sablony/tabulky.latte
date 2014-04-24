@@ -1,129 +1,128 @@
 {extends '@layout.latte'}
 {block main}
 <section>
-<div id="content-padding">
-{*}<h2>Bude zveřejněno!</h2>{/*}
+    <div id="content-padding">
+        {*}<h2>Bude zveřejněno!</h2>{/*}
 
-<div id="table-wrapper">
+        <div id="table-wrapper">
 
-	<div class="toogle togmain">
-		<span class="toggle-src-main" data-src="rozlos">Rozlosování</span> / <span class="toggle-src-main" data-src="zapasy">Zápasy</span> / <span class="toggle-src-main" data-src="tabul">Tabulky</span>	
-	</div>
+            <div class="toogle togmain">
+                <span class="toggle-src-main" data-src="rozlos">Rozlosování</span> / <span class="toggle-src-main" data-src="zapasy">Zápasy</span> / <span class="toggle-src-main" data-src="tabul">Tabulky</span>	
+            </div>
 
-		<div class="toggle-target-main" data-target="rozlos">
-		<div class="toogle togsub">
-			<span class="toggle-src-sub-rozlos" data-src="mladsi">Mladší</span> / <span class="toggle-src-sub-rozlos" data-src="starsi">Starší</span>
-		</div>
+            <div class="toggle-target-main" data-target="rozlos">
+                <div class="toogle togsub">
+                    <span class="toggle-src-sub-rozlos" data-src="mladsi">Mladší</span> / <span class="toggle-src-sub-rozlos" data-src="starsi">Starší</span>
+                </div>
 
-		{var datumy = Array("23. 5.","24. 5.","25. 5.")}
-		{foreach $rozlosovani as $kategorie => $value}
+                {var datumy = Array("23. 5.","24. 5.","25. 5.")}
+                {foreach $rozlosovani as $kategorie => $value}
 
-		<div class="rozlos toggle-target-sub-rozlos" data-target="{$kategorie}">
-			{foreach $value as $den => $rozlos}
-			<br>
-			<h4>{$datumy[$den]}</h4>
-			<table class="rozlos">
-				<thead>
+                    <div class="rozlos toggle-target-sub-rozlos" data-target="{$kategorie}">
+                        {foreach $value as $den => $rozlos}
+			 {continueIf !isset($rozlos[0])}
+                            <br>
+                            <h4>{$datumy[$den]}</h4>
+                            <table class="rozlos">
+                                <thead>
+                                    <tr>
+                                        <th>domácí</th>
+                                        <th>čas</th>
+                                        <th>hosté</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {foreach $rozlos as $zapas}
+                                        <tr>
+                                            <td>{$zapas[0]}</td>
+                                            <td>{date("G:i",strtotime($zapas[2]))}</td>
+                                            <td>{$zapas[1]}</td>
+                                        </tr>
+                                    {/foreach}
+                                </tbody>	
+                            </table>
+                        {/foreach}
+                    </div>
+                {/foreach}
+	       <h4 n:if="!isset($value[0],$value[1],$value[2])">Již nezbývají řádné zápasy k odehrání!</h4>
+            </div>
+
+            <div class="toggle-target-main" data-target="zapasy">
+	       <div class="toogle">
+		  <span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span> /
+		  <span class="toggle-src-sub-zapasy" data-src="starsi">Starší</span>
+	       </div>
+	       {foreach $odehraneZapasy as $kategorie => $value}
+		  <div class="zapasy toggle-target-sub-zapasy" data-target="{$kategorie}">
+		      {foreach $value as $den => $rozlos}
+			 {continueIf !isset($rozlos[0])}
+			 <br>
+			 <h4>{$datumy[$den]}</h4>
+			 <table class="zapasy">
+			     <thead>
 				<tr>
-					<th>domácí</th>
-					<th>čas</th>
-					<th>hosté</th>
+				    <th>domácí</th>
+				    <th>scóre</th>
+				    <th>hosté</th>
 				</tr>
-				</thead>
-				<tbody>
+			     </thead>
+			     <tbody>
 				{foreach $rozlos as $zapas}
-				<tr>
-					<td>{$zapas[0]}</td>
-					<td>{date("G:i",strtotime($zapas[2]))}</td>
-					<td>{$zapas[1]}</td>
-				</tr>
+				    <tr>
+				        <td>{$zapas[0]}</td>
+				        <td>{$zapas[2]}:{$zapas[3]}</td>
+				        <td>{$zapas[1]}</td>
+				    </tr>
 				{/foreach}
-				</tbody>	
-			</table>
-			{/foreach}
-			</div>
-			{/foreach}
-		</div>
+			     </tbody>	
+			 </table>
+		      {/foreach}
+		      <h4>Již nezbývají žádné zápasy k odehrání!</h4>
+		  </div>
+	       {/foreach} 
+            </div>
 
-		<div class="toggle-target-main" data-target="zapasy">
-		{if !isset($odehraneZapasy)}
-			<h4>Dosud nebyly odehrány žádné zápasy!</h4>
-		{else}
-			<div class="toogle">
-				<span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span> / <span class="toggle-src-sub-zapasy" data-src="starsi">Starší</span>
-			</div>
-			{foreach $odehraneZapasy as $kategorie => $value}
-			<div class="zapasy toggle-target-sub-zapasy" data-target="{$kategorie}">
-			<table class="zapasy">
-				<thead>
-				<tr>
-					<th>odehráno</th>
-					<th>domácí</th>
-					<th>scóre</th>
-					<th>hosté</th>
-				</tr>
-				</thead>
-				<tbody>
-			{foreach $value as $key => $zapas}
-				<tr>
-					<td>{date("G:i",strtotime($zapas[4]))}</td>
-					<td><strong n:tag-if="$zapas[2] > $zapas[3]">{$zapas[0]}</strong></td>
-					<td>{$zapas[2]}:{$zapas[3]}</td>
-					<td><strong n:tag-if="$zapas[2] < $zapas[3]">{$zapas[1]}</strong></td>
-				</tr>
-			{/foreach}
-			</tbody>	
-			</table>
-			</div>
-			{/foreach}
-		{/if}
-		</div>
+            <div class="toggle-target-main" data-target="tabul">
+                <div class="toogle">
+                    <span class="toggle-src-sub-tabul" data-src="mladsi">Mladší</span>/
+                    <span class="toggle-src-sub-tabul" data-src="starsi">Starší</span>
+                </div>
 
-		<div class="toggle-target-main" data-target="tabul">
-			<div class="toogle">
-				<span class="toggle-src-sub-tabul" data-src="mladsi">Mladší</span>/
-				<span class="toggle-src-sub-tabul" data-src="starsi">Starší</span>
-			</div>
-			
-			{foreach array("mladsi" => "Mladší", "starsi" => "Starší") as $key => $value}
-			<table class="tabul toggle-target-sub-tabul" data-target="{$key}">
-				<thead>
-				<tr>
-					<th>Pořadí</th>
-					<th>Tým</th>
-					<th>Zápasů</th>
-					<th>Skóre</th>
-					<th>Bodů</th>
-				</tr>
-				</thead>
-				<tbody>
-				{foreach $tabulka[$key] as $klic => $tym}
-				<a href="/{$basePath}/{$key}/{$tym['id_teamu']}">
-					<tr {if $tym["poradi"] == 1}class="gold"{/if}
-        				{if $tym["poradi"] == 2}class="silver"{/if}
-        				{if $tym["poradi"] == 3}class="bronze"{/if}>
-						<td>{$tym["poradi"]}.</td>
-						<td>{$tym["jmeno"]}</td>
-						<td>0</td>
-						<td>{$tym["dane"]}:{$tym["dostane"]}</td>
-						<td>{$tym["body"]}</td>
-					</tr>
-				</a>
-				{/foreach}	
-				</tbody>
-			</table>
-			{/foreach}
-		</div>
-</div>
+                {foreach array("mladsi" => "Mladší", "starsi" => "Starší") as $key => $value}
+                    <table class="tabul toggle-target-sub-tabul" data-target="{$key}">
+                        <thead>
+                            <tr>
+                                <th>Pořadí</th>
+                                <th>Tým</th>
+                                <th>Zápasů</th>
+                                <th>Skóre</th>
+                                <th>Bodů</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach $tabulka[$key] as $klic => $tym}
+                                <tr {if $tym["poradi"] == 1}class="gold"{/if}{if $tym["poradi"] == 2}class="silver"{/if}{if $tym["poradi"] == 3}class="bronze"{/if}>
+                                    <td>{$tym["poradi"]}.</td>
+                                    <td>{$tym["jmeno"]}</td>
+                                    <td>0</td>
+                                    <td>{$tym["dane"]}:{$tym["dostane"]}</td>
+                                    <td>{$tym["body"]}</td>
+                                </tr>
+			 {/foreach}	
+                        </tbody>
+                    </table>
+                {/foreach}
+            </div>
+        </div>
 
 
-<script>
-toggle(".toggle-src-main", ".toggle-target-main");
-toggle(".toggle-src-sub-rozlos", ".toggle-target-sub-rozlos");
-toggle(".toggle-src-sub-zapasy", ".toggle-target-sub-zapasy");
-toggle(".toggle-src-sub-tabul",  ".toggle-target-sub-tabul");
-</script>
+        <script>
+	   toggle(".toggle-src-main", ".toggle-target-main");
+	   toggle(".toggle-src-sub-rozlos", ".toggle-target-sub-rozlos");
+	   toggle(".toggle-src-sub-zapasy", ".toggle-target-sub-zapasy");
+	   toggle(".toggle-src-sub-tabul", ".toggle-target-sub-tabul");
+        </script>
 
-</div>
+    </div>
 </section>
 {/block}
