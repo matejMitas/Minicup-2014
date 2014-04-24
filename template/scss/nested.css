@@ -1,46 +1,36 @@
 @import url(reset.css);
 @import url(demo.css);
-/* line 41, grid.scss */
 body {
   width: 100%;
   *zoom: 1; }
-  /* line 27, grid.scss */
   body:before, body:after {
     content: "";
     display: table; }
-  /* line 31, grid.scss */
   body:after {
     clear: both; }
 
-/* line 24, nested.scss */
 div.center {
   margin: 0 auto;
   overflow: hidden; }
 
-/* line 30, nested.scss */
 header#top {
   margin-bottom: 1em; }
 
-/* line 35, nested.scss */
 #maincolumn {
   display: inline;
   float: left;
   width: 72.91667%;
   margin: 0 1.04167%; }
-  /* line 38, nested.scss */
   #maincolumn ul#boxes {
     display: block;
     width: 102.77778%;
     margin: 0 -1.38889%;
     *zoom: 1; }
-    /* line 27, grid.scss */
     #maincolumn ul#boxes:before, #maincolumn ul#boxes:after {
       content: "";
       display: table; }
-    /* line 31, grid.scss */
     #maincolumn ul#boxes:after {
       clear: both; }
-    /* line 41, nested.scss */
     #maincolumn ul#boxes li {
       display: inline;
       float: left;
@@ -48,7 +38,6 @@ header#top {
       margin: 0 1.38889%;
       margin-bottom: 1em; }
 
-/* line 49, nested.scss */
 #sidebar {
   display: inline;
   float: left;
