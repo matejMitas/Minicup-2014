@@ -1,8 +1,8 @@
 $(function() {
-
+    mobileMenu()
 });
 
-$(function() {
+function mobileMenu() {
     var pull = $('#pull');
     menu = $('nav ul');
     menuHeight = menu.height();
@@ -17,4 +17,4 @@ $(function() {
             menu.removeAttr('style');
         }
     });
-});
+}
