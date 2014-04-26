@@ -40,10 +40,42 @@
 
 	<script type="text/javascript">
 		;( function( $ ) {
-
 			$( '.swipebox' ).swipebox();
-
 		} )( jQuery );
+	</script>
+
+	<script>
+	var toggle = function(toggleButtons, toggleTargets, toggleActive) {
+		if(typeof toggleActive == "undefined") var toggleActive = "active";
+
+		$(toggleTargets).each(function(index,el){
+			if (index == 0) {
+				$(el).show();
+			} else {
+				$(el).hide();
+			}
+		});
+
+		$(toggleTargets+":first-of-type").show();
+
+		$(toggleButtons+":first-of-type").each(function(index,el){
+			$(el).addClass(toggleActive);
+		});
+
+		$(toggleButtons).click(function(event){
+	   		var src = $(this).data("src");
+	   		$(toggleButtons).removeClass(toggleActive);
+	   		$(this).addClass(toggleActive);
+			$(toggleTargets).each(function(){
+				var target = $(this).data("target");
+				if (target == src) {
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+			});
+		});
+	};
 	</script>
 	
 	<!--[if lt IE 9]>
@@ -119,7 +151,32 @@
 							<img src="img/fotogalerie/thumb3.jpg" alt="image">
 						</a>
 					</li>
+					<div class="photoHide" style="display:none">
+						<li>
+						<a href="img/fotogalerie/mini2013-05-24-38_DSC_5398.jpg" class="swipebox" title="Úžasný zápas">
+							<img src="img/fotogalerie/thumb1.jpg" alt="image">
+						</a>
+					</li>
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-12_DSC_5320.jpg" class="swipebox" title="Co to tam">
+							<img src="img/fotogalerie/thumb2.jpg" alt="image">
+						</a>
+					</li>
+					<li>
+						<a href="img/fotogalerie/mini2013-05-24-07_DSC_5312.jpg" class="swipebox" title="Co to tam">
+							<img src="img/fotogalerie/thumb3.jpg" alt="image">
+						</a>
+					</li>
+					</div>
 				</ul>
+
+				<button type="submit" class="tooglePhoto">Hovno</button>
+
+				<script>
+						$( ".tooglePhoto" ).click(function() {
+						  $( ".photoHide" ).toggle( "slow");
+						});
+				</script>
 
 				<h2>Sobota</h2>
 
@@ -270,48 +327,7 @@
 							</div>
 						</div>	
 		</aside>
-		<script>
-						/** trida pro tlacitka */
-						var toggleButtons = ".toggle-src";
 
-						/** trida pro toggle elementy */
-						var toggleTargets = ".toggle-target";
-
-						/** trida pro highlight tlacitek */
-						var toggleActive = "active";
-
-						/** ovladani togglu: 
-								<element class="toggle-src" data-src="mujcil">
-							ovladane elementy:
-								<element class="toggle-target" data-target="mujcil">
-						*/
-
-
-						$(toggleButtons).click(function(event){
-							var src = $(this).data("src");
-
-							$(toggleButtons).each(function(){
-								$(this).removeClass(toggleActive);
-							});
-							$(this).addClass(toggleActive);
-
-
-							$(toggleTargets).each(function(){
-								var target = $(this).data("target");
-								if (target == src) {
-									$(this).show();
-								} else {
-									$(this).hide();
-								}
-							});
-						});
-
-						/* $("toggle-src")
-						$("toggle-target") */
-
-
-					</script>
-				
 
 		</div>
 	
