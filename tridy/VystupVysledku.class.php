@@ -1,4 +1,5 @@
 <?php
+
 class VystupVysledku {
 
     /**
@@ -6,8 +7,7 @@ class VystupVysledku {
      * @var string
      * @access private
      */
-	private $kategorie;
-
+    private $kategorie;
 
     /**
      * ziskejOdehraneZapasy
@@ -15,13 +15,12 @@ class VystupVysledku {
      * @access public
      * @return array[string] vrátí raw data všech zápasů
      */
-    
     function __construct($kategorie) {
-    	$this->kategorie = $kategorie;
+        $this->kategorie = $kategorie;
     }
 
-	public function ziskejNasledujiciZapasy($limit = 4) {
-		$sql=<<<SQL
+    public function ziskejNasledujiciZapasy($limit = 4) {
+        $sql = <<<SQL
 			SELECT 
 			b.`jmeno`,c.`jmeno`,a.`ID_domaci`,a.`ID_hoste`
 			FROM `2014_zapasy_{$this->kategorie}` a
@@ -31,11 +30,11 @@ class VystupVysledku {
 			ORDER BY a.`cas_odehrani` ASC
 			LIMIT $limit
 SQL;
-		return dbWrapper::dotaz($sql,Array())->fetchAll();
-	}
-        
-        public function ziskejOdehraneZapasy($datum) {
-		$sql=<<<SQL
+        return dbWrapper::dotaz($sql, Array())->fetchAll();
+    }
+
+    public function ziskejOdehraneZapasy($datum) {
+        $sql = <<<SQL
                         SELECT 
 			b.`jmeno`,c.`jmeno`, a.`SCR_domaci`,a.`SCR_hoste`,a.`cas_odehrani`
 			FROM `2014_zapasy_{$this->kategorie}` a
@@ -46,11 +45,11 @@ SQL;
 				AND UNIX_TIMESTAMP(a.`cas_odehrani`) < (UNIX_TIMESTAMP(:datum) + 24*60*60)
 			ORDER BY a.`ID_zapasu` ASC
 SQL;
-		return dbWrapper::dotaz($sql,Array("datum" => $datum))->fetchAll();
-	}
+        return dbWrapper::dotaz($sql, Array("datum" => $datum))->fetchAll();
+    }
 
-	public function ziskejPraveHraneZapasy($limit = 2) {
-		$sql=<<<SQL
+    public function ziskejPraveHraneZapasy($limit = 2) {
+        $sql = <<<SQL
 			SELECT 
 			b.`jmeno`,c.`jmeno`,a.`ID_domaci`,a.`ID_hoste`
 			FROM `2014_zapasy_{$this->kategorie}` a
@@ -60,30 +59,32 @@ SQL;
 			ORDER BY a.`ID_zapasu` ASC
 			LIMIT $limit
 SQL;
-		return dbWrapper::dotaz($sql, Array())->fetchAll();
-	}
+        return dbWrapper::dotaz($sql, Array())->fetchAll();
+    }
 
-	public function ziskejTabulkuVysledku() {
-		$SQL=<<<SQL
-		SELECT `poradi`,`jmeno`,ifnull(sum(D),0) dane, ifnull(sum(H),0) dostane, `body`, `id_teamu`
-			FROM (
-			SELECT sum(`SCR_domaci`) D, sum(`SCR_hoste`) H, `ID_domaci` Team
-			FROM `2014_zapasy_{$this->kategorie}`
-			GROUP BY Team
-			UNION
-			SELECT sum(`SCR_hoste`) D, sum(`SCR_domaci`) H, `ID_hoste` Team
-			FROM `2014_zapasy_{$this->kategorie}`
-			GROUP BY Team
-		)CLK
-		RIGHT JOIN 2014_tymy_{$this->kategorie} TM ON CLK.Team = TM.id_teamu
-		GROUP BY `id_teamu`
-		ORDER BY `poradi` ASC
+    public function ziskejTabulkuVysledku() {
+        $SQL = <<<SQL
+        SELECT `poradi`,`jmeno`,ifnull(SUM(D),0) dane, ifnull(SUM(H),0) dostane, `body`, `id_teamu`, IFNULL(SUM(KEDLUBEN),0) pocet
+            FROM (
+            SELECT SUM(`SCR_domaci`) D, SUM(`SCR_hoste`) H, `ID_domaci` Team, SUM(`odehrano`) KEDLUBEN
+            FROM `2014_zapasy_{$this->kategorie}`
+            WHERE `odehrano` = 1
+            GROUP BY Team
+            UNION ALL
+            SELECT SUM(`SCR_hoste`) D, SUM(`SCR_domaci`) H, `ID_hoste` Team, SUM(`odehrano`) KEDLUBEN
+            FROM `2014_zapasy_{$this->kategorie}`
+            WHERE `odehrano` = 1
+            GROUP BY Team
+        ) CLK
+        RIGHT JOIN `2014_tymy_{$this->kategorie}` TM ON CLK.Team = TM.id_teamu
+        GROUP BY `id_teamu`
+        ORDER BY `poradi` ASC
 SQL;
-	return dbWrapper::dotaz($SQL,Array())->FetchAll();
-	}
+        return dbWrapper::dotaz($SQL, Array())->FetchAll();
+    }
 
-	public function ziskejRozlosovaniZapasu($datum) {
-		$SQL=<<<SQL
+    public function ziskejRozlosovaniZapasu($datum) {
+        $SQL = <<<SQL
 		SELECT 
 			b.`jmeno`,c.`jmeno`, a.`cas_odehrani`
 			FROM `2014_zapasy_{$this->kategorie}` a
@@ -94,6 +95,7 @@ SQL;
 				AND UNIX_TIMESTAMP(a.`cas_odehrani`) < (UNIX_TIMESTAMP(:datum) + 24*60*60)
 			ORDER BY a.`ID_zapasu` ASC
 SQL;
-		return dbWrapper::dotaz($SQL,Array("datum" => $datum))->FetchAll();
-	}
+        return dbWrapper::dotaz($SQL, Array("datum" => $datum))->FetchAll();
+    }
+
 }
