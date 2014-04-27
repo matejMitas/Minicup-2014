@@ -20,7 +20,7 @@
 
                     <div class="rozlos toggle-target-sub-rozlos" data-target="{$kategorie}">
                         {foreach $value as $den => $rozlos}
-			 {continueIf !isset($rozlos[0])}
+                            {continueIf !isset($rozlos[0])}
                             <br>
                             <h4>{$datumy[$den]}</h4>
                             <table class="rozlos">
@@ -44,42 +44,42 @@
                         {/foreach}
                     </div>
                 {/foreach}
-	       <h4 n:if="!isset($value[0],$value[1],$value[2])">Již nezbývají řádné zápasy k odehrání!</h4>
+                <h4 n:if="!isset($value[0],$value[1],$value[2])">Již nezbývají řádné zápasy k odehrání!</h4>
             </div>
 
             <div class="toggle-target-main" data-target="zapasy">
-	       <div class="toogle">
-		  <span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span> /
-		  <span class="toggle-src-sub-zapasy" data-src="starsi">Starší</span>
-	       </div>
-	       {foreach $odehraneZapasy as $kategorie => $value}
-		  <div class="zapasy toggle-target-sub-zapasy" data-target="{$kategorie}">
-		      {foreach $value as $den => $rozlos}
-			 {continueIf !isset($rozlos[0])}
-			 <br>
-			 <h4>{$datumy[$den]}</h4>
-			 <table class="zapasy">
-			     <thead>
-				<tr>
-				    <th>domácí</th>
-				    <th>scóre</th>
-				    <th>hosté</th>
-				</tr>
-			     </thead>
-			     <tbody>
-				{foreach $rozlos as $zapas}
-				    <tr>
-				        <td>{$zapas[0]}</td>
-				        <td>{$zapas[2]}:{$zapas[3]}</td>
-				        <td>{$zapas[1]}</td>
-				    </tr>
-				{/foreach}
-			     </tbody>	
-			 </table>
-		      {/foreach}
-		      <h4>Již nezbývají žádné zápasy k odehrání!</h4>
-		  </div>
-	       {/foreach} 
+                <div class="toogle">
+                    <span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span> /
+                    <span class="toggle-src-sub-zapasy" data-src="starsi">Starší</span>
+                </div>
+                {foreach $odehraneZapasy as $kategorie => $value}
+                    <div class="zapasy toggle-target-sub-zapasy" data-target="{$kategorie}">
+                        {foreach $value as $den => $rozlos}
+                            {continueIf !isset($rozlos[0])}
+                            <br>
+                            <h4>{$datumy[$den]}</h4>
+                            <table class="zapasy">
+                                <thead>
+                                    <tr>
+                                        <th>domácí</th>
+                                        <th>scóre</th>
+                                        <th>hosté</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {foreach $rozlos as $zapas}
+                                        <tr>
+                                            <td>{$zapas[0]}</td>
+                                            <td>{$zapas[2]}:{$zapas[3]}</td>
+                                            <td>{$zapas[1]}</td>
+                                        </tr>
+                                    {/foreach}
+                                </tbody>	
+                            </table>
+                        {/foreach}
+                        <h4>Žádné zápasy!</h4>
+                    </div>
+                {/foreach} 
             </div>
 
             <div class="toggle-target-main" data-target="tabul">
@@ -104,11 +104,11 @@
                                 <tr {if $tym["poradi"] == 1}class="gold"{/if}{if $tym["poradi"] == 2}class="silver"{/if}{if $tym["poradi"] == 3}class="bronze"{/if}>
                                     <td>{$tym["poradi"]}.</td>
                                     <td>{$tym["jmeno"]}</td>
-                                    <td>0</td>
+                                    <td>{$tym["pocet"]}</td>
                                     <td>{$tym["dane"]}:{$tym["dostane"]}</td>
                                     <td>{$tym["body"]}</td>
                                 </tr>
-			 {/foreach}	
+                            {/foreach}	
                         </tbody>
                     </table>
                 {/foreach}
@@ -117,10 +117,10 @@
 
 
         <script>
-	   toggle(".toggle-src-main", ".toggle-target-main");
-	   toggle(".toggle-src-sub-rozlos", ".toggle-target-sub-rozlos");
-	   toggle(".toggle-src-sub-zapasy", ".toggle-target-sub-zapasy");
-	   toggle(".toggle-src-sub-tabul", ".toggle-target-sub-tabul");
+            toggle(".toggle-src-main", ".toggle-target-main");
+            toggle(".toggle-src-sub-rozlos", ".toggle-target-sub-rozlos");
+            toggle(".toggle-src-sub-zapasy", ".toggle-target-sub-zapasy");
+            toggle(".toggle-src-sub-tabul", ".toggle-target-sub-tabul");
         </script>
 
     </div>
