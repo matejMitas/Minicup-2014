@@ -36,22 +36,45 @@
         		}
     		});
 		});
+		$(function() {
+				$(".closeBlock").click(function(){
+		    	$("#warning").hide();
+			});
+		});
 	</script>
 	
 	<!--[if lt IE 9]>
   		<script>
-	      document.createElement('header');
-	      document.createElement('article');
-	      document.createElement('nav');
-	      document.createElement('section');
-	      document.createElement('aside');
-	      document.createElement('footer');
-   		</script>
+	    document.createElement('header');
+	    document.createElement('article');
+	    document.createElement('nav');
+	    document.createElement('section');
+	    document.createElement('aside');
+	    document.createElement('footer');
+	    </script>
+
+   		<link rel="stylesheet" type="text/css" href="scss/ieHack.css">
 	<![endif]-->
 
 
 </head>
 <body> 
+	<!--[if lt IE 9]>
+  		<div id="warning">
+		<div class="center">
+			<a href="https://www.google.com/intl/cs/chrome/browser/" target="_blank">
+				<div class="iconBlock">!</div>
+			<div class="textBlock">
+				<h2>Upozornění</h2>
+				<h3>Používáte zastaralý prohlížeč, proto nemůžeme garantovat plnou 	funkčnost webu</h3>
+				<h4>Děkujeme za pochopení</h4>
+			</div>
+			</a>
+			<div class="closeBlock"><p>x</p></div>
+		</div>
+		</div>
+	<![endif]-->
+
 	<header>
 		<div class="center">
 			<div id="logo">
@@ -97,12 +120,6 @@
 
 				<h3>Do zahájení 2.ročníku mezinárodního turnaje v házené zbývají již pouze necelé dva měsíce. Webové stránky byly spuštěny s předstihem pro informování účastníků.</h3>
 			</div>
-			
-			<div class="article-icon">
-				<svg width="100" height="100">
-	  				<image xlink:href="img/prispevky-icon/foto.svg" src="img/logo.png" width="100" height="100" />
-				</svg>
-			</div>	
 		</div>
 	</article>
 
@@ -113,17 +130,10 @@
 
 				<h2>ZBÝVAJÍ DVA MĚSÍCE!</h2>
 
-				<h3>Do zahájení 2.ročníku mezinárodního turnaje v házené zbývají již pouze necelé dva měsíce. Webové stránky byly spuštěny s předstihem pro informování účastníků.</h3>
+				<h3>Do zahájení 2.ročníku mezinárodního turnaje v házené zbývají již pouze necelé dva měsíce. Webové stránky byly spuštěny s předstihem pro informování účastníků. Do zahájení 2.ročníku mezinárodního turnaje v házené zbývají již pouze necelé dva měsíce. Webové stránky byly spuštěny s předstihem pro informování účastníků. Do zahájení 2.ročníku mezinárodního turnaje v házené zbývají již pouze necelé dva měsíce. Webové stránky byly spuštěny s předstihem pro informování účastníků. Do zahájení 2.ročníku mezinárodního turnaje v házené zbývají již pouze necelé dva měsíce. Webové stránky byly spuštěny s předstihem pro informování účastníků.</h3>
 			</div>
-			
-			<div class="article-icon">
-				<svg width="100" height="100">
-	  				<image xlink:href="img/prispevky-icon/foto.svg" src="img/logo.png" width="100" height="100" />
-				</svg>
-			</div>	
 		</div>
 	</article>
-
 
 		
 	</div>

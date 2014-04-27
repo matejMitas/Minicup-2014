@@ -78,18 +78,6 @@ section {
 
 #article-wraper {
 	@include column(8);
-	
-	#content-padding {
-		@include row(8);
-		
-		.article-text {
-			@include column(5.5,8);
-		}
-
-		.article-icon {
-			@include column(2.5);
-		}
-	}
 }
 
 aside {
@@ -105,19 +93,29 @@ aside {
 		@include row(4);
 		
 		li:first-child {
-			@include column(0.75, 4)
+			@include column(0.75, 4);
 		}
 		li:nth-child(2) {
-			@include column(1.75 , 4)
+			@include column(1.75 , 4);
 		}
 		li:nth-child(3) {
-			@include column(1, 4)
+			@include column(1, 4);
 		}
 		li:last-child {
-			@include column(0.5, 4)
+			@include column(0.5, 4);
 		}
 	}
 }
+
+	.iconBlock {
+		@include column(1);
+	}
+	.textBlock {
+		@include column(9);
+	}
+	.closeBlock {
+		@include column(2);
+	}
 
 
 @media screen and (min-width: 1280px) {
@@ -132,22 +130,6 @@ aside {
 			@include column(3);
 		}
 	}
-	
-	#article-wraper {
-	@include column(8);
-	
-	#content-padding {
-		@include row(8);
-		
-		.article-text {
-			@include column(5.75,8);
-		}
-
-		.article-icon {
-			@include column(2);
-		}
-	}
-}
 
 }
 

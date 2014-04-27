@@ -1,0 +1,27 @@
+ul.tymy {
+
+	li {
+				
+		margin-bottom: 10px;
+		height: 144px;
+		font-size: 24px;
+		color: $section-paragraph;
+
+		text-align: center;
+		border-radius: $border-radius;
+		box-shadow: inset 0 0 0 1px $section-paragraph;
+
+		&:hover {
+			background: $yellow;
+			box-shadow: none;
+			}	
+		a {
+			color: $section-paragraph;
+			line-height: 144px;
+				&:hover {
+					color: white;
+				}
+			}	
+		}	
+
+	}

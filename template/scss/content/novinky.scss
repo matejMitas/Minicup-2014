@@ -1,0 +1,26 @@
+article {
+	
+	h2 {
+		font-size: 40px;
+		padding: 20px 0;
+		font-weight: 300;
+	}
+
+	h3 {
+		color: $section-paragraph;
+		line-height: 1.5;
+		font-size: 15px;
+		font-weight: 300;
+	}
+
+	h4 {
+		font-size: 15px;
+		font-weight: 300;
+	}
+	
+	.article-date {
+		font-weight: 700;
+	}
+
+
+}
