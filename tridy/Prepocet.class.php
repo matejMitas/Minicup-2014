@@ -51,7 +51,7 @@ SQL;
 		}
 
 	}
-	function serad_dane($array_teamy,$poradi){
+	private function serad_dane($array_teamy,$poradi){
 $in_list = implode(", ",$array_teamy);
 $query=<<<SQL
 SELECT ifnull(SUM(D),0) dane, ifnull(SUM(H),0) dostane, `id_teamu`, `jmeno`
