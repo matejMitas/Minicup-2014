@@ -1,5 +1,6 @@
 $(function() {
-    mobileMenu()
+    mobileMenu();
+    IEusers();
 });
 
 function mobileMenu() {
@@ -16,5 +17,11 @@ function mobileMenu() {
         if (w > 320 && menu.is(':hidden')) {
             menu.removeAttr('style');
         }
+    });
+}
+
+function IEusers() {
+    $(".closeBlock").click(function() {
+        $("#warning").hide();
     });
 }
