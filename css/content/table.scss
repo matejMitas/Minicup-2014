@@ -1,17 +1,3 @@
-.toggle-src-sub-zapasy, .toggle-src-sub-rozlos, .toggle-src-sub-tabul {
-		text-transform: uppercase;
-		font-weight: 700;
-		color: darken($dark-blue, 10%);
-		text-align: center;
-}
-
-#table-wrapper {
-	
-	.toogle {
-		& > span {
-			cursor: pointer; 
-		}
-	}
 
 	.toggle-src-main {
 		font-size: 18px;
@@ -20,13 +6,21 @@
 		cursor: pointer;
 	}
 
+	.toggle-src-sub-zapasy, .toggle-src-sub-rozlos, .toggle-src-sub-tabul {
+		text-transform: uppercase;
+		font-weight: 700;
+		color: darken($dark-blue, 10%);
+		text-align: center;
+	}
+
 	.active {
 		color: $light-blue;
 	}
 
+#table-wrapper {
 	td:hover {
-		background: $light-blue;
-		color: white;
+		color: black;
+		text-decoration: underline;
 	}
 
 	td:nth-child(2):hover {
@@ -36,23 +30,6 @@
 
 	.tabul {
 		margin-top: 30px;
-	}
-
-	.zapasy, .rozlos {
-		td:first-child, th:first-child {
-			text-align: right;
-			width: 40%;
-		}
-
-		td:nth-child(2), th:nth-child(2) {
-			font-size: 20px;
-			text-align: center;
-		}
-		
-		td:last-child, th:last-child {
-			text-align: left;
-			width: 40%;
-		}
 	}
 
 
@@ -80,12 +57,14 @@
 
 		td, th {
 			border: none;
+			font-size: 22px;
 		}
 		
 		td { 
 			position: relative;
 			padding-left: 50%; 
 			margin: 10px;
+			font-weight: 300;
 		}
 		
 		td:before { 
@@ -96,23 +75,30 @@
 		}
 
 		.rozlos {
-			td:nth-of-type(1):before { content: "Čas"; }
-			td:nth-of-type(2):before { content: "Domací"; }
-			td:nth-of-type(3):before { content: "Hosté"; }
+			td:nth-of-type(1):before { content: "Cas"; }
+			td:nth-of-type(2):before { content: "Domaci"; }
+			td:nth-of-type(3):before { content: "Hoste"; }
 		}
 
 		.tabul {
-			td:nth-of-type(1):before { content: "Pořadí"; }
-			td:nth-of-type(2):before { content: "Tým"; }
-			td:nth-of-type(3):before { content: "Zápasů"; }
-			td:nth-of-type(4):before { content: "Skóre"; }
-			td:nth-of-type(5):before { content: "Bodů"; }
+			td:nth-of-type(1):before { content: "Poradi"; }
+			td:nth-of-type(2):before { content: "Tym"; }
+			td:nth-of-type(3):before { content: "Zapasu"; }
+			td:nth-of-type(4):before { content: "Skore"; }
+			td:nth-of-type(5):before { content: "Bodu"; }
 		}
 
 		.zapasy {
-			td:nth-of-type(1):before { content: "Domácí"; }
-			td:nth-of-type(2):before { content: "Skóre"; }
-			td:nth-of-type(3):before { content: "Hosté"; }
+			td:nth-of-type(1):before { content: "Domaci"; }
+			td:nth-of-type(2):before { content: "Skore"; }
+			td:nth-of-type(3):before { content: "Hoste"; }
+		}
+		.tymDetail {
+			td:nth-of-type(1):before { content: "Domaci"; }
+			td:nth-of-type(2):before { content: "Cas"; }
+			td:nth-of-type(3):before { content: "Skore"; }
+			td:nth-of-type(4):before { content: "Hoste"; }
+			td:nth-of-type(5):before { content: "Odehrano"; }
 		}
 	}
 
@@ -134,7 +120,6 @@
 	tr:nth-of-type(even) { 
 		background: $light-grey; 
 	}
-
 	th { 
 		background: $light-black; 
 		color: white; 
@@ -146,4 +131,19 @@
 		padding: 50px 0 20px 0;
 	}
 
+	.redTable {
+		color:white;
+		background: #A30000;
+	}
+
+	.greenTable {
+		color:white;
+		background: #21A300!important;
+	}
+
+	.goldTable {
+		color: white;
+		background: red;
+	}
 }
+	

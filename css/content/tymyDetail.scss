@@ -1,0 +1,19 @@
+#detail-wrapper {
+	h2 {
+		color: $light-blue;
+		font-size: 36px;
+		padding: 20px 10px 50px 5px;
+		border: 0;
+	}
+
+	h4 {
+		font-size: 30px;
+		padding-bottom: 10px;
+	}
+	span.red {
+		color: red;
+	}
+	span.green {
+		color: lighten(green, 15%);
+	}
+}

@@ -1,0 +1,24 @@
+#foto-wrapper {
+	h2 {
+		border-bottom: 0;
+		&:not(:first-child) {
+			border-top: 1px solid lighten($section-outline, 15%);
+			padding-top: 20px;
+		}
+	}
+	button[type=submit] {
+		margin-bottom: 20px;
+	}
+}
+
+ul.foto {
+	img {
+		width: 100%;
+		max-height: 200px;
+		border: 1px solid black;
+		border-radius: $border-radius;
+	}
+	li {
+		padding-top: 20px;
+	}
+}
