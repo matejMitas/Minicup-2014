@@ -1,12 +1,21 @@
 <?php
 
 $basePath = "Minicup-2014";
+
 $time_start=microtime(True);
 function __autoload($trida){
-    require_once("tridy/$trida.class.php");
+    require_once("sources/$trida.class.php");
 }
 spl_autoload_register("__autoload");
-require 'NetteInit.php';
+
+include("sources/latte.php");
+
+
+use Tracy\Debugger;
+include("sources/tracy.php");
+Debugger::enable(Debugger::DETECT);
+
+
 session_start();
 dbWrapper::pripoj();
 $controllers = array(
@@ -23,10 +32,15 @@ $controllers = array(
 
 $VystupVysledkuML = new VystupVysledku("mladsi");
 $VystupVysledkuST = new VystupVysledku("starsi");
+Debugger::barDump($VystupVysledkuML);
 
 if (isset($_GET["controller"])) {
     if (isset($controllers[$_GET["controller"]])) {
-        include "kontrolery/". $_GET["controller"] .".php";
+        if (file_exists("kontrolery/". $_GET["controller"] .".php")) {
+           include "kontrolery/". $_GET["controller"] .".php";
+        } else {
+            $template = $_GET["controller"].".latte";
+        }
         $title = $controllers[$_GET["controller"]];
     } elseif (in_array($_GET["controller"], Array("login","administrace"))) {
         include "kontrolery/". $_GET["controller"] .".php";
@@ -39,26 +53,19 @@ if (isset($_GET["controller"])) {
     include "kontrolery/novinky.php";
     $title = null;
 }
-$template->basePath = $basePath;
-$template->tabulka = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku(),
+
+$parametry["basePath"] = $basePath;
+$parametry["tabulka"] = array("mladsi" => $VystupVysledkuML->ziskejTabulkuVysledku(),
                             "starsi" => $VystupVysledkuST->ziskejTabulkuVysledku());
-$template->praveHrane = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy(),
+$parametry["praveHrane"] = array("mladsi" => $VystupVysledkuML->ziskejPraveHraneZapasy(),
                             "starsi" => $VystupVysledkuST->ziskejPraveHraneZapasy());
-$template->nasledujici = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(6),
+$parametry["nasledujici"] = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(6),
                             "starsi" => $VystupVysledkuST->ziskejNasledujiciZapasy(6));
-$template->title = !isset($template->title) ? $title : $template->title;
+$parametry["title"] = !isset($template->title) ? $title : $template->title;
 
+$latte = new Latte\Engine;
 
-
-
-
-
-$template->setCacheStorage(new Nette\Caching\Storages\PhpFileStorage('sablony/cache'));
-$template->onPrepareFilters[] = function($template) {
-    $template->registerFilter(new Nette\Latte\Engine);
-};
-$template->registerHelperLoader('Nette\Templating\Helpers::loader');
-$template->registerHelper('relDateCZ', function ($time) {
+$latte->addFilter('relDateCZ', function ($time) {
         $seconds = time() - strtotime($time);
         $minutes = floor($seconds / 60);
         $hours = floor($minutes / 60);
@@ -89,11 +96,12 @@ $template->registerHelper('relDateCZ', function ($time) {
             return "v budoucnu";
         }});
 
-$template->menu = $controllers;
+$parametry["menu"] = $controllers;
 
 
-$template->time = number_format((microtime(True)-$time_start)*1000,0);
+$parametry["time"] = number_format((microtime(True)-$time_start)*1000,0);
 
-$template->render();
+
+$latte->render("sablony/".$template, $parametry);
 
 ?>
