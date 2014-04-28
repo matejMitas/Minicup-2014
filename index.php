@@ -1,4 +1,5 @@
 <?php
+
 $basePath = "Minicup-2014";
 $time_start=microtime(True);
 function __autoload($trida){
@@ -95,3 +96,4 @@ $template->time = number_format((microtime(True)-$time_start)*1000,0);
 
 $template->render();
 
+?>
