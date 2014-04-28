@@ -1,11 +1,8 @@
 <?php
-
-use Nette\Templating\FileTemplate;
-
-$template = new FileTemplate('sablony/tabulky.latte');
+$template = "tabulky.latte";
 
 
-$template->rozlosovani = array(
+$parametry["rozlosovani"] = array(
     "mladsi" => array(
         $VystupVysledkuML->ziskejRozlosovaniZapasu("2014-05-23 00:00:00"),
         $VystupVysledkuML->ziskejRozlosovaniZapasu("2014-05-24 00:00:00"),
@@ -16,7 +13,7 @@ $template->rozlosovani = array(
         $VystupVysledkuST->ziskejRozlosovaniZapasu("2014-05-25 00:00:00"))
 );
 
-$template->odehraneZapasy = array(
+$parametry["odehraneZapasy"] = array(
     "mladsi" => array(
         $VystupVysledkuML->ziskejOdehraneZapasy("2014-05-23 00:00:00"),
         $VystupVysledkuML->ziskejOdehraneZapasy("2014-05-24 00:00:00"),

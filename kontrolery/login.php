@@ -1,21 +1,20 @@
 <?php
 
-use Nette\Templating\FileTemplate;
-$template = new FileTemplate('sablony/login.latte');
-$template->title = "přihlášení";
+$template = 'login.latte';
+$parametry["title"] = "přihlášení";
 if ($_POST) {
 	if ($_POST["name"]) {
 		if ($_POST["password"]) {
 			if (checkLogin($_POST["name"], $_POST["password"])) {
 				$_SESSION["logged"] = true;
 			} else {
-				$template->error = "Neplatná kombinace!";
+				$parametry["error"] = "Neplatná kombinace!";
 			}
 		} else {
-			$template->error = "Nezadali jste heslo!";
+			$parametry["error"] = "Nezadali jste heslo!";
 		}
 	} else {
-		$template->error = "Nezadali jste jméno!";
+		$parametry["error"] = "Nezadali jste jméno!";
 	}
 }
 

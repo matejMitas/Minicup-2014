@@ -1,18 +1,17 @@
 <?php
 
-use Nette\Templating\FileTemplate;
-
-
 if (isset($_GET["cat"],$_GET["id"])) {
-    $template = new FileTemplate('sablony/detail.latte'); 
+    $template = 'detail.latte'; 
     $DetailTymu = new DetailTymu($_GET["cat"], $_GET["id"]);
-    $template->jmeno = $DetailTymu->ziskejNazevTymu();
-    $template->data = $DetailTymu->ziskejPoradiSkore();
+
+    $parametry["jmeno"] = $DetailTymu->ziskejNazevTymu();
+    $parametry["data"] = $DetailTymu->ziskejPoradiSkore();
     $DetailTymu->ziskejProcentualniUspech();
-    $template->zapasy = $DetailTymu->ziskejOdehraneZapasy();
+    $parametry["zapasy"] = $DetailTymu->ziskejOdehraneZapasy();
+
 } else {
-    $template = new FileTemplate('sablony/tymy.latte');
-    $template->tymy = Array("mladsi" => DetailTymu::ziskejVsechnyTymy("mladsi"), "starsi" => DetailTymu::ziskejVsechnyTymy("starsi"));
+    $template = 'tymy.latte';
+    $parametry["tymy"] = Array("mladsi" => DetailTymu::ziskejVsechnyTymy("mladsi"), "starsi" => DetailTymu::ziskejVsechnyTymy("starsi"));
 }
 
 

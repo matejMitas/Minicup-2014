@@ -1,7 +1,6 @@
 <?php
 
-use Nette\Templating\FileTemplate;
-$template = new FileTemplate('sablony/novinky.latte');
+$template = 'novinky.latte';
 
 $novinkovac = new Novinkovac();
-$template->novinky = $novinkovac->ziskejNovinky(3);
+$parametry["novinky"] = $novinkovac->ziskejNovinky(3);
