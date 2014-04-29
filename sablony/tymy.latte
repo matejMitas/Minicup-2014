@@ -11,7 +11,7 @@
 {foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
 <ul class="boxes tymy toggle-target-main" data-target="{$key}">
 	{foreach $tymy[$key] as $klic => $tym}
-		<a href="/{$basePath}/{$key}/{$tym[1]}"><li>{$tym[0]}</li></a>
+		<li><a href="/{$basePath}/{$key}/{$tym[1]}">{$tym[0]}</a></li>
 	{/foreach}
 </ul>
 {/foreach}
