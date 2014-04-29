@@ -118,6 +118,20 @@ aside {
 	}
 
 
+	#dayWrapper {
+		@include row(12);
+		.dayToogle {
+			@include column(4,12);
+		}
+	}
+
+#fotoWrapper {
+	@include column(8);
+	section {
+		@include column(12);
+	}
+}
+
 @media screen and (min-width: 1280px) {
 	.center {
 		#logo {
@@ -133,6 +147,33 @@ aside {
 
 }
 
+@media screen and (max-width: 1140px) {
+	ul.boxes {
+		@include row(8);
+
+		li {
+			@include column(4,8);
+			margin-bottom: 10px;
+		}
+	}
+	ul.sponzori {
+		li{
+			@include column(6);
+			margin-bottom: 10px;
+		}
+	}
+}
+
+@media screen and (min-width: 960px) {
+	ul.sponzori {
+		@include row(8);
+		li{
+			@include column(2.6666,8);
+			margin-bottom: 10px;
+		}
+	}
+}
+
 @media screen and (max-width: 768px) {
 	.center {
 		#logo, #slogan {
@@ -146,6 +187,10 @@ aside {
 	 		@include push(3);
 		}
 	 }
+
+	#fotoWrapper {
+		@include column(12);
+	} 
 	
 	section, #article-wraper, article {
 		@include column(12);
