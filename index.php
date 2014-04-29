@@ -1,16 +1,14 @@
 <?php
 
 $basePath = "Minicup-2014";
-
-$time_start=microtime(True);
 function __autoload($trida){
     require_once("sources/$trida.class.php");
 }
 spl_autoload_register("__autoload");
 
+
+
 include("sources/latte.php");
-
-
 use Tracy\Debugger;
 include("sources/tracy.php");
 Debugger::enable(Debugger::DETECT);
@@ -32,7 +30,7 @@ $controllers = array(
 
 $VystupVysledkuML = new VystupVysledku("mladsi");
 $VystupVysledkuST = new VystupVysledku("starsi");
-Debugger::barDump($VystupVysledkuML);
+//Debugger::barDump(true);
 
 if (isset($_GET["controller"])) {
     if (isset($controllers[$_GET["controller"]])) {
@@ -42,12 +40,12 @@ if (isset($_GET["controller"])) {
             $template = $_GET["controller"].".latte";
         }
         $title = $controllers[$_GET["controller"]];
-    } elseif (in_array($_GET["controller"], Array("login","administrace"))) {
+    } elseif (in_array($_GET["controller"], Array("login","administrace","logout"))) {
         include "kontrolery/". $_GET["controller"] .".php";
     } else {
-        //header("HTTP/1.0 404 Not Found");
-        print_r($_SERVER);
+        header("HTTP/1.0 404 Not Found");
         header("Location: /{$basePath}/");
+        die();
     }
 } else {
     include "kontrolery/novinky.php";
@@ -61,10 +59,11 @@ $parametry["praveHrane"] = array("mladsi" => $VystupVysledkuML->ziskejPraveHrane
                             "starsi" => $VystupVysledkuST->ziskejPraveHraneZapasy());
 $parametry["nasledujici"] = array("mladsi" => $VystupVysledkuML->ziskejNasledujiciZapasy(6),
                             "starsi" => $VystupVysledkuST->ziskejNasledujiciZapasy(6));
-$parametry["title"] = !isset($template->title) ? $title : $template->title;
+$parametry["title"] = !isset($parametry["title"]) ? $title : $parametry["title"];
+
+$parametry["menu"] = $controllers;
 
 $latte = new Latte\Engine;
-
 $latte->addFilter('relDateCZ', function ($time) {
         $seconds = time() - strtotime($time);
         $minutes = floor($seconds / 60);
@@ -95,12 +94,6 @@ $latte->addFilter('relDateCZ', function ($time) {
 		} else {
             return "v budoucnu";
         }});
-
-$parametry["menu"] = $controllers;
-
-
-$parametry["time"] = number_format((microtime(True)-$time_start)*1000,0);
-
 
 $latte->render("sablony/".$template, $parametry);
 
