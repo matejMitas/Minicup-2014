@@ -7,7 +7,9 @@
         <meta name="author" content="Matěj Mitaš, Josef Kolář, Štěpán Hudeček">
         <meta name="description" content="Web o druhém ročníku házenkářského turnaje minižáků dvou kategorií v Litovli.">
         <meta name="keywords" content="házená,Litovel,Tatran Litovel,miniházená,turnaj,děti,sport">
+        {block robots}
         <meta name="robots" content="index, follow">
+        {/block}
 
 
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/{$basePath}/img/favicon/apple-touch-icon-144x144-precomposed.png">
@@ -23,6 +25,7 @@
         <script src="/{$basePath}/js/jquery-1.9.js"></script>
         <script src="/{$basePath}/js/map.js"></script>
         <script src="/{$basePath}/js/main.js"></script>
+        {block scripts}{/block}
         <script>
             var toggle = function(toggleButtons, toggleTargets, toggleActive) {
                 if (typeof toggleActive === "undefined")
@@ -61,12 +64,10 @@
         <!--[if lt IE 9]>
         		<link rel="stylesheet" type="text/css" href="css/ieHack.css">
                 <script>
-                    document.createElement('header');
-                    document.createElement('nav');
-                    document.createElement('section');
-                    document.createElement('aside');
-                    document.createElement('footer');
-                    document.createElement('article');
+                    elements = ['header','nav','section','aside','footer','article']
+                    for (var i = 0; i < elements.length; i++) {
+                        document.createElement(elements[i]);
+                    };
                 </script>
         <![endif]-->
 
@@ -123,7 +124,7 @@
             {/block}
             <aside>
                 <div class="toogle">
-                    <span class="toggle-src-aside active" data-src="mladsi">Mladší</span> / <span class="toggle-src-aside" data-src="starsi">Starší</span> 
+                    <span class="toggle-src-aside active" data-src="mladsi">Mladší</span> | <span class="toggle-src-aside" data-src="starsi">Starší</span> 
                 </div>
 
                 {foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
@@ -155,10 +156,10 @@
                         <div class="poradi">
                             <h2 class="h2">pořadí v tabulce</h2>
                             <ul class="poradi-head">
-                                <li>Pořadí</li>
-                                <li>Tým</li>
-                                <li>Skóre</li>
-                                <li>Bodů</li>
+                                <li>#</li>
+                                <li>tým</li>
+                                <li>skóre</li>
+                                <li>body</li>
                             </ul>
                             {foreach $tabulka[$key] as $klic => $tym}
                                 <a href="/{$basePath}/{$key}/{$tym['id_teamu']}">
@@ -187,7 +188,7 @@
                 <h2>23. - 25. května</h2>
                 <h3>2. ročník mezinárodního turnaje v miniházené </h3>
             </div>
-            <div class="authors">Tatran Litovel | 2014 © Matěj Mitaš, Josef Kolář<!--<br> Vygenerováno za {$time}ms.-->
+            <div class="authors">Tatran Litovel | 2014 © Matěj Mitaš, Josef Kolář
                 <a href="http://www.toplist.cz/">
                     <script language="JavaScript" type="text/javascript">
                         <!--

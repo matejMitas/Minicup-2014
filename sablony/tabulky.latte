@@ -7,12 +7,12 @@
         <div id="table-wrapper">
 
             <div class="toogle togmain">
-                <span class="toggle-src-main" data-src="rozlos">Rozlosování</span> / <span class="toggle-src-main" data-src="zapasy">Zápasy</span> / <span class="toggle-src-main" data-src="tabul">Tabulky</span>	
+                <span class="toggle-src-main" data-src="rozlos">Rozlosování</span> | <span class="toggle-src-main" data-src="zapasy">Zápasy</span> | <span class="toggle-src-main" data-src="tabul">Tabulky</span>	
             </div>
 
             <div class="toggle-target-main" data-target="rozlos">
                 <div class="toogle togsub">
-                    <span class="toggle-src-sub-rozlos" data-src="mladsi">Mladší</span> / <span class="toggle-src-sub-rozlos" data-src="starsi">Starší</span>
+                    <span class="toggle-src-sub-rozlos" data-src="mladsi">Mladší</span> | <span class="toggle-src-sub-rozlos" data-src="starsi">Starší</span>
                 </div>
 
                 {var datumy = Array("23. 5.","24. 5.","25. 5.")}
@@ -49,7 +49,7 @@
 
             <div class="toggle-target-main" data-target="zapasy">
                 <div class="toogle">
-                    <span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span> /
+                    <span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span> |
                     <span class="toggle-src-sub-zapasy" data-src="starsi">Starší</span>
                 </div>
                 {foreach $odehraneZapasy as $kategorie => $value}
@@ -84,7 +84,7 @@
 
             <div class="toggle-target-main" data-target="tabul">
                 <div class="toogle">
-                    <span class="toggle-src-sub-tabul" data-src="mladsi">Mladší</span>/
+                    <span class="toggle-src-sub-tabul" data-src="mladsi">Mladší</span> |
                     <span class="toggle-src-sub-tabul" data-src="starsi">Starší</span>
                 </div>
 
@@ -92,11 +92,11 @@
                     <table class="tabul toggle-target-sub-tabul" data-target="{$key}">
                         <thead>
                             <tr>
-                                <th>Pořadí</th>
-                                <th>Tým</th>
-                                <th>Zápasů</th>
-                                <th>Skóre</th>
-                                <th>Bodů</th>
+                                <th>#</th>
+                                <th>tým</th>
+                                <th>počet zápasů</th>
+                                <th>skóre</th>
+                                <th>body</th>
                             </tr>
                         </thead>
                         <tbody>
