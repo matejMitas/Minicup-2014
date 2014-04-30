@@ -60,34 +60,33 @@ function initialize() {
   ];
 
   var mapOptions = {
-    zoom: 14,
+    zoom: 16,
     center: litovel,
     mapTypeControlOptions: {
       mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
     },
     mapTypeId: MY_MAPTYPE_ID,
-    disableDefaultUI: true
+    disableDefaultUI: false
   };
 
-  map = new google.maps.Map(document.getElementById(element),
-      mapOptions);
+  map = new google.maps.Map(document.getElementById(element),mapOptions);
 
   var marker1 = new google.maps.Marker({
       position: litovel,
       map: map,
-      title: 'Hello World!'
+      title: 'Hala ZŠ Vítězná Litovel'
   });
 
   var marker2 = new google.maps.Marker({
       position: opletalova,
       map: map,
-      title: 'Hello World!'
+      title: 'Sokolovna Litovel'
   });
 
 
 
   var styledMapOptions = {
-    name: 'Custom Style'
+    name: 'MINICUP'
   };
 
   var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
