@@ -21,8 +21,7 @@ public function ziskejVkladaciFormular() {
 		<br>
 
 		<h3>Aktualita:</h3>
-		<textarea style="max-width:97%;" name="aktualita" id="aktualita" placeholder="Zde vyplňte aktualitu k přidání.." cols="75" rows="8" required="required">
-		</textarea>
+		<textarea style="max-width:97%;" name="aktualita" id="aktualita" placeholder="Zde vyplňte aktualitu k přidání.." cols="75" rows="8" required="required"></textarea>
 
 		<input type="submit" value="Odeslat novinku">
 	</form>	

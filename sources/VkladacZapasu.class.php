@@ -103,17 +103,18 @@ SQL
         $formular = "<h2>Vložení výsledků kategorie {$catCZ[$this->kategorie]}</h2><br><form method='post'>";
         for ($zapas = 0; $zapas < $this->pocetZapasu; $zapas++) {
             if (isset($this->poleZapasu[$zapas][2])) {
-                $idTeamu = $this->poleZapasu[$zapas][2];
+                $idZapasu = $this->poleZapasu[$zapas][2];
                 $formular .= <<<HTML
 			<p>{$this->poleZapasu[$zapas][0]}:{$this->poleZapasu[$zapas][1]}</p>
-                            <p>
-				<input type="text" name="score[$zapas][0]">:<input type="text" name="score[$zapas][1]">
-				<input type="hidden" name="id[$zapas]" value="$idTeamu">
-                            </p>
+            
+				<input type="text" name="score[$zapas][0]" pattern="[0|1|2|3|4][0-9]"> :
+                <input type="text" name="score[$zapas][1]" pattern="[0|1|2|3|4][0-9]">
+				<input type="hidden" name="id[$zapas]" value="$idZapasu">
+                            
 HTML;
             }
         }
-        $formular .= '<p><input type="submit" value="Zkontrolovat!" name="action"><p>';
+        $formular .= '<input type="submit" value="Zkontrolovat!" name="action">';
         $formular .= '</form>';
         return $formular;
     }
