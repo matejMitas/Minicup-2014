@@ -3,7 +3,7 @@
 <section>
 <div id="content-padding">
 <div class="toogle">
-    <span class="toggle-src-sub-tabul" data-src="mladsi">Mladší</span>
+    <span class="toggle-src-sub-tabul" data-src="mladsi">Mladší</span> |
     <span class="toggle-src-sub-tabul" data-src="starsi">Starší</span>
 </div>
 
@@ -11,7 +11,7 @@
 {foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
 <ul class="boxes tymy toggle-target-main" data-target="{$key}">
 	{foreach $tymy[$key] as $klic => $tym}
-		<li><a href="/{$basePath}/{$key}/{$tym[1]}">{$tym[0]}</a></li>
+		<a href="/{$basePath}/{$key}/{$tym[1]}"><li>{$tym[0]}</li></a>
 	{/foreach}
 </ul>
 {/foreach}
