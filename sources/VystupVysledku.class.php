@@ -36,7 +36,7 @@ SQL;
     public function ziskejOdehraneZapasy($datum) {
         $sql = <<<SQL
                         SELECT 
-			b.`jmeno`,c.`jmeno`, a.`SCR_domaci`,a.`SCR_hoste`,a.`cas_odehrani`
+			b.`jmeno`,c.`jmeno`, a.`SCR_domaci`,a.`SCR_hoste`,a.`cas_odehrani`,a.`ID_domaci`,a.`ID_hoste`
 			FROM `2014_zapasy_{$this->kategorie}` a
 				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
 				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`
@@ -86,7 +86,7 @@ SQL;
     public function ziskejRozlosovaniZapasu($datum) {
         $SQL = <<<SQL
 		SELECT 
-			b.`jmeno`,c.`jmeno`, a.`cas_odehrani`
+			b.`jmeno`,c.`jmeno`, a.`cas_odehrani`,a.`ID_domaci`,a.`ID_hoste`
 			FROM `2014_zapasy_{$this->kategorie}` a
 				JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci`=b.`ID_teamu`
 				JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste`=c.`ID_teamu`

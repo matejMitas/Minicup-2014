@@ -100,7 +100,7 @@ SQL
      */
     private function vkladaciFormular() {
         $catCZ = Array("mladsi" => "mladší", "starsi" => "starší");
-        $formular = "<h2>Vložení výsledků kategorie {$catCZ[$this->kategorie]}</h2><br><form method='post'>";
+        $formular = "<h2>Vložení výsledků kategorie {$catCZ["$this->kategorie"]}</h2><br><form method='post'>";
         for ($zapas = 0; $zapas < $this->pocetZapasu; $zapas++) {
             if (isset($this->poleZapasu[$zapas][2])) {
                 $idZapasu = $this->poleZapasu[$zapas][2];
@@ -132,7 +132,7 @@ HTML;
             if (isset($this->poleZapasu[$zapas][2])) {
                 if (is_numeric($score[$zapas][0]) && is_numeric($score[$zapas][1])) {
                     $formular .= $this->zvyrazniTymVyhercu($zapas, $score[$zapas][0], $score[$zapas][1]);
-                    $formular .= "<p>{$score[$zapas][0]}:{$score[$zapas][1]}</p>";
+                    $formular .= "<h3>{$score[$zapas][0]}:{$score[$zapas][1]}</h3>";
                 }
             }
         }
@@ -199,11 +199,11 @@ SQL
      */
     private function zvyrazniTymVyhercu($idZapasu, $scoreDomaci, $scoreHoste) {
         if ($scoreDomaci > $scoreHoste) {
-            $formular = "<p><b>{$this->poleZapasu[$idZapasu][0]}</b>:{$this->poleZapasu[$idZapasu][1]}</p>";
+            $formular = "<h3><b>{$this->poleZapasu[$idZapasu][0]}</b>:{$this->poleZapasu[$idZapasu][1]}</h3>";
         } elseif ($scoreDomaci == $scoreHoste) {
-            $formular = "<p>{$this->poleZapasu[$idZapasu][0]}:{$this->poleZapasu[$idZapasu][1]}</p>";
+            $formular = "<h3>{$this->poleZapasu[$idZapasu][0]}:{$this->poleZapasu[$idZapasu][1]}</h3>";
         } elseif ($scoreDomaci < $scoreHoste) {
-            $formular = "<p>{$this->poleZapasu[$idZapasu][0]}:<b>{$this->poleZapasu[$idZapasu][1]}</b></p>";
+            $formular = "<h3>{$this->poleZapasu[$idZapasu][0]}:<b>{$this->poleZapasu[$idZapasu][1]}</b></h3>";
         } else {
             $formular = "";
         }
