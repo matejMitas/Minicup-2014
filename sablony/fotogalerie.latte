@@ -3,6 +3,13 @@
 	<script src="/{$basePath}/js/jquery.swipebox.min.js"></script>
 {/block}
 {block main}
+<section>
+<div id="content-padding">
+	<h2>Bude zvěřejněno!</h2>
+
+</div>
+</section>
+{*}
 <div id="fotoWrapper">
 	<div id="dayWrapper">
 		<div data-src="patek" class="dayToogle">
@@ -46,10 +53,11 @@
 		</div> 
 	</section>
 	<script>
-		toggle(".dayToogle",".dayContent","dayActive");
-		;( function( $ ) {
-			$( '.swipebox' ).swipebox();
-		} )( jQuery );
+	$(function(){
+		$.toggle(".dayToogle",".dayContent","dayActive");
+		$( '.swipebox' ).swipebox();
+	});
 	</script>	
 </div>
+{*}
 {/block}

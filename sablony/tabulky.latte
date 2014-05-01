@@ -34,9 +34,9 @@
                                 <tbody>
                                     {foreach $rozlos as $zapas}
                                         <tr>
-                                            <td>{$zapas[0]}</td>
+                                            <td><a href="/{$basePath}/{$kategorie}/{$zapas[3]}">{$zapas[0]}</a></td>
                                             <td>{date("G:i",strtotime($zapas[2]))}</td>
-                                            <td>{$zapas[1]}</td>
+                                            <td><a href="/{$basePath}/{$kategorie}/{$zapas[4]}">{$zapas[1]}</a></td>
                                         </tr>
                                     {/foreach}
                                 </tbody>	
@@ -69,9 +69,9 @@
                                 <tbody>
                                     {foreach $rozlos as $zapas}
                                         <tr>
-                                            <td>{$zapas[0]}</td>
+                                            <td><a href="/{$basePath}/{$kategorie}/{$zapas[4]}">{$zapas[0]}</a></td>
                                             <td>{$zapas[2]}:{$zapas[3]}</td>
-                                            <td>{$zapas[1]}</td>
+                                            <td><a href="/{$basePath}/{$kategorie}/{$zapas[5]}">{$zapas[1]}</a></td>
                                         </tr>
                                     {/foreach}
                                 </tbody>	
@@ -114,15 +114,14 @@
                 {/foreach}
             </div>
         </div>
-
-
         <script>
-            toggle(".toggle-src-main", ".toggle-target-main");
-            toggle(".toggle-src-sub-rozlos", ".toggle-target-sub-rozlos");
-            toggle(".toggle-src-sub-zapasy", ".toggle-target-sub-zapasy");
-            toggle(".toggle-src-sub-tabul", ".toggle-target-sub-tabul");
+        $(function(){
+            $.toggle(".toggle-src-main", ".toggle-target-main");
+            $.toggle(".toggle-src-sub-rozlos", ".toggle-target-sub-rozlos");
+            $.toggle(".toggle-src-sub-zapasy", ".toggle-target-sub-zapasy");
+            $.toggle(".toggle-src-sub-tabul", ".toggle-target-sub-tabul");
+        }); 
         </script>
-
     </div>
 </section>
 {/block}

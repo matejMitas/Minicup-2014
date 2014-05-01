@@ -26,40 +26,6 @@
         <script src="/{$basePath}/js/map.js"></script>
         <script src="/{$basePath}/js/main.js"></script>
         {block scripts}{/block}
-        <script>
-            var toggle = function(toggleButtons, toggleTargets, toggleActive) {
-                if (typeof toggleActive === "undefined")
-                    var toggleActive = "active";
-
-                $(toggleTargets).each(function(index, el) {
-                    if (index === 0) {
-                        $(el).show();
-                    } else {
-                        $(el).hide();
-                    }
-                });
-
-                $(toggleTargets + ":first-of-type").show();
-
-                $(toggleButtons + ":first-of-type").each(function(index, el) {
-                    $(el).addClass(toggleActive);
-                });
-
-                $(toggleButtons).click(function(event) {
-                    var src = $(this).data("src");
-                    $(toggleButtons).removeClass(toggleActive);
-                    $(this).addClass(toggleActive);
-                    $(toggleTargets).each(function() {
-                        var target = $(this).data("target");
-                        if (target === src) {
-                            $(this).show();
-                        } else {
-                            $(this).hide();
-                        }
-                    });
-                });
-            };
-        </script>
 
         <!--[if lt IE 9]>
         		<link rel="stylesheet" type="text/css" href="css/ieHack.css">
@@ -124,7 +90,7 @@
             {/block}
             <aside>
                 <div class="toogle">
-                    <span class="toggle-src-aside active" data-src="mladsi">Mladší</span> | <span class="toggle-src-aside" data-src="starsi">Starší</span> 
+                    <span class="toggle-src-aside" data-src="mladsi">Mladší</span> | <span class="toggle-src-aside" data-src="starsi">Starší</span> 
                 </div>
 
                 {foreach array("mladsi" => "Mladší","starsi" => "Starší") as $key => $value}
@@ -178,7 +144,9 @@
                 {/foreach}
             </aside>
             <script>
-                toggle(".toggle-src-aside", ".toggle-target-aside");
+            $(function(){
+                $.toggle(".toggle-src-aside", ".toggle-target-aside");
+            });
             </script>
         </div>
 
@@ -190,12 +158,20 @@
             </div>
             <div class="authors">Tatran Litovel | 2014 © Matěj Mitaš, Josef Kolář
                 <a href="http://www.toplist.cz/">
-                    <script language="JavaScript" type="text/javascript">
-                        <!--
-                    document.write('<img src="http://toplist.cz/dot.asp?id=1561645&http=' + escape(document.referrer) + '&t=' + escape(document.title) +
-                                '&wi=' + escape(window.screen.width) + '&he=' + escape(window.screen.height) + '&cd=' + escape(window.screen.colorDepth) + '" width="1" height="1" border=0 alt="TOPlist" />');
-                        //--></script><noscript><img src="http://toplist.cz/dot.asp?id=1561645" border="0"
-                                            alt="TOPlist" width="1" height="1" /></noscript></a></div>
+                    <script>
+                    document.write('<img src="http://toplist.cz/dot.asp?id=1561645&http=' + 
+                        escape(document.referrer) + 
+                        '&t=' + escape(document.title) + 
+                        '&wi=' + escape(window.screen.width) + 
+                        '&he=' + escape(window.screen.height) + 
+                        '&cd=' + escape(window.screen.colorDepth) + 
+                        '" width="1" height="1" border=0 alt="TOPlist" />');
+                    </script>
+                    <noscript>
+                        <img src="http://toplist.cz/dot.asp?id=1561645" alt="TOPlist">
+                    </noscript>
+                </a>
+            </div>
         </footer>
         <script>
             (function(i, s, o, g, r, a, m) {
@@ -204,7 +180,7 @@
                     (i[r].q = i[r].q || []).push(arguments)
                 }, i[r].l = 1 * new Date();
                 a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
+                m = s.getElementsByTagName(o)[0];
                 a.async = 1;
                 a.src = g;
                 m.parentNode.insertBefore(a, m)
