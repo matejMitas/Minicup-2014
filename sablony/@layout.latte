@@ -10,22 +10,15 @@
         {block robots}
         <meta name="robots" content="index, follow">
         {/block}
-
-
+        <script src="/{$basePath}/js/jquery-1.9.js"></script>
+        <script src="/{$basePath}/js/main.js"></script>
+        <link async rel="stylesheet" href="/{$basePath}/css/style.php?file=complete.scss"> 
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/{$basePath}/img/favicon/apple-touch-icon-144x144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/{$basePath}/img/favicon/apple-touch-icon-114x114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/{$basePath}/img/favicon/apple-touch-icon-72x72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="/{$basePath}/img/favicon/apple-touch-icon-precomposed.png">
         <link rel="icon" type="image/png" href="/{$basePath}/img/favicon/favicon32.png">
         <!--[if IE]><link rel="SHORTCUT ICON" href="/{$basePath}/img/favicon/favicon.ico"/><![endif]--><!-- Internet Explorer-->
-
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/{$basePath}/css/style.php?file=complete.scss"> 
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-        <script src="/{$basePath}/js/jquery-1.9.js"></script>
-        <script src="/{$basePath}/js/map.js"></script>
-        <script src="/{$basePath}/js/main.js"></script>
-        {block scripts}{/block}
 
         <!--[if lt IE 9]>
         		<link rel="stylesheet" type="text/css" href="css/ieHack.css">
@@ -189,6 +182,9 @@
             ga('require', 'displayfeatures');
             ga('send', 'pageview');
         </script>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=latin-ext' rel='stylesheet' type='text/css'>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+        {block scripts}{/block}
         <!--[if lt IE 9]>
                 <script>
                         $(".poradi").hide();
