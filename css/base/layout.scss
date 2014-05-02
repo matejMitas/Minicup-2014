@@ -39,7 +39,8 @@ ul.boxes {
 }
 
 .togmain {
-	@include column(9);
+	@include column(6);
+	@include pull(3);
 }
 
 .togsub {
