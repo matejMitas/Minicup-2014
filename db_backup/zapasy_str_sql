@@ -1,3 +1,4 @@
+-- (2014-05-(23|24|25) ([0-9]*):([0-9]*))	([0-9]*)	([0-9]*)
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
 (1,12,"2014-05-23 13:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
@@ -35,13 +36,13 @@ INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehran
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
 (5,4,"2014-05-23 17:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(9,1,"2014-05-24 09:00",0);
+(9,1,"2014-05-24 9:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(8,10,"2014-05-24 09:00",0);
+(8,10,"2014-05-24 9:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(11,7,"2014-05-24 09:30",0);
+(11,7,"2014-05-24 9:30",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(6,12,"2014-05-24 09:30",0);
+(6,12,"2014-05-24 9:30",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
 (2,5,"2014-05-24 10:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
@@ -55,11 +56,11 @@ INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehran
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
 (5,11,"2014-05-24 11:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(12,4,"2014-05-24 11:30",0);
+(7,1,"2014-05-24 11:30",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
 (3,2,"2014-05-24 11:30",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(7,1,"2014-05-24 12:00",0);
+(12,4,"2014-05-24 12:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
 (6,8,"2014-05-24 12:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
@@ -85,15 +86,15 @@ INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehran
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
 (5,1,"2014-05-24 15:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(4,6,"2014-05-24 15:00",0);	
+(4,6,"2014-05-24 15:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(7,3,"2014-05-25 09:00",0);
+(7,3,"2014-05-25 9:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(2,8,"2014-05-25 09:00",0);
+(2,8,"2014-05-25 9:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(9,12,"2014-05-25 09:30",0);
+(9,12,"2014-05-25 9:30",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
-(11,10,"2014-05-25 09:30",0);
+(11,10,"2014-05-25 9:30",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
 (1,4,"2014-05-25 10:00",0);
 INSERT INTO `2014_zapasy_starsi`(`ID_domaci`,`ID_hoste`,`cas_odehrani`, `odehrano`) VALUES 
