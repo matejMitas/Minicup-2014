@@ -3,3 +3,32 @@
 		padding-top: 20px;
 	}
 }
+
+#vkladacZapasu {
+    h3 {
+        text-align: center;
+        color: $light-blue;
+        font-size: 20px;
+    }
+    input[type=text] {
+        width: 50px;
+        text-align: center;
+        font-size: 25px;
+        display: inline;
+    }
+    input[type=submit], input[type=button] {
+        width: 100%;
+        display: block;
+    }
+    .scoreinput {
+        text-align: center;
+    }
+    .scorecheck {
+        h3 {
+            b {
+                font-size: 28px;
+                font-weight: bold;
+            }
+        }
+    }
+}
