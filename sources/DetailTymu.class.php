@@ -118,18 +118,8 @@ SQL;
 			ORDER BY `poradi` ASC
 SQL;
 		$result = dbWrapper::dotaz($SQL,Array("id" => $this->idTymu))->fetch();
-		if ($result["body"] == 0) {
-                    $body = "{$result["body"]} bodů";
-		} elseif ($result["body"] == 1) {
-                    $body = "{$result["body"]} bod";
-                } elseif ($result["body"] <= 4) {
-                    $body = "{$result["body"]} body";
-                } else {
-                    $body = "{$result["body"]} bodů";
-                }
-
 		return Array("poradi" => $result["poradi"],
-                                "body" => $body,
+                                "body" => $result["body"],
                                 "dane" => $result["dane"],
                                 "dostane" => $result["dostane"]);
 	}
