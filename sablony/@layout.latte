@@ -70,7 +70,7 @@
         <nav class="clearfix">
             <div class="center">
                 <ul class="clearfix">
-                    <li n:foreach="$menu as $polozka => $cz">
+                    <li n:foreach="$menu as $polozka => $cz" n:class="$polozka == $aktualni ? active">
                         <a href="/{$basePath}/{$polozka}">{$cz|upper}</a>
                     </li>
                 </ul>

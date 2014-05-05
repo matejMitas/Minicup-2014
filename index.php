@@ -11,7 +11,8 @@ spl_autoload_register("__autoload");
 include("sources/latte.php");
 use Tracy\Debugger;
 include("sources/tracy.php");
-Debugger::enable(Debugger::DETECT);
+Debugger::enable(Debugger::DETECT,"logs");
+Debugger::$email = "thejoeejoee@gmail.com";
 
 
 session_start();
@@ -39,6 +40,7 @@ if (isset($_GET["controller"])) {
         } else {
             $template = $_GET["controller"].".latte";
         }
+        $parametry["aktualni"] = $_GET["controller"];
         $title = $controllers[$_GET["controller"]];
     } elseif (in_array($_GET["controller"], Array("login","administrace","logout"))) {
         include "kontrolery/". $_GET["controller"] .".php";
@@ -49,7 +51,8 @@ if (isset($_GET["controller"])) {
     }
 } else {
     include "kontrolery/novinky.php";
-    $title = null;
+    $title = NULL;
+    $parametry["aktualni"] = NULL;
 }
 
 $parametry["basePath"] = $basePath;
