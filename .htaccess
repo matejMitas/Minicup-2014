@@ -13,7 +13,7 @@ RewriteRule ^(mladsi|starsi)/(1|2|3|4|5|6|7|8|9|10|11|12)$ index.php?controller=
 # pro administraci a vkladani zapasu
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^administrace/(mladsi|starsi)$ index.php?controller=administrace&cat=$1 [L]
+RewriteRule ^administrace/(mladsi|starsi|fotky)$ index.php?controller=administrace&cat=$1 [L]
 
 # pro hlavni controller
 RewriteCond %{REQUEST_FILENAME} !-f
