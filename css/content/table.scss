@@ -2,7 +2,6 @@
 	font-size: 18px;
 	color: $section-outline;
 	font-weight: 400;
-	cursor: pointer;
 }
 
 .toggle-src-sub-zapasy, .toggle-src-sub-rozlos, .toggle-src-sub-tabul {
@@ -136,12 +135,12 @@
 
 	.redTable {
 		color:white;
-		background: #A30000;
+		background: #A30000 !important;
 	}
 
 	.greenTable {
 		color:white;
-		background: #21A300!important;
+		background: #21A300 !important;
 	}
 
 	.goldTable {

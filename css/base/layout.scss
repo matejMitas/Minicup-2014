@@ -47,6 +47,9 @@ ul.boxes {
 	@include column(3);
 }
 
+span[data-src] {
+	cursor: pointer;
+}
 
 .center {
 	#logo {
