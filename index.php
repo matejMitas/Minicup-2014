@@ -5,7 +5,7 @@ function __autoload($trida){
     require_once("sources/$trida.class.php");
 }
 spl_autoload_register("__autoload");
-
+mb_internal_encoding("UTF-8");
 
 
 include("sources/latte.php");
@@ -99,5 +99,3 @@ $latte->addFilter('relDateCZ', function ($time) {
         }});
 
 $latte->render("sablony/".$template, $parametry);
-
-?>
