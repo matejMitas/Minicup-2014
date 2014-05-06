@@ -9,7 +9,7 @@
 
 </div>
 </section>
-{*}
+
 <div id="fotoWrapper">
 	<div id="dayWrapper">
 		<div data-src="patek" class="dayToogle">
@@ -29,27 +29,9 @@
 	</div>
 	<section>
 		<div id="content-padding">
-			<ul class="boxes foto dayContent" data-target="patek">
-				<li>
-					<a rel="patek" href="img/fotogalerie/mini2013-05-24-38_DSC_5398.jpg" class="swipebox" title="Úžasný zápas">
-						<img src="img/fotogalerie/thumb1.jpg" alt="image">
-					</a>
-				</li>
-			</ul>
-			<ul class="boxes foto dayContent" data-target="sobota">
-				<li>
-					<a rel="sobota" href="img/fotogalerie/mini2013-05-24-38_DSC_5398.jpg" class="swipebox" title="Úžasný zápas">
-						<img src="img/fotogalerie/thumb1.jpg" alt="image">
-					</a>
-				</li>
-			</ul>
-			<ul class="boxes foto dayContent" data-target="nedele">
-				<li>
-					<a rel="nedele" href="img/fotogalerie/mini2013-05-24-38_DSC_5398.jpg" class="swipebox" title="Úžasný zápas">
-						<img src="img/fotogalerie/thumb1.jpg" alt="image">
-					</a>
-				</li>
-			</ul>
+                    {foreach $foto as $key => $denhtml}
+{$denhtml|noescape}
+                    {/foreach}
 		</div> 
 	</section>
 	<script>
@@ -59,5 +41,5 @@
 	});
 	</script>	
 </div>
-{*}
+
 {/block}
