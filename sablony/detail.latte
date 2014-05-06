@@ -33,14 +33,14 @@
                             {if $zapas[1]==$jmeno} {*}zvolený tým je domácí{/*}
                                 <tr n:class="$zapas[4] > $zapas[5]? greenTable, $zapas[4] < $zapas[5]? redTable">
                                     <td>{$zapas[1]}</td>
-                                    <td>{if $zapas[0]==1}{$zapas[4]}:{$zapas[5]}{/if}</td>
+                                    <td>{if $zapas[0]==1}{$zapas[4]}:{$zapas[5]}{else}-{/if}</td>
                                     <td>{$zapas[2]}</td>
                                     <td>{$zapas[3]}</td>
                                 </tr>
                             {else} {*}zvolený tým je hostí{/*}
                                 <tr n:class="$zapas[4] < $zapas[5]? greenTable, $zapas[4] > $zapas[5]? redTable">
                                     <td>{$zapas[1]}</td>
-                                    <td>{if $zapas[0]==1}{$zapas[4]}:{$zapas[5]}{/if}</td>
+                                    <td>{if $zapas[0]==1}{$zapas[4]}:{$zapas[5]}{else}-{/if}</td>
                                     <td>{$zapas[2]}</td>
                                     <td>{$zapas[3]}</td>
                                 </tr>
