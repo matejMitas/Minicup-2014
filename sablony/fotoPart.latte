@@ -1,0 +1,9 @@
+<ul class="boxes foto dayContent" data-target="{$den}">
+    {foreach $fotoList as $key => $fotka}
+    <li>
+        <a rel="{$den}" href="/{$basePath}/upload/{$den}/{$fotka}" class="swipebox" title="Úžasný zápas">
+            <img src="/{$basePath}/upload/{$den}/{$fotka}" alt="image">
+        </a>
+    </li>
+    {/foreach}
+</ul>
