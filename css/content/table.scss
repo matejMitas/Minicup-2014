@@ -91,16 +91,15 @@
 		}
 
 		.zapasy {
-			td:nth-of-type(1):before { content: "Domaci"; }
-			td:nth-of-type(2):before { content: "Skore"; }
-			td:nth-of-type(3):before { content: "Hoste"; }
+			td:nth-of-type(1):before { content: "domácí"; }
+			td:nth-of-type(2):before { content: "skóre"; }
+			td:nth-of-type(3):before { content: "hosté"; }
 		}
 		.tymDetail {
-			td:nth-of-type(1):before { content: "Domaci"; }
-			td:nth-of-type(2):before { content: "Cas"; }
-			td:nth-of-type(3):before { content: "Skore"; }
-			td:nth-of-type(4):before { content: "Hoste"; }
-			td:nth-of-type(5):before { content: "Odehrano"; }
+			td:nth-of-type(1):before { content: "domácí"; }
+			td:nth-of-type(2):before { content: "skóre"; }
+			td:nth-of-type(3):before { content: "hosté"; }
+			td:nth-of-type(4):before { content: "čas"; }
 		}
 	}
 
