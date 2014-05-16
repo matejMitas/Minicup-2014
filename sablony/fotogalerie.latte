@@ -3,13 +3,6 @@
 	<script src="/{$basePath}/js/jquery.swipebox.min.js"></script>
 {/block}
 {block main}
-<section>
-<div id="content-padding">
-	<h2>Bude zvěřejněno!</h2>
-
-</div>
-</section>
-
 <div id="fotoWrapper">
 	<div id="dayWrapper">
 		<div data-src="patek" class="dayToogle">
@@ -29,9 +22,9 @@
 	</div>
 	<section>
 		<div id="content-padding">
-                    {foreach $foto as $key => $denhtml}
+            {foreach $foto as $key => $denhtml}
 {$denhtml|noescape}
-                    {/foreach}
+            {/foreach}
 		</div> 
 	</section>
 	<script>
@@ -41,5 +34,4 @@
 	});
 	</script>	
 </div>
-
 {/block}

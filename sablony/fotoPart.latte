@@ -1,9 +1,13 @@
 <ul class="boxes foto dayContent" data-target="{$den}">
+    {if $chyba}
+        <h2>Zatím nebyly vloženy žádné fotografie</h2>
+    {else}
     {foreach $fotoList as $key => $fotka}
     <li>
-        <a rel="{$den}" href="/{$basePath}/upload/{$den}/{$fotka}" class="swipebox" title="Úžasný zápas">
-            <img src="/{$basePath}/upload/{$den}/{$fotka}" alt="image">
+        <a rel="{$den}" href="/{$basePath}/upload/{$den}/{$fotka[0]}" class="swipebox" title="Úžasný zápas">
+            <img src="/{$basePath}/upload/{$den}/{$fotka[1]}" alt="image">
         </a>
     </li>
     {/foreach}
+    {/if}
 </ul>
