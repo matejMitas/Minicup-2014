@@ -2,6 +2,9 @@
 ## Eclipse
 #################
 settings.php
+upload/patek
+upload/sobota
+upload/nedele
 
 *.pydevproject
 .project
