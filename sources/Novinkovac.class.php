@@ -25,11 +25,6 @@ public function ziskejVkladaciFormular() {
 
 		<input type="submit" value="Odeslat novinku">
 	</form>	
-<script language="javascript" type="text/javascript">
-$(document).ready(function(){	
-	$('textarea').jqte();
-});
-</script>
 VYSTUP;
 	}
 public function vlozNovinku($titulek,$aktualita){

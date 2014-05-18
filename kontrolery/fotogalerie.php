@@ -32,7 +32,7 @@ foreach (Array("patek", "sobota", "nedele") as $key => $den) {
 
             $params["fotoList"][] = Array("full_$i.jpg", "thumb_$i.jpg");
         }
-        $params["chyba"] = count($params["fotoList"]) == 0;
+        $params["chyba"] = count($params["fotoList"]) == 1;
         $params["basePath"] = $basePath;
         $html = $latte->renderToString(__DIR__ . "/../sablony/fotoPart.latte", $params);
         file_put_contents(__DIR__ . "/../upload/$den/$den.txt", $html);
