@@ -7,7 +7,7 @@ set_time_limit(60*60);
 include __DIR__ .'/../sources/Utils/Object.php';
 include __DIR__ .'/../sources/Utils/Image.php';
 
-foreach (Array("patek", "sobota", "nedele") as $key => $den) {
+foreach (Array("patek", "sobota", "nedele", "vyhlaseni") as $key => $den) {
     if (file_exists(__DIR__ . "/../upload/$den/$den.txt")) { //pokud existuje HTML s fotkama
         $foto[$den] = file_get_contents(__DIR__ . "/../upload/$den/$den.txt");
     } else { //nevygenerovane -> nutnost vytvořit z fotek HTML
