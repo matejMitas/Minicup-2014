@@ -59,11 +59,11 @@ SQL;
 	 * Ziska zapasy zvoleneho typu
 	 * @return string html tabulka odehranych zapasu
 	 */		
-	public function ziskejOdehraneZapasy(){
+	public function ziskejZapasy(){
 		$SQL = <<<SQL
 		SELECT 
 			b.`jmeno`, a.`SCR_domaci`, a.`SCR_hoste`, c.`jmeno`, 
-			UNIX_TIMESTAMP(a.`cas_odehrani`), a.`odehrano` 
+			UNIX_TIMESTAMP(a.`cas_odehrani`), a.`odehrano`, a.`ID_domaci`, a.`ID_hoste`
 		FROM `2014_zapasy_{$this->kategorie}` a
 		INNER JOIN `2014_tymy_{$this->kategorie}` b ON a.`ID_domaci` = b.`ID_teamu`
 		INNER JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste` = c.`ID_teamu`
@@ -75,11 +75,11 @@ SQL;
 			$cas = date("H:i",$zapas[4]);
 			$den = date("j. n.",$zapas[4]);
 			if ($zapas[5] == 1) {
-				$stav = "Odehráno $den v $cas";
+				$stav = "$den v $cas";
 			} else {
-				$stav = "Odehraje se $den v $cas";
+				$stav = "$den v $cas";
 			}
-                        $return[] =  Array($zapas[5],$zapas[0],$zapas[3],$stav,$zapas[1],$zapas[2]);
+            $return[] =  Array($zapas[5],$zapas[0],$zapas[3],$stav,$zapas[1],$zapas[2]);
 		}
 		return $return;
 	}

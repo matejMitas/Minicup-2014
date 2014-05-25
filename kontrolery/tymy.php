@@ -7,7 +7,7 @@ if (isset($_GET["cat"],$_GET["id"])) {
     $parametry["jmeno"] = $DetailTymu->ziskejNazevTymu();
     $parametry["data"] = $DetailTymu->ziskejPoradiSkore();
     $DetailTymu->ziskejProcentualniUspech();
-    $parametry["zapasy"] = $DetailTymu->ziskejOdehraneZapasy();
+    $parametry["zapasy"] = $DetailTymu->ziskejZapasy();
 
 } else {
     $template = 'tymy.latte';
