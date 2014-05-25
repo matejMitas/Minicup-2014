@@ -7,15 +7,17 @@
         <div id="table-wrapper">
 
             <div class="toogle togmain">
-                <span class="toggle-src-main" data-src="rozlos">Rozlosování</span> | <span class="toggle-src-main" data-src="zapasy">Zápasy</span> | <span class="toggle-src-main" data-src="tabul">Tabulky</span>	
+                <span class="toggle-src-main" data-src="zapasy">Zápasy</span> | <span class="toggle-src-main" data-src="tabul">Tabulky</span>	
             </div>
 
+            {*}
             <div class="toggle-target-main" data-target="rozlos">
                 <div class="toogle togsub">
                     <span class="toggle-src-sub-rozlos" data-src="mladsi">Mladší</span> | <span class="toggle-src-sub-rozlos" data-src="starsi">Starší</span>
                 </div>
 
                 {var datumy = Array("23. 5.","24. 5.","25. 5.")}
+                
                 {foreach $rozlosovani as $kategorie => $value}
 
                     <div class="rozlos toggle-target-sub-rozlos" data-target="{$kategorie}">
@@ -44,9 +46,11 @@
                         {/foreach}
                     </div>
                 {/foreach}
+                
                 <h4 n:if="!isset($value[0],$value[1],$value[2])">Již nezbývají řádné zápasy k odehrání!</h4>
             </div>
-
+            {/*}
+            
             <div class="toggle-target-main" data-target="zapasy">
                 <div class="toogle">
                     <span class="toggle-src-sub-zapasy" data-src="mladsi">Mladší</span> |
@@ -77,7 +81,6 @@
                                 </tbody>	
                             </table>
                         {/foreach}
-                        <h4>Žádné zápasy!</h4>
                     </div>
                 {/foreach} 
             </div>
