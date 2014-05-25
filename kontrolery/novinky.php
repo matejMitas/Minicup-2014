@@ -3,4 +3,4 @@
 $template = 'novinky.latte';
 
 $novinkovac = new Novinkovac();
-$parametry["novinky"] = $novinkovac->ziskejNovinky(3);
+$parametry["novinky"] = $novinkovac->ziskejNovinky(5);
