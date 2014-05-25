@@ -3,6 +3,7 @@
 $template = 'fotogalerie.latte';
 $foto = Array();
 $i=0;
+set_time_limit(60*60);
 include __DIR__ .'/../sources/Utils/Object.php';
 include __DIR__ .'/../sources/Utils/Image.php';
 
@@ -12,6 +13,8 @@ foreach (Array("patek", "sobota", "nedele") as $key => $den) {
     } else { //nevygenerovane -> nutnost vytvořit z fotek HTML
         $latte = new Latte\Engine;
         $params["den"] = $den;
+
+        file_put_contents(__DIR__ . "/../upload/$den/$den.txt", "");
 
         $album = dir(__DIR__ . "/../upload/$den"); 
         while ($fotka = $album->read()) { //iterace vsech fotek ve slozce
@@ -23,12 +26,10 @@ foreach (Array("patek", "sobota", "nedele") as $key => $den) {
             $i++;
             
             $image = Image::fromFile(__DIR__ . "/../upload/$den/$fotka");
-            $image->sharpen();
-            $image->save(__DIR__ . "/../upload/$den/full_$i.jpg",80,Image::JPEG); //full
+            $image->sharpen()->resize(1280, 1024, Image::SHRINK_ONLY)->save(__DIR__ . "/../upload/$den/full_$i.jpg",70,Image::JPEG); //full
             
-            $image->resize(400/1.5, 270/1.5, Image::EXACT);
-            $image->save(__DIR__ . "/../upload/$den/thumb_$i.jpg",100,Image::JPEG); //thumb
-
+            $image->resize(400/1.5, 270/1.5, Image::EXACT)->save(__DIR__ . "/../upload/$den/thumb_$i.jpg",100,Image::JPEG); //thumb
+            $image = null;
 
             $params["fotoList"][] = Array("full_$i.jpg", "thumb_$i.jpg");
         }
