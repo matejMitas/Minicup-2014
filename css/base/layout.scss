@@ -124,7 +124,7 @@ aside {
 #dayWrapper {
     @include row(12);
     .dayToogle {
-        @include column(4,12);
+        @include column(3,12);
     }
 }
 
