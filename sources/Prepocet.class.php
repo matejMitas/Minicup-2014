@@ -12,11 +12,11 @@ class Prepocet{
 
 
 	function __construct($kategorie){
-		$this->kategorie=$kategorie;
+		$this->kategorie = $kategorie;
 	}
 
 	public function serad(){
-		$sql = "SELECT * FROM `2014_tymy_mladsi` ORDER BY body DESC";
+		$sql = "SELECT * FROM `2014_tymy_{$this->kategorie}` ORDER BY body DESC";
 		$vysledek = dbWrapper::dotaz($sql,Array());
 		$this->serad_obecne($sql,1,$vysledek->rowCount());
     }
@@ -24,22 +24,22 @@ class Prepocet{
 	public function aktualizujBody(){
 		$result = dbWrapper::dotaz(<<<SQL
 			SELECT `id_teamu`
-			FROM `2014_tymy_mladsi` 
+			FROM `2014_tymy_{$this->kategorie}` 
 SQL
 		)->FetchAll();
 
 		foreach ($result as $key => $id_teamu) {
 			$SQL = <<<SQL
-			UPDATE `2014_tymy_mladsi` 
+			UPDATE `2014_tymy_{$this->kategorie}` 
 			SET `body` = (
 				SELECT sum(body)
 				FROM (
 					SELECT sum(`body_hoste`) body
-					FROM `2014_zapasy_mladsi`
+					FROM `2014_zapasy_{$this->kategorie}`
 					WHERE `id_hoste` = :id
 				UNION ALL
 					SELECT sum(`body_domaci`) body
-					FROM `2014_zapasy_mladsi`
+					FROM `2014_zapasy_{$this->kategorie}`
 					WHERE `id_domaci` = :id 
 				) CLK
 			)
@@ -57,14 +57,14 @@ $query=<<<SQL
 SELECT ifnull(SUM(D),0) dane, ifnull(SUM(H),0) dostane, `id_teamu`, `jmeno`
 FROM (
     SELECT SUM( `SCR_domaci` ) D, SUM(`SCR_hoste`) H, `ID_domaci` team
-    FROM `2014_zapasy_mladsi`
+    FROM `2014_zapasy_{$this->kategorie}`
     GROUP BY team
     UNION
     SELECT SUM(`SCR_hoste`) D, SUM(`SCR_domaci`) H, `ID_hoste` team
-    FROM `2014_zapasy_mladsi`
+    FROM `2014_zapasy_{$this->kategorie}`
     GROUP BY team
 ) CLK
-RIGHT JOIN `2014_tymy_mladsi` TM ON CLK.team = TM.`id_teamu`
+RIGHT JOIN `2014_tymy_{$this->kategorie}` TM ON CLK.team = TM.`id_teamu`
 WHERE `id_teamu`IN ($in_list)
 GROUP BY `id_teamu`
 ORDER BY SUM(D) DESC
@@ -87,7 +87,7 @@ if ($radek==False){
 }
 if(count($array)==1) {
     $sql_update=<<<SQL
-        UPDATE `2014_tymy_mladsi`
+        UPDATE `2014_tymy_{$this->kategorie}`
         SET poradi= $poradi 
         WHERE `id_teamu`=?
 SQL;
@@ -96,7 +96,7 @@ SQL;
 } else {
 for($i=0;$i< count($array);$i++){
 $sql_update=<<<SQL
-UPDATE `2014_tymy_mladsi`
+UPDATE `2014_tymy_{$this->kategorie}`
 SET poradi= $poradi 
 WHERE `id_teamu`= ?
 SQL;
@@ -128,14 +128,14 @@ $query="SELECT
 ifnull(SUM(dane),0) dane, ifnull(SUM(dostane),0) dostane,`id_teamu`, `jmeno`
 FROM (
     SELECT SUM(`SCR_domaci`) dane, SUM(`SCR_hoste`) dostane, `ID_domaci` team
-    FROM `2014_zapasy_mladsi`
+    FROM `2014_zapasy_{$this->kategorie}`
     GROUP BY team
     UNION
     SELECT SUM(`SCR_hoste`) dane, SUM(`SCR_domaci`) dostane, `ID_hoste` team
-    FROM `2014_zapasy_mladsi`
+    FROM `2014_zapasy_{$this->kategorie}`
     GROUP BY team
 )CLK
-RIGHT JOIN `2014_tymy_mladsi` TM ON CLK.team = TM.`id_teamu`
+RIGHT JOIN `2014_tymy_{$this->kategorie}` TM ON CLK.team = TM.`id_teamu`
 WHERE `id_teamu` IN ($in_list)
 GROUP BY `id_teamu`
 ORDER BY SUM(dane)-SUM(dostane) DESC";
@@ -157,7 +157,7 @@ while($poradi< $max) {
         }
     }
 if(count($array)==1) { //je jediný ve skupině? jednoznačné umísteni
-$update_sql="UPDATE `2014_tymy_mladsi`
+$update_sql="UPDATE `2014_tymy_{$this->kategorie}`
 SET poradi= ? 
 WHERE `id_teamu`= ?";
 dbWrapper::dotaz($update_sql,Array($poradi,$array[0]));
@@ -189,7 +189,7 @@ while($poradi_Z<=$poradi_K) {
 
 if(count($array_teamy)==1) { //pokud jsou jeho body jedinečné
     
-    $update_sql = "UPDATE `2014_tymy_mladsi` 
+    $update_sql = "UPDATE `2014_tymy_{$this->kategorie}` 
     SET `poradi`= ?
     WHERE `id_teamu`= ?"; //nastaví se na 1. místo ve skupině, resp. $poradi_Z
     dbWrapper::dotaz($update_sql,Array($poradi_Z, $array_teamy[0]));
@@ -205,20 +205,20 @@ $select=<<<SQL
 SELECT `id_teamu`, `jmeno`, ifnull(SUM(D),0) body
 FROM (
     SELECT SUM(`body_domaci`) D, `ID_domaci` Team
-        FROM `2014_zapasy_mladsi`
+        FROM `2014_zapasy_{$this->kategorie}`
         WHERE `ID_domaci` IN ($in_list) AND `ID_hoste` IN ($in_list)
         GROUP BY Team
 
     UNION ALL
 
     SELECT SUM(`body_hoste`) D, `ID_hoste` Team
-        FROM `2014_zapasy_mladsi`
+        FROM `2014_zapasy_{$this->kategorie}`
         WHERE `ID_hoste` IN ($in_list) AND `ID_domaci` IN ($in_list)
         GROUP BY Team
 ) CLK
 RIGHT JOIN (
     SELECT `id_teamu`, `jmeno`
-    FROM `2014_tymy_mladsi`
+    FROM `2014_tymy_{$this->kategorie}`
     WHERE `id_teamu` IN ($in_list)
 ) TM
 ON CLK.Team = TM.`id_teamu`
