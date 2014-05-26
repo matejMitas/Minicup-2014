@@ -5,6 +5,7 @@ settings.php
 upload/patek
 upload/sobota
 upload/nedele
+upload/vyhlaseni
 cache/
 
 *.pydevproject

@@ -3,7 +3,7 @@
 $template = 'fotogalerie.latte';
 $foto = Array();
 $i=0;
-set_time_limit(60*60);
+set_time_limit(60*100);
 include __DIR__ .'/../sources/Utils/Object.php';
 include __DIR__ .'/../sources/Utils/Image.php';
 
