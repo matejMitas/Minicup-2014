@@ -1,0 +1,67 @@
+header {
+	position: relative;
+	background: $dark-black;
+	color: white;
+}
+
+#logo {
+	padding: 16px 32px 16px 16px;
+}
+
+#slogan {
+	padding-top: 110px;
+
+	h2 {
+		font-size: 42px;
+		padding-bottom: 14px;
+		font-weight: 300;
+	}
+	h3 {
+		font-size: 13px;
+		text-transform: upper-alpha;
+		font-weight: 700;
+	}
+}
+
+#barton img {
+	width: 260px;
+	padding-top: 110px;
+	opacity: .5;
+}
+
+#barton img:hover {
+	opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+	header {
+		#slogan, #barton {
+			padding-top: 0px;
+		}
+		
+		#slogan {
+			padding-bottom: 32px;
+		}
+
+		#barton img, #slogan {
+			display: none;
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	header {
+		#barton {
+			margin-bottom: 16px;
+		}
+
+		#barton img {
+			padding-top: 0;
+		}
+
+		#slogan {
+			padding-bottom: 16px;
+		}
+	}
+}
+

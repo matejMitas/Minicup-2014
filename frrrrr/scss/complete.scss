@@ -1,0 +1,36 @@
+$light-grey: #ededed;
+$white: white;
+$yellow: #ffdd00;
+$light-blue: #2c8dd7;
+$dark-blue: #256ca1;
+$light-black: #333;
+$dark-black: #232020;
+$bronze: #6f480a;
+$silver: #c1c1c1;
+$gold: #b99404;
+$form-grey: #8f8f8f;
+$section-outline: #cccccc;
+$section-paragraph: #8f8f8f;
+$border-radius: 0.5rem;
+
+@import "base/reset.scss";
+@import "base/grid.scss";
+@import "base/layout.scss";
+@import "base/content.scss";
+
+@import "part/header.scss";
+@import "part/nav.scss";
+@import "part/aside.scss";
+@import "part/footer.scss";
+
+@import "content/novinky.scss";
+@import "content/info.scss";
+@import "content/tymy.scss";
+@import "content/foto.scss";
+@import "content/sponzori.scss";
+@import "content/tymyDetail.scss";
+@import "content/form.scss";
+@import "content/table.scss";
+@import "content/ui.scss";
+
+@import "swipebox.css";

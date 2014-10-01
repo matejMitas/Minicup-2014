@@ -1,0 +1,5 @@
+#form-wrapper {
+	& + p {
+		padding-top: 20px;
+	}
+}

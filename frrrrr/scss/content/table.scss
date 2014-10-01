@@ -1,0 +1,149 @@
+
+	.toggle-src-main {
+		font-size: 18px;
+		color: $section-outline;
+		font-weight: 400;
+		cursor: pointer;
+	}
+
+	.toggle-src-sub-zapasy, .toggle-src-sub-rozlos, .toggle-src-sub-tabul {
+		text-transform: uppercase;
+		font-weight: 700;
+		color: darken($dark-blue, 10%);
+		text-align: center;
+	}
+
+	.active {
+		color: $light-blue;
+	}
+
+#table-wrapper {
+	td:hover {
+		color: black;
+		text-decoration: underline;
+	}
+
+	td:nth-child(2):hover {
+		color: black;
+		background: none;
+	}
+
+	.tabul {
+		margin-top: 30px;
+	}
+
+
+	@media screen and (min-width: 768px) {
+		td, th {
+			padding: 15px;
+			border: 1px solid #ccc; 
+			text-align: left; 
+		}
+	}
+
+	@media screen and (max-width: 760px)  {
+	
+		table, thead, tbody, th, td, tr { 
+			display: block; 
+		}
+		
+		thead tr { 
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+		
+		tr { border: 1px solid #ccc; }
+
+		td, th {
+			border: none;
+			font-size: 22px;
+		}
+		
+		td { 
+			position: relative;
+			padding-left: 50%; 
+			margin: 10px;
+			font-weight: 300;
+		}
+		
+		td:before { 
+			position: absolute;
+			left: 6px;
+			width: 50%; 
+			padding-right: 10px; 
+		}
+
+		.rozlos {
+			td:nth-of-type(1):before { content: "Cas"; }
+			td:nth-of-type(2):before { content: "Domaci"; }
+			td:nth-of-type(3):before { content: "Hoste"; }
+		}
+
+		.tabul {
+			td:nth-of-type(1):before { content: "Poradi"; }
+			td:nth-of-type(2):before { content: "Tym"; }
+			td:nth-of-type(3):before { content: "Zapasu"; }
+			td:nth-of-type(4):before { content: "Skore"; }
+			td:nth-of-type(5):before { content: "Bodu"; }
+		}
+
+		.zapasy {
+			td:nth-of-type(1):before { content: "Domaci"; }
+			td:nth-of-type(2):before { content: "Skore"; }
+			td:nth-of-type(3):before { content: "Hoste"; }
+		}
+		.tymDetail {
+			td:nth-of-type(1):before { content: "Domaci"; }
+			td:nth-of-type(2):before { content: "Cas"; }
+			td:nth-of-type(3):before { content: "Skore"; }
+			td:nth-of-type(4):before { content: "Hoste"; }
+			td:nth-of-type(5):before { content: "Odehrano"; }
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.toggle-src-sub-zapasy, .toggle-src-sub-rozlos, .toggle-src-sub-tabul {
+			font-size: 26px;
+		}
+		.toggle-src-main {
+			font-size: 25px;
+		}	
+	}
+
+	table { 
+		width: 100%; 
+		border-collapse: collapse;
+		color: darken($section-outline, 20%);
+	}
+
+	tr:nth-of-type(even) { 
+		background: $light-grey; 
+	}
+	th { 
+		background: $light-black; 
+		color: white; 
+		border: none;
+	}
+
+	h4 {
+		font-size: 30px;
+		padding: 50px 0 20px 0;
+	}
+
+	.redTable {
+		color:white;
+		background: #A30000;
+	}
+
+	.greenTable {
+		color:white;
+		background: #21A300!important;
+	}
+
+	.goldTable {
+		color: white;
+		background: red;
+	}
+}
+	
