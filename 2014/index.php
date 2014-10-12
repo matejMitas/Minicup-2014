@@ -1,6 +1,6 @@
 <?php
 
-$basePath = "Minicup-2014";
+$basePath = "Minicup-2014/2014";
 function __autoload($trida){
     require_once("sources/$trida.class.php");
 }

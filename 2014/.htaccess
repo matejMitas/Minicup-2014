@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /Minicup-2014/
+RewriteBase /Minicup-2014/2014/
 
 # URI bez lomitka na konci
 RewriteCond %{REQUEST_FILENAME} !-d
