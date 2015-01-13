@@ -31,7 +31,7 @@ class DetailTymu {
 		SELECT `jmeno`,`id_teamu` 
 		FROM `2014_tymy_{$kategorie}`
 SQL;
-		return dbWrapper::dotaz($SQL, Array())->fetchAll();
+		return dbWrapper::query($SQL, Array())->fetchAll();
         }
         
         
@@ -49,7 +49,7 @@ SQL;
 			FROM `2014_tymy_{$this->kategorie}` 
 			WHERE `id_teamu`=? 
 SQL;
-		$result = dbWrapper::dotaz($SQL,Array($idTymu))->fetchAll();
+		$result = dbWrapper::query($SQL,Array($idTymu))->fetchAll();
 		$this->nazevTymu = $result[0][0];	
 	}
 
@@ -69,7 +69,7 @@ SQL;
 		INNER JOIN `2014_tymy_{$this->kategorie}` c ON a.`ID_hoste` = c.`ID_teamu`
 		WHERE a.`ID_domaci`= :id OR a.`ID_hoste`= :id
 SQL;
-		$poleZapasu = dbWrapper::dotaz($SQL, Array("id" => $this->idTymu))->fetchAll();
+		$poleZapasu = dbWrapper::query($SQL, Array("id" => $this->idTymu))->fetchAll();
                 $return = Array();
 		foreach ($poleZapasu as $klic => $zapas) {
 			$cas = date("H:i",$zapas[4]);
@@ -117,7 +117,7 @@ SQL;
 			GROUP BY `id_teamu`
 			ORDER BY `poradi` ASC
 SQL;
-		$result = dbWrapper::dotaz($SQL,Array("id" => $this->idTymu))->fetch();
+		$result = dbWrapper::query($SQL,Array("id" => $this->idTymu))->fetch();
 		return Array("poradi" => $result["poradi"],
                                 "body" => $result["body"],
                                 "dane" => $result["dane"],

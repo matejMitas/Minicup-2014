@@ -2,7 +2,7 @@
 class Novinkovac{
 
 public function ziskejNovinky($pocet) {
-	$novinky=dbWrapper::dotaz(<<<SQL
+	$novinky=dbWrapper::query(<<<SQL
 		SELECT `aktualita`, `titulek`, `vlozeno`
 		FROM `2014_aktuality`
 		ORDER BY `vlozeno` DESC
@@ -28,7 +28,7 @@ public function ziskejVkladaciFormular() {
 VYSTUP;
 	}
 public function vlozNovinku($titulek,$aktualita){
-	return dbwrapper::dotaz(<<<SQL
+	return dbwrapper::query(<<<SQL
 		INSERT INTO `2014_aktuality`(`titulek`,`aktualita`)
 		VALUES (?,?)
 SQL

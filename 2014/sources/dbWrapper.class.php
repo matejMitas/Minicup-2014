@@ -12,7 +12,7 @@
         self::$spojeni = new PDO("mysql:host=$host;dbname=$databaze",$uzivatel,$heslo,self::$nastaveni);
     }
 
-    public static function dotaz($sql_string, $parametry = Array()) {
+    public static function query($sql_string, $parametry = Array()) {
         $dotaz = self::$spojeni->prepare($sql_string);
         $dotaz->execute($parametry);
         return $dotaz;

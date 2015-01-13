@@ -30,7 +30,7 @@ class VystupVysledku {
 			ORDER BY a.`cas_odehrani` ASC
 			LIMIT $limit
 SQL;
-        return dbWrapper::dotaz($sql, Array())->fetchAll();
+        return dbWrapper::query($sql, Array())->fetchAll();
     }
 
     public function ziskejOdehraneZapasy($datum) {
@@ -45,7 +45,7 @@ SQL;
 				AND UNIX_TIMESTAMP(a.`cas_odehrani`) < (UNIX_TIMESTAMP(:datum) + 24*60*60)
 			ORDER BY a.`ID_zapasu` ASC
 SQL;
-        return dbWrapper::dotaz($sql, Array("datum" => $datum))->fetchAll();
+        return dbWrapper::query($sql, Array("datum" => $datum))->fetchAll();
     }
 
     public function ziskejPraveHraneZapasy($limit = 2) {
@@ -59,7 +59,7 @@ SQL;
 			ORDER BY a.`ID_zapasu` ASC
 			LIMIT $limit
 SQL;
-        return dbWrapper::dotaz($sql, Array())->fetchAll();
+        return dbWrapper::query($sql, Array())->fetchAll();
     }
 
     public function ziskejTabulkuVysledku() {
@@ -80,7 +80,7 @@ SQL;
         GROUP BY `id_teamu`
         ORDER BY `poradi` ASC
 SQL;
-        return dbWrapper::dotaz($SQL, Array())->FetchAll();
+        return dbWrapper::query($SQL, Array())->FetchAll();
     }
 
     public function ziskejRozlosovaniZapasu($datum) {
@@ -95,7 +95,7 @@ SQL;
 				AND UNIX_TIMESTAMP(a.`cas_odehrani`) < (UNIX_TIMESTAMP(:datum) + 24*60*60)
 			ORDER BY a.`ID_zapasu` ASC
 SQL;
-        return dbWrapper::dotaz($SQL, Array("datum" => $datum))->FetchAll();
+        return dbWrapper::query($SQL, Array("datum" => $datum))->FetchAll();
     }
 
 }

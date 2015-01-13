@@ -16,8 +16,8 @@ if (isset($_GET["cat"]) && in_array($_GET["cat"], Array("mladsi","starsi"))) {
     
     
     $Prepocet = new Prepocet($_GET["cat"]);
-    $Prepocet->aktualizujBody();
-    $Prepocet->serad();
+    $Prepocet->refreshPoints();
+    $Prepocet->order();
 } elseif (isset($_GET["cat"]) && $_GET["cat"] == "fotky" ) {
     $parametry["title"] = "vložení fotek";
     $template = 'fotky.latte';

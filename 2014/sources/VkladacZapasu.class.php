@@ -34,7 +34,7 @@ class VkladacZapasu {
         define("BODY_VYHRA", 2);
         define("BODY_REMIZA", 1);
         define("BODY_PROHRA", 0);
-        $sql = dbWrapper::dotaz(<<<SQL
+        $sql = dbWrapper::query(<<<SQL
         		SELECT 
         		b.`jmeno`,c.`jmeno`,`ID_zapasu` 
 				FROM `2014_zapasy_{$kategorie}` a
@@ -157,7 +157,7 @@ HTML;
             if (isset($this->poleZapasu[$zapas][2])) {
                 if (is_numeric($score[$zapas][0]) && is_numeric($score[$zapas][1])) {
                     $bodyTym = $this->ziskaneBody($score[$zapas][0], $score[$zapas][1]);
-                    $sql = dbWrapper::dotaz(<<<SQL
+                    $sql = dbWrapper::query(<<<SQL
                         UPDATE `2014_zapasy_{$this->kategorie}`
                             SET `SCR_domaci`=?,
                                 `body_domaci`=?,
